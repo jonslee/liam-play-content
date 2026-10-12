@@ -322,7 +322,12 @@
     @keyframes soundRing{from{opacity:.8;transform:scale(.5)}to{opacity:0;transform:scale(5)}}
 
     /* Pop — a resettable visual-and-sound sensory game. */
-    .pop-stage{width:min(860px,100%);min-height:min(650px,72svh);border-radius:44px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 26%,var(--paper)),color-mix(in srgb,var(--pink) 17%,var(--paper)));box-shadow:inset 0 0 0 4px var(--line),var(--shadow);position:relative;overflow:hidden}
+    .pop-stage{width:min(860px,100%);min-height:min(650px,72svh);border-radius:44px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 26%,var(--paper)),color-mix(in srgb,var(--pink) 17%,var(--paper)));box-shadow:inset 0 0 0 4px var(--line),var(--shadow);position:relative;overflow:hidden;touch-action:none}
+    /* Pop drag-to-pop trail + burst (2026-10-12): press-and-drag across bubbles pops a trail; taps still work. Burst ring is the visual reward even when sound is off. */
+    .pop-burst{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;border:12px solid rgba(255,255,255,.85);pointer-events:none;opacity:0;z-index:8}
+    .pop-burst.go{animation:popBurst .42s ease-out}
+    @keyframes popBurst{0%{opacity:.95;transform:scale(.35)}100%{opacity:0;transform:scale(1.6)}}
+    .pop-mascot{position:absolute;top:5%;right:4%;width:clamp(64px,11vw,96px);aspect-ratio:1;object-fit:contain;pointer-events:none;z-index:2;transform-origin:60% 60%;animation:mascotWave 1.7s ease-in-out infinite}
     .bubble{position:absolute;width:clamp(72px,13vw,112px);aspect-ratio:1;border:5px solid rgba(255,255,255,.78);border-radius:50%;cursor:pointer;background:color-mix(in srgb,var(--bubble) 58%,transparent);box-shadow:inset 14px 16px 0 rgba(255,255,255,.32),0 9px 0 rgba(24,50,73,.10);transition:transform .15s ease,opacity .15s ease}
     .bubble::after{content:"";position:absolute;width:18%;height:18%;border-radius:50%;background:rgba(255,255,255,.75);top:18%;left:22%}
     .bubble.popped{transform:scale(1.5);opacity:0;pointer-events:none}
@@ -489,7 +494,7 @@
 
   <section id="pop" class="screen" aria-label="Pop colorful bubbles">
     <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Pop</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
-    <div class="stage"><div class="pop-stage"><button class="bubble" aria-label="Pink bubble"></button><button class="bubble" aria-label="Yellow bubble"></button><button class="bubble" aria-label="Green bubble"></button><button class="bubble" aria-label="Blue bubble"></button><button class="bubble" aria-label="Purple bubble"></button><button class="bubble" aria-label="Orange bubble"></button><button class="bubble" aria-label="Red bubble"></button><button class="bubble" aria-label="Mint bubble"></button><svg class="pop-star" viewBox="0 0 250 230" aria-hidden="true"><path d="M125 12l28 65 70 8-52 47 15 69-61-35-61 35 15-69-52-47 70-8z" fill="#ffd84d" stroke="#183249" stroke-width="9" stroke-linejoin="round"/><path d="M87 117l25 24 51-55" fill="none" stroke="#183249" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+    <div class="stage"><div class="pop-stage"><button class="bubble" aria-label="Pink bubble"></button><button class="bubble" aria-label="Yellow bubble"></button><button class="bubble" aria-label="Green bubble"></button><button class="bubble" aria-label="Blue bubble"></button><button class="bubble" aria-label="Purple bubble"></button><button class="bubble" aria-label="Orange bubble"></button><button class="bubble" aria-label="Red bubble"></button><button class="bubble" aria-label="Mint bubble"></button><span class="pop-burst" aria-hidden="true"></span><img class="pop-mascot" src="images/liam-mascot.webp" alt="Bear cub cheering on the bubbles"/><svg class="pop-star" viewBox="0 0 250 230" aria-hidden="true"><path d="M125 12l28 65 70 8-52 47 15 69-61-35-61 35 15-69-52-47 70-8z" fill="#ffd84d" stroke="#183249" stroke-width="9" stroke-linejoin="round"/><path d="M87 117l25 24 51-55" fill="none" stroke="#183249" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><p class="parent-prompt">Say "pop!" with Liam as each bubble bursts — the "p" sound is great early speech practice. You can also drag a finger across for a popping trail. Later, blow real bubbles outside: he already knows the pop.</p>
   </section>
 </div>
 <div class="reward-overlay" role="dialog" aria-modal="true" aria-label="Animal movie celebration" aria-hidden="true"><div class="reward-card"><div class="reward-head"><div><strong>Animal celebration!</strong><small>Watch is now a reward after Listen rounds and Pop milestones.</small></div><button class="reward-close" aria-label="Close animal movie">×</button></div><video id="reward-movie" playsinline controls preload="metadata" poster="images/frog-garden.jpg"></video></div></div>
@@ -634,9 +639,36 @@
   listenPlay.addEventListener('click',function(){if(!listenTarget)startListening();else playListenPrompt()});
   listenerAnimals.forEach(function(a){a.addEventListener('click',function(){if(!listenTarget){a.classList.remove('calling');void a.offsetWidth;a.classList.add('calling');animalSound(a.dataset.kind);setTimeout(function(){a.classList.remove('calling')},850);return}if(listenLocked)return;if(a.dataset.kind===listenTarget){listenLocked=true;a.classList.add('correct');listenPips[listenRound].classList.remove('now');listenPips[listenRound].classList.add('done');listenStar.classList.remove('go');void listenStar.offsetWidth;listenStar.classList.add('go');chime();listenRound++;if(listenRound<3){listenTimer=setTimeout(nextListenRound,900)}else{listenTarget='';showReward();listenTimer=setTimeout(function(){chime();clearListening()},1300)}}else{a.classList.remove('try-again');void a.offsetWidth;a.classList.add('try-again');listenTimer=setTimeout(function(){a.classList.remove('try-again');playListenPrompt()},430)}})});
 
-  var bubbles=[].slice.call(document.querySelectorAll('.bubble')),popCount=0,popTimer=null,popStar=document.querySelector('.pop-star');
+  /* Pop: tap OR press-and-drag to pop. Drag-through pops a trail (fine-motor
+     research 2026-10-12: 2-3yos drag unassisted); the burst ring is the visual
+     reward even when sound is off. */
+  var bubbles=[].slice.call(document.querySelectorAll('.bubble')),popCount=0,popTimer=null,popStar=document.querySelector('.pop-star'),popStage=document.querySelector('.pop-stage'),popBurst=document.querySelector('.pop-burst'),popDragId=null;
   function resetPop(){popCount=0;if(popTimer){clearTimeout(popTimer);popTimer=null}popStar.classList.remove('go');bubbles.forEach(function(b){b.classList.remove('popped')})}
-  bubbles.forEach(function(b,i){b.addEventListener('click',function(){if(b.classList.contains('popped'))return;b.classList.add('popped');popCount++;tone(310+i*38,.14,'sine',0,.12);tone(520+i*24,.1,'triangle',.05,.08);if(popCount===bubbles.length){popStar.classList.remove('go');void popStar.offsetWidth;popStar.classList.add('go');chime();showReward();popTimer=setTimeout(resetPop,1200)}})});
+  function popBubble(b,i){
+    if(b.classList.contains('popped'))return;
+    ensureAudio();
+    b.classList.add('popped');popCount++;
+    var pr=popStage.getBoundingClientRect(),br=b.getBoundingClientRect();
+    popBurst.style.left=(br.left-pr.left+br.width/2)+'px';
+    popBurst.style.top=(br.top-pr.top+br.height/2)+'px';
+    var bc=getComputedStyle(b).getPropertyValue('--bubble');
+    popBurst.style.borderColor=bc?bc.trim():'rgba(255,255,255,.85)';
+    popBurst.classList.remove('go');void popBurst.offsetWidth;popBurst.classList.add('go');
+    tone(310+i*38,.14,'sine',0,.12);tone(520+i*24,.1,'triangle',.05,.08);
+    if(popCount===bubbles.length){popStar.classList.remove('go');void popStar.offsetWidth;popStar.classList.add('go');chime();showReward();popTimer=setTimeout(resetPop,1200)}
+  }
+  bubbles.forEach(function(b,i){b.addEventListener('click',function(){popBubble(b,i)})});
+  popStage.addEventListener('pointerdown',function(e){popDragId=e.pointerId});
+  popStage.addEventListener('pointermove',function(e){
+    if(e.pointerId!==popDragId)return;
+    var el=document.elementFromPoint(e.clientX,e.clientY);
+    if(el&&el.classList&&el.classList.contains('bubble')){
+      var i=bubbles.indexOf(el);
+      if(i>=0)popBubble(el,i);
+    }
+  });
+  popStage.addEventListener('pointerup',function(){popDragId=null});
+  popStage.addEventListener('pointercancel',function(){popDragId=null});
 
   function stopMedia(){stopPour();clearTimeout(demoTimer);hideReward();clearListening()}
 })();
