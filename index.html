@@ -263,6 +263,29 @@
     .song-stage.playing .song-ring:nth-child(2){animation-delay:.55s}
     @keyframes ring{0%{inset:48%;opacity:.8}100%{inset:4%;opacity:0}}
 
+    /* Song tunes + grown-up sound check (2026-10-12). Tunes are REAL tablet
+       melody (honest label below); the sound check helps a parent fix the
+       most likely reason for silence — the tablet's own mute switch. */
+    .song-wrap{width:min(860px,100%);display:grid;place-items:center;gap:12px;padding:6px 0 14px}
+    .tune-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+    .tune-btn{min-width:176px;min-height:88px;border:0;border-radius:26px;cursor:pointer;font-family:"Fredoka",sans-serif;font-size:clamp(20px,3.4vw,27px);font-weight:700;color:#183249;box-shadow:0 8px 0 rgba(24,50,73,.14),0 14px 26px rgba(24,50,73,.12);display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 24px}
+    .tune-btn:active{transform:translateY(5px);box-shadow:0 3px 0 rgba(24,50,73,.14)}
+    .tune-btn.tune-twinkle{background:#ffd84d}
+    .tune-btn.tune-bounce{background:#57bce8}
+    .tune-btn svg{width:40px;height:40px;flex:none}
+    .honest-label{font-size:clamp(13px,2.2vw,15px);color:#5d7280;font-weight:600;text-align:center;max-width:640px;margin:0;padding:0 12px}
+    .sound-check{width:min(660px,96%);background:#fffdf4;border-radius:22px;box-shadow:0 5px 0 rgba(24,50,73,.1);padding:14px 18px;text-align:center}
+    .sound-check h3{margin:0 0 6px;font-size:clamp(15px,2.8vw,19px);font-weight:700;color:#183249}
+    .sound-check p{margin:0 0 10px;font-size:clamp(13px,2.4vw,15px);color:#183249;opacity:.85;line-height:1.45}
+    .sc-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .sc-btn{min-height:56px;padding:10px 20px;border-radius:18px;border:0;cursor:pointer;font-family:"Fredoka",sans-serif;font-weight:700;font-size:clamp(15px,2.6vw,18px);background:#64c987;color:#fff;box-shadow:0 4px 0 rgba(24,50,73,.14);display:inline-flex;align-items:center;gap:8px}
+    .sc-btn:active{transform:translateY(3px);box-shadow:none}
+    .sc-btn.plain{background:#fff;color:#183249;box-shadow:inset 0 0 0 3px rgba(24,50,73,.18),0 4px 0 rgba(24,50,73,.1)}
+    .sc-btn img.sc-mascot{width:40px;height:40px;object-fit:contain}
+    .sc-steps{margin:6px 0 4px;padding-left:22px;text-align:left;font-size:clamp(13px,2.4vw,15px);line-height:1.6;color:#183249}
+    .sc-steps li{margin:7px 0}
+    .sc-note{font-size:clamp(12px,2.2vw,13.5px);color:#5d7280}
+
     /* Animal movies now arrive as earned celebration rewards. */
     .reward-overlay{position:fixed;z-index:50;inset:0;background:rgba(10,30,43,.78);display:none;place-items:center;padding:18px}
     .reward-overlay.show{display:grid;animation:popIn .22s ease-out both}
@@ -444,7 +467,19 @@
 
   <section id="song" class="screen" aria-label="Liam's song">
     <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Song</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
-    <div class="stage"><div class="song-stage"><div class="song-rings"><i class="song-ring"></i><i class="song-ring"></i></div><div class="name-orbit"><div class="note"><svg viewBox="0 0 50 50"><path d="M20 8v27c-8-5-17 0-16 7 1 8 15 8 20 1 2-3 2-5 2-10V18l17-4v14c-7-4-15 0-14 7 1 7 14 7 18 1 2-3 2-6 2-10V6z" fill="#183249"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="10" fill="#183249"/><path d="M25 3v9M25 38v9M3 25h9M38 25h9" stroke="#183249" stroke-width="5" stroke-linecap="round"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><path d="M6 31c7-12 15-12 22 0s15 12 18 0" fill="none" stroke="#183249" stroke-width="7" stroke-linecap="round"/><circle cx="11" cy="17" r="6" fill="#183249"/><circle cx="39" cy="17" r="6" fill="#183249"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><path d="M9 25h32M25 9v32" stroke="#183249" stroke-width="7" stroke-linecap="round"/></svg></div><button class="name-button" aria-label="Play Liam's beat">LIAM</button></div></div></div>
+    <div class="stage"><div class="song-wrap"><div class="song-stage"><div class="song-rings"><i class="song-ring"></i><i class="song-ring"></i></div><div class="name-orbit"><div class="note"><svg viewBox="0 0 50 50"><path d="M20 8v27c-8-5-17 0-16 7 1 8 15 8 20 1 2-3 2-5 2-10V18l17-4v14c-7-4-15 0-14 7 1 7 14 7 18 1 2-3 2-6 2-10V6z" fill="#183249"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="10" fill="#183249"/><path d="M25 3v9M25 38v9M3 25h9M38 25h9" stroke="#183249" stroke-width="5" stroke-linecap="round"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><path d="M6 31c7-12 15-12 22 0s15 12 18 0" fill="none" stroke="#183249" stroke-width="7" stroke-linecap="round"/><circle cx="11" cy="17" r="6" fill="#183249"/><circle cx="39" cy="17" r="6" fill="#183249"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><path d="M9 25h32M25 9v32" stroke="#183249" stroke-width="7" stroke-linecap="round"/></svg></div><button class="name-button" aria-label="Play Liam's beat">LIAM</button></div></div>
+      <div class="tune-row">
+        <button class="tune-btn tune-twinkle" id="tune-twinkle" aria-label="Play the twinkle tune"><svg viewBox="0 0 50 50" aria-hidden="true"><path d="M25 4l6.2 14.4 15.8 1.2-12 10.3 3.7 15.3L25 36.6l-13.7 8.6 3.7-15.3-12-10.3 15.8-1.2z" fill="#183249"/></svg><span>Twinkle</span></button>
+        <button class="tune-btn tune-bounce" id="tune-bounce" aria-label="Play the bounce tune"><svg viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="27" r="17" fill="#183249"/><path d="M12 8q13-8 26 0" fill="none" stroke="#183249" stroke-width="5" stroke-linecap="round"/><path d="M18 42q7 6 14 0" fill="none" stroke="#57bce8" stroke-width="4" stroke-linecap="round"/></svg><span>Bounce</span></button>
+      </div>
+      <p class="honest-label">Real tablet tones — not a sung song. Tap a button to play it again.</p>
+      <div class="sound-check" id="sound-check">
+        <h3>🔊 Grown-ups: no sound?</h3>
+        <p class="sc-intro">Tap the bear for a loud test sound. If you hear nothing, the tablet is probably muted — not the game.</p>
+        <div class="sc-row"><button class="sc-btn" id="sc-test"><img class="sc-mascot" src="images/liam-mascot.webp" alt=""/><span>Test sound</span></button></div>
+      </div>
+      <p class="parent-prompt">Clap to the beat with Liam — clap hands, stamp feet, bounce along.</p>
+    </div></div>
   </section>
 
   <section id="listen" class="screen" aria-label="Listen and find the animal">
@@ -547,6 +582,42 @@
   var songStage=document.querySelector('.song-stage'),songBtn=document.querySelector('.name-button'),songTimer=null;
   function stopSong(){songStage.classList.remove('playing');if(songTimer){clearTimeout(songTimer);songTimer=null}}
   songBtn.addEventListener('click',function(){ensureAudio();stopSong();songStage.classList.add('playing');var notes=[261.63,329.63,392,329.63,261.63,261.63,392,523.25];var times=[0,.38,.76,1.14,1.52,1.9,2.28,2.66];notes.forEach(function(n,i){tone(n,.27,i===6?'triangle':'sine',times[i],.13);if(i===4||i===5)clap(times[i])});songTimer=setTimeout(stopSong,3400)});
+
+  /* Song tunes + grown-up sound check (2026-10-12). Each tap restarts the
+     tune cleanly; the .playing visuals run even when audio is muted. */
+  function playTune(freqs,times,totalMs){
+    ensureAudio();stopSong();
+    songStage.classList.add('playing');
+    freqs.forEach(function(f,i){tone(f,.36,'triangle',times[i],.14)});
+    songTimer=setTimeout(stopSong,totalMs);
+  }
+  var TWINKLE=[[261.63,0],[261.63,.44],[392,.88],[392,1.32],[440,1.76],[440,2.2],[392,2.64],[349.23,3.52],[349.23,3.96],[329.63,4.4],[329.63,4.84],[293.66,5.28],[293.66,5.72],[261.63,6.16]];
+  var BOUNCE=[[261.63,0],[329.63,.34],[392,.68],[523.25,1.02],[493.88,1.36],[392,1.7],[329.63,2.04],[293.66,2.38]];
+  function tuneArgs(p){return [p.map(function(n){return n[0]}),p.map(function(n){return n[1]})];}
+  document.getElementById('tune-twinkle').addEventListener('click',function(){var a=tuneArgs(TWINKLE);playTune(a[0],a[1],7400)});
+  document.getElementById('tune-bounce').addEventListener('click',function(){var a=tuneArgs(BOUNCE);playTune(a[0],a[1],3700)});
+  var scCard=document.getElementById('sound-check');
+  function scBase(){
+    scCard.innerHTML='<h3>🔊 Grown-ups: no sound?</h3><p>Tap the bear for a loud test sound. If you hear nothing, the tablet is probably muted — not the game.</p><div class="sc-row"><button class="sc-btn" id="sc-test"><img class="sc-mascot" src="images/liam-mascot.webp" alt=""/><span>Test sound</span></button></div>';
+    document.getElementById('sc-test').addEventListener('click',scTestSound);
+  }
+  function scTestSound(){
+    ensureAudio();stopSong();songStage.classList.add('playing');
+    chime();tone(196,.4,'sine',.75,.2);tone(262,.4,'sine',1.25,.2);
+    songTimer=setTimeout(stopSong,2400);
+    scCard.innerHTML='<h3>Did you hear it?</h3><p>The bear danced and a chime played.</p><div class="sc-row"><button class="sc-btn" id="sc-yes">Yes, I heard it</button><button class="sc-btn plain" id="sc-no">No, still silent</button><button class="sc-btn plain" id="sc-again">Play test again</button></div>';
+    document.getElementById('sc-yes').addEventListener('click',function(){
+      scCard.innerHTML='<h3>🎉 All set!</h3><p>Song, Listen, and Pop should all play now.</p><div class="sc-row"><button class="sc-btn plain" id="sc-ok">OK</button></div>';
+      document.getElementById('sc-ok').addEventListener('click',scBase);
+    });
+    document.getElementById('sc-no').addEventListener('click',function(){
+      scCard.innerHTML='<h3>Try these — in order:</h3><ol class="sc-steps"><li>Turn the volume UP with the buttons on the tablet\u2019s edge.</li><li>Flip the silent/mute switch on the tablet\u2019s edge — if you see orange, it is muted.</li><li>Unplug any headphones.</li><li>Tap the speaker icon in the game\u2019s top corner. If its little sound waves are missing, tap it once to turn sound back on here.</li></ol><p class="sc-note">Tablet makers mute web pages when the silent switch is on — no kids\u2019 app can override that.</p><div class="sc-row"><button class="sc-btn" id="sc-again2">Play test again</button><button class="sc-btn plain" id="sc-ok2">Done</button></div>';
+      document.getElementById('sc-again2').addEventListener('click',scTestSound);
+      document.getElementById('sc-ok2').addEventListener('click',scBase);
+    });
+    document.getElementById('sc-again').addEventListener('click',scTestSound);
+  }
+  scBase();
 
   var rewardOverlay=document.querySelector('.reward-overlay'),rewardMovie=document.getElementById('reward-movie'),rewardClose=document.querySelector('.reward-close');
   function showReward(){var movies=[['video/frog-garden.mp4','images/frog-garden.jpg'],['video/frog-lilypad.mp4','images/frog-lilypad.jpg']],pick=movies[rewardIndex++%movies.length];rewardMovie.src=pick[0];rewardMovie.poster=pick[1];rewardMovie.muted=muted;rewardOverlay.classList.add('show');rewardOverlay.setAttribute('aria-hidden','false');rewardMovie.play().catch(function(){ /* controls remain available if autoplay is blocked */ });rewardClose.focus()}
