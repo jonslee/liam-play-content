@@ -121,8 +121,11 @@
       background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--yellow) 24%, var(--paper)) 0 24px, var(--paper) 24px 48px);
       box-shadow: inset 0 0 0 4px var(--line), var(--shadow);
       display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: clamp(18px, 4vw, 48px);
-      place-items: center;
+      place-items: center; position: relative;
     }
+    /* Find mascot + story prompt (2026-10-13): Find had no mascot and no parent
+       prompt; the mascot now "tells" the tiny story the parent voices. */
+    .find-mascot{position:absolute;top:2%;right:3%;width:clamp(56px,10vw,88px);aspect-ratio:1;object-fit:contain;pointer-events:none;z-index:2;transform-origin:70% 70%;animation:mascotWave 1.7s ease-in-out infinite}
     .object {
       width: min(210px, 42vw); aspect-ratio: 1; border: 0; border-radius: 50%; background: transparent; cursor: pointer;
       display: grid; place-items: center; position: relative;
@@ -445,11 +448,12 @@
   <section id="find" class="screen" aria-label="Find and name">
     <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Find</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
     <div class="stage"><div class="treasure-mat">
+      <img class="find-mascot" src="images/liam-mascot.webp" alt="Bear cub telling a tiny story"/>
       <button class="object" data-tone="261.63" aria-label="Ball"><svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="58" fill="#f45b63" stroke="#183249" stroke-width="7"/><path d="M28 61c31 9 60 32 79 64M55 27c9 28 34 58 73 72M30 105c35-20 62-46 83-77" fill="none" stroke="#ffd6b2" stroke-width="7" stroke-linecap="round"/></svg><span class="object-name">ball</span></button>
       <button class="object" data-tone="329.63" aria-label="Cup"><svg viewBox="0 0 160 160"><path d="M39 31h74l-9 101H49z" fill="#57bce8" stroke="#183249" stroke-width="7" stroke-linejoin="round"/><path d="M113 48h12c25 0 25 44-8 47" fill="none" stroke="#183249" stroke-width="7" stroke-linecap="round"/><path d="M49 56h55" stroke="#e9f9ff" stroke-width="8" stroke-linecap="round"/></svg><span class="object-name">cup</span></button>
       <button class="object" data-tone="392" aria-label="Spoon"><svg viewBox="0 0 160 160"><ellipse cx="98" cy="47" rx="31" ry="39" transform="rotate(31 98 47)" fill="#c9d7df" stroke="#183249" stroke-width="7"/><path d="M80 71L31 133" fill="none" stroke="#183249" stroke-width="15" stroke-linecap="round"/><path d="M80 71L31 133" fill="none" stroke="#c9d7df" stroke-width="7" stroke-linecap="round"/></svg><span class="object-name">spoon</span></button>
       <button class="object" data-tone="523.25" aria-label="Teddy bear"><svg viewBox="0 0 160 160"><circle cx="45" cy="44" r="22" fill="#d99a59" stroke="#183249" stroke-width="7"/><circle cx="115" cy="44" r="22" fill="#d99a59" stroke="#183249" stroke-width="7"/><circle cx="80" cy="73" r="51" fill="#d99a59" stroke="#183249" stroke-width="7"/><ellipse cx="80" cy="91" rx="25" ry="20" fill="#ffd6a1"/><circle cx="63" cy="66" r="5" fill="#183249"/><circle cx="97" cy="66" r="5" fill="#183249"/><circle cx="80" cy="85" r="6" fill="#183249"/><path d="M69 99q11 10 22 0" fill="none" stroke="#183249" stroke-width="5" stroke-linecap="round"/></svg><span class="object-name">bear</span></button>
-    </div></div>
+    </div></div><p class="parent-prompt">Tell a tiny story in your own voice: “Bear is hungry. Bear finds a cup and a spoon — but where is his ball?” Pause before each thing and let Liam tap it when he hears it. Keep it to those 3 short sentences, repeat his favourite, and later act it out with a real cup, spoon and ball at snack time.</p>
   </section>
 
   <section id="clap" class="screen" aria-label="Clap a rhythm">
