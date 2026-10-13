@@ -97,6 +97,7 @@
     .card-clap { --card: var(--orange); background: color-mix(in srgb, var(--orange) 32%, var(--paper)); }
     .card-pour { --card: var(--blue); background: color-mix(in srgb, var(--blue) 27%, var(--paper)); }
     .card-tip { --card: var(--red); background: color-mix(in srgb, var(--red) 20%, var(--paper)); }
+    .card-make { --card: var(--green); background: color-mix(in srgb, var(--green) 24%, var(--paper)); }
     .card-move { --card: var(--green); background: color-mix(in srgb, var(--green) 30%, var(--paper)); }
     .card-sort { --card: var(--pink); background: color-mix(in srgb, var(--pink) 27%, var(--paper)); }
     .card-song { --card: var(--purple); background: color-mix(in srgb, var(--purple) 25%, var(--paper)); }
@@ -198,6 +199,23 @@
     @keyframes tipStream{0%,100%{height:0;opacity:0}16%,75%{height:180px;opacity:.9}}
     .tip-splash{position:absolute;width:28px;height:28px;border:7px solid var(--water);border-radius:50%;opacity:0;z-index:3;pointer-events:none}.tip-splash.go{animation:splash .55s ease-out}
     @keyframes splash{from{opacity:.8;transform:scale(.3)}to{opacity:0;transform:scale(3)}}
+
+    /* Make — open-ended stamp toy (2026-10-13, Pok Pok/Toca research): no
+       words, no levels, no finished state. Tap = a big shape, drag = a dot
+       trail, four big stamp tools, Start over is the only ending. */
+    .make-wrap{width:min(860px,100%);display:grid;gap:12px;place-items:center}
+    .make-stage{width:100%;min-height:min(600px,64svh);border-radius:44px;background:color-mix(in srgb,var(--green) 11%,var(--paper));overflow:hidden;position:relative;box-shadow:inset 0 0 0 4px var(--line),var(--shadow);touch-action:none}
+    .make-canvas{position:absolute;inset:0;width:100%;height:100%}
+    .make-stamp{transform-box:fill-box;transform-origin:center;animation:makePop .28s ease-out}
+    @keyframes makePop{0%{transform:scale(.3) rotate(-10deg)}70%{transform:scale(1.18) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
+    .make-mascot{position:absolute;top:3%;left:3%;width:clamp(60px,10vw,92px);aspect-ratio:1;object-fit:contain;pointer-events:none;z-index:2;transform-origin:70% 70%;animation:mascotWave 1.7s ease-in-out infinite}
+    .make-clear{position:absolute;z-index:4;right:14px;top:14px;min-width:124px;height:58px;border:0;border-radius:23px;background:var(--yellow);box-shadow:0 6px 0 rgba(24,50,73,.15);font-family:"Fredoka",sans-serif;font-size:19px;font-weight:700;cursor:pointer;padding:0 16px}
+    .make-clear:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(24,50,73,.15)}
+    .make-tools{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .make-tool{width:84px;height:84px;border:0;border-radius:26px;cursor:pointer;background:var(--paper);box-shadow:0 6px 0 rgba(24,50,73,.13);display:grid;place-items:center;padding:12px}
+    .make-tool svg{width:100%;height:100%;overflow:visible}
+    .make-tool:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(24,50,73,.13)}
+    .make-tool.selected{box-shadow:0 0 0 6px var(--yellow),0 6px 0 rgba(24,50,73,.13)}
 
     /* Move */
     .animal-stage { width: min(900px,100%); display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,2vw,22px); }
@@ -350,7 +368,7 @@
       .animal{min-height:155px;border-radius:28px;padding:8px}
       .animal svg{width:70%;margin:auto;display:block}
       .treasure-mat{min-height:72svh;padding:10px;border-radius:30px}
-      .pour-stage,.tip-stage,.sort-stage,.song-stage{min-height:72svh;border-radius:30px}
+      .pour-stage,.make-stage,.sort-stage,.song-stage{min-height:72svh;border-radius:30px}
       .pitcher{top:10%;width:160px}.pour-mascot{top:7%;left:1%;width:90px}.pour-again{top:12px;right:12px;min-width:106px;height:52px;font-size:17px;padding:0 12px}
       .pour-cups{left:2%;right:2%;bottom:11%;height:34%;gap:1%}.pour-stream{top:34%}.spill-party span{right:35%;bottom:29%}
       .tip-a{left:3%;top:17%}.tip-b{right:3%;bottom:19%}
@@ -393,9 +411,9 @@
         <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M26 81c-9-7-5-18 4-19l21 13-5-38c-1-9 13-12 17-3l7 27 1-33c0-10 15-10 16 0l2 33 8-24c4-9 17-5 15 5l-8 37c-5 26-35 36-56 22z" fill="#ffb65d" stroke="#183249" stroke-width="6" stroke-linejoin="round"/><path d="M20 26l13 12M43 15l6 17M15 53l18 4" stroke="#f45b63" stroke-width="7" stroke-linecap="round"/></svg>
         <span>Clap</span>
       </button>
-      <button class="play-card card-pour" data-open="tip" aria-label="Pour water between cups">
-        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M24 38h57l-7 76H33z" fill="#e7f8ff" stroke="#183249" stroke-width="6" stroke-linejoin="round"/><path d="M30 70h47l-4 43H34z" fill="#57bce8"/><path d="M92 32c20 18 22 35 7 51-13-17-10-34-7-51z" fill="#57bce8" stroke="#183249" stroke-width="5"/></svg>
-        <span>Tip the cups</span>
+      <button class="play-card card-make" data-open="make" aria-label="Make a picture with stamps">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M70 18l13 27 30 4-22 21 6 30-27-15-27 15 6-30L27 49l30-4z" fill="#ffd84d" stroke="#183249" stroke-width="6" stroke-linejoin="round"/><circle cx="34" cy="108" r="15" fill="#48a8e8" stroke="#183249" stroke-width="5"/><path d="M104 96c10 12 22 18 22 18s-3-14-12-20c-8-5-16-3-10 2z" fill="#f45b63" stroke="#183249" stroke-width="5" stroke-linejoin="round"/></svg>
+        <span>Make</span>
       </button>
       <button class="play-card card-move" data-open="move" aria-label="Move like an animal">
         <svg viewBox="0 0 140 140" aria-hidden="true"><ellipse cx="70" cy="80" rx="42" ry="32" fill="#64c987" stroke="#183249" stroke-width="6"/><circle cx="43" cy="47" r="17" fill="#64c987" stroke="#183249" stroke-width="6"/><circle cx="97" cy="47" r="17" fill="#64c987" stroke="#183249" stroke-width="6"/><circle cx="44" cy="47" r="5" fill="#183249"/><circle cx="96" cy="47" r="5" fill="#183249"/><path d="M52 78q18 18 36 0" fill="none" stroke="#183249" stroke-width="6" stroke-linecap="round"/></svg>
@@ -455,9 +473,21 @@
     </div><p class="parent-prompt">Bath time: let Liam pour water between real cups — the same hands-on work.</p></div></div>
   </section>
 
-  <section id="tip" class="screen" aria-label="Tip water between cups">
-    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Tip</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
-    <div class="stage"><div class="tip-stage"><button class="tip-cup tip-a" aria-label="Pour the left cup"><svg viewBox="0 0 180 200"><defs><clipPath id="tipClipA"><path d="M25 28h126l-14 145H39z"/></clipPath></defs><path d="M25 28h126l-14 145H39z" fill="#edfaff" stroke="#183249" stroke-width="8" stroke-linejoin="round"/><rect class="tip-fill tip-water-a" x="30" y="61" width="116" height="112" fill="#57bce8" clip-path="url(#tipClipA)"/><path d="M36 50h102" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".75"/></svg></button><button class="tip-cup tip-b" aria-label="Pour the right cup"><svg viewBox="0 0 180 200"><defs><clipPath id="tipClipB"><path d="M25 28h126l-14 145H39z"/></clipPath></defs><path d="M25 28h126l-14 145H39z" fill="#edfaff" stroke="#183249" stroke-width="8" stroke-linejoin="round"/><rect class="tip-fill tip-water-b" x="30" y="153" width="116" height="20" fill="#57bce8" clip-path="url(#tipClipB)"/><path d="M36 50h102" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".75"/></svg></button><div class="tip-stream a"></div><div class="tip-stream b"></div><div class="tip-splash"></div></div></div>
+  <section id="make" class="screen" aria-label="Make a picture with stamps">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Make</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="make-wrap"><div class="make-stage" id="make-stage">
+      <svg class="make-canvas" id="make-canvas" viewBox="0 0 800 600" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <img class="make-mascot" src="images/liam-mascot.webp" alt="Bear cub making a picture"/>
+      <button class="make-clear" id="make-clear" aria-label="Start over with a blank page">Start over</button>
+    </div>
+    <div class="make-tools">
+      <button class="make-tool selected" data-shape="star" data-color="#ffd84d" data-freq="392" aria-label="Star stamp"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 4l8 17 19 3-14 13 4 19-17-10-17 10 4-19L3 24l19-3z" fill="#ffd84d" stroke="#183249" stroke-width="4" stroke-linejoin="round"/></svg></button>
+      <button class="make-tool" data-shape="heart" data-color="#f45b63" data-freq="330" aria-label="Heart stamp"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 52C8 36 4 22 12 13c6-7 15-5 18 2 3-7 12-9 18-2 8 9 4 23-18 39z" fill="#f45b63" stroke="#183249" stroke-width="4" stroke-linejoin="round"/></svg></button>
+      <button class="make-tool" data-shape="circle" data-color="#48a8e8" data-freq="262" aria-label="Circle stamp"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="24" fill="#48a8e8" stroke="#183249" stroke-width="4"/></svg></button>
+      <button class="make-tool" data-shape="tri" data-color="#64c987" data-freq="494" aria-label="Triangle stamp"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6l26 46H4z" fill="#64c987" stroke="#183249" stroke-width="4" stroke-linejoin="round"/></svg></button>
+    </div>
+    <p class="parent-prompt">Make a picture together: pick a stamp, tap the paper, drag for dots. Later, hunt for stars, hearts, circles and triangles around the house.</p>
+    </div></div>
   </section>
 
   <section id="move" class="screen" aria-label="Move like an animal">
@@ -548,7 +578,7 @@
   }
   function splashSound(){ if(muted)return; tone(180,.25,'sine',0,.08); tone(260,.18,'sine',.09,.06); }
   function chime(){ tone(523,.22,'sine',0,.14);tone(659,.22,'sine',.13,.14);tone(784,.32,'sine',.27,.16); }
-  function show(id){ stopMedia(); document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')}); document.getElementById(id).classList.add('active'); current=id; if(id==='sort') resetSort(); if(id==='pour') enterPour(); if(id==='tip') resetTip(); if(id==='pop') resetPop(); if(id!=='song')stopSong(); }
+  function show(id){ stopMedia(); document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')}); document.getElementById(id).classList.add('active'); current=id; if(id==='sort') resetSort(); if(id==='pour') enterPour(); if(id==='pop') resetPop(); if(id!=='song')stopSong(); }
   document.addEventListener('pointerdown',function(){ ensureAudio(); },{capture:true,passive:true});
   document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){ensureAudio();tone(440,.1,'sine',0,.08);show(b.dataset.open)})});
   document.querySelectorAll('.back').forEach(function(b){b.addEventListener('click',function(){show('home')})});
@@ -573,10 +603,6 @@
   function enterPour(){resetPour();if(!pourVisited){pourVisited=true;pourMascot.classList.add('demo');demoTimer=setTimeout(function(){startPour();demoTimer=setTimeout(function(){stopPour();pourMascot.classList.remove('demo')},1250)},420)}}
   pitcher.addEventListener('click',togglePour);pourAgain.addEventListener('click',function(){resetPour();tone(440,.12,'sine',0,.07)});
 
-  var tipWaterA=document.querySelector('.tip-water-a'),tipWaterB=document.querySelector('.tip-water-b'),tipCupA=document.querySelector('.tip-a'),tipCupB=document.querySelector('.tip-b'),tipStreamA=document.querySelector('.tip-stream.a'),tipStreamB=document.querySelector('.tip-stream.b'),tipSplash=document.querySelector('.tip-splash'),tipPouring=false,tipSource='a';
-  function resetTip(){tipSource='a';tipPouring=false;tipCupA.classList.remove('tilt');tipCupB.classList.remove('tilt');tipWaterA.setAttribute('y','61');tipWaterA.setAttribute('height','112');tipWaterB.setAttribute('y','153');tipWaterB.setAttribute('height','20')}
-  function tipPour(from){if(tipPouring||from!==tipSource)return;tipPouring=true;var cup=from==='a'?tipCupA:tipCupB,stream=from==='a'?tipStreamA:tipStreamB;cup.classList.add('tilt');stream.classList.add('show');tipSplash.style.left=from==='a'?'61%':'34%';tipSplash.style.top=from==='a'?'60%':'39%';setTimeout(function(){tipSplash.classList.add('go');splashSound();if(from==='a'){tipWaterA.setAttribute('y','153');tipWaterA.setAttribute('height','20');tipWaterB.setAttribute('y','61');tipWaterB.setAttribute('height','112')}else{tipWaterB.setAttribute('y','153');tipWaterB.setAttribute('height','20');tipWaterA.setAttribute('y','61');tipWaterA.setAttribute('height','112')}},300);setTimeout(function(){cup.classList.remove('tilt');stream.classList.remove('show');tipSplash.classList.remove('go');tipSource=from==='a'?'b':'a';tipPouring=false},850)}
-  tipCupA.addEventListener('click',function(){tipPour('a')});tipCupB.addEventListener('click',function(){tipPour('b')});
 
   document.querySelectorAll('.animal').forEach(function(a){a.addEventListener('click',function(){a.classList.remove('go');void a.offsetWidth;a.classList.add('go');if(a.classList.contains('frog')){tone(180,.16,'square',0,.09);tone(260,.18,'square',.18,.08)}else if(a.classList.contains('duck')){tone(530,.09,'sawtooth',0,.07);tone(410,.12,'sawtooth',.13,.07)}else{tone(92,.22,'sine',0,.18);tone(78,.2,'sine',.32,.17)}setTimeout(function(){a.classList.remove('go')},900)})});
 
@@ -673,6 +699,29 @@
   });
   popStage.addEventListener('pointerup',function(){popDragId=null});
   popStage.addEventListener('pointercancel',function(){popDragId=null});
+
+  /* Make: tap stamps a big shape, drag lays a dot trail in the stamp's
+     color. No score, no finished state; oldest marks fade out past 90 so
+     the page never slows down. Works fully by tap alone. */
+  var makeStage=document.getElementById('make-stage'),makeCanvas=document.getElementById('make-canvas'),makeTools=[].slice.call(document.querySelectorAll('.make-tool')),makeShape='star',makeColor='#ffd84d',makeFreq=392,makeDown=false,makeMoved=false,makeLast=null,makeSX=0,makeSY=0,SVGNS='http://www.w3.org/2000/svg';
+  function makePoint(e){var r=makeStage.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*800,y:(e.clientY-r.top)/r.height*600}}
+  function makeEl(tag,attrs){var el=document.createElementNS(SVGNS,tag);for(var k in attrs)el.setAttribute(k,attrs[k]);return el}
+  function makeTrim(){while(makeCanvas.childNodes.length>90)makeCanvas.removeChild(makeCanvas.firstChild)}
+  function placeStamp(x,y,big){
+    var g=makeEl('g',{transform:'translate('+x+' '+y+') rotate('+Math.round(Math.random()*24-12)+') scale('+(big?1:.62)+')','class':'make-stamp'});
+    if(makeShape==='star')g.appendChild(makeEl('path',{d:'M0 -30 L9 -10 L30 -7 L15 7 L19 29 L0 17 L-19 29 L-15 7 L-30 -7 L-9 -10 Z',fill:makeColor,stroke:'#183249','stroke-width':'5','stroke-linejoin':'round'}));
+    else if(makeShape==='heart')g.appendChild(makeEl('path',{d:'M0 26 C-24 9 -27 -8 -18 -18 C-11 -25 -2 -21 0 -12 C2 -21 11 -25 18 -18 C27 -8 24 9 0 26 Z',fill:makeColor,stroke:'#183249','stroke-width':'5','stroke-linejoin':'round'}));
+    else if(makeShape==='circle')g.appendChild(makeEl('circle',{cx:'0',cy:'0',r:'26',fill:makeColor,stroke:'#183249','stroke-width':'5'}));
+    else g.appendChild(makeEl('path',{d:'M0 -28 L27 22 L-27 22 Z',fill:makeColor,stroke:'#183249','stroke-width':'5','stroke-linejoin':'round'}));
+    makeCanvas.appendChild(g);makeTrim();
+  }
+  function placeDot(x,y){makeCanvas.appendChild(makeEl('circle',{cx:String(x),cy:String(y),r:'11',fill:makeColor,opacity:'.75'}));makeTrim()}
+  makeTools.forEach(function(t){t.addEventListener('click',function(){makeTools.forEach(function(o){o.classList.remove('selected')});t.classList.add('selected');makeShape=t.dataset.shape;makeColor=t.dataset.color;makeFreq=Number(t.dataset.freq);tone(makeFreq,.12,'sine',0,.08)})});
+  document.getElementById('make-clear').addEventListener('click',function(e){e.stopPropagation();while(makeCanvas.firstChild)makeCanvas.removeChild(makeCanvas.firstChild);tone(440,.12,'sine',0,.07)});
+  makeStage.addEventListener('pointerdown',function(e){if(e.target.closest('.make-clear'))return;ensureAudio();makeDown=true;makeMoved=false;makeSX=e.clientX;makeSY=e.clientY;var pt=makePoint(e);makeLast=pt;placeStamp(pt.x,pt.y,true);tone(makeFreq,.14,'triangle',0,.1);makeStage.setPointerCapture(e.pointerId)});
+  makeStage.addEventListener('pointermove',function(e){if(!makeDown)return;if(Math.abs(e.clientX-makeSX)+Math.abs(e.clientY-makeSY)>12)makeMoved=true;if(!makeMoved)return;var pt=makePoint(e);if(makeLast&&Math.hypot(pt.x-makeLast.x,pt.y-makeLast.y)>36){placeDot(pt.x,pt.y);makeLast=pt}});
+  function makeUp(){makeDown=false;makeLast=null}
+  makeStage.addEventListener('pointerup',makeUp);makeStage.addEventListener('pointercancel',makeUp);
 
   function stopMedia(){stopPour();clearTimeout(demoTimer);hideReward();clearListening()}
 })();
