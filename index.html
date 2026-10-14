@@ -545,6 +545,7 @@
   var current='home', muted=false, audio=null, audioReady=null, audioWarmed=false, pouring=false, pourLevel=0, pourTimer=null, glugTimer=null, pourVisited=false, rewardIndex=0;
   function ensureAudio(){
     if(muted) return Promise.resolve(null);
+    try{ if('audioSession' in navigator) navigator.audioSession.type='playback'; }catch(e){}
     var AudioContextClass=window.AudioContext||window.webkitAudioContext;
     if(!AudioContextClass) return Promise.resolve(null);
     if(!audio) audio=new AudioContextClass();
@@ -654,7 +655,7 @@
       document.getElementById('sc-ok').addEventListener('click',scBase);
     });
     document.getElementById('sc-no').addEventListener('click',function(){
-      scCard.innerHTML='<h3>Try these — in order:</h3><ol class="sc-steps"><li>Turn the volume UP with the buttons on the tablet\u2019s edge.</li><li>Flip the silent/mute switch on the tablet\u2019s edge — if you see orange, it is muted.</li><li>Unplug any headphones.</li><li>Tap the speaker icon in the game\u2019s top corner. If its little sound waves are missing, tap it once to turn sound back on here.</li></ol><p class="sc-note">Tablet makers mute web pages when the silent switch is on — no kids\u2019 app can override that.</p><div class="sc-row"><button class="sc-btn" id="sc-again2">Play test again</button><button class="sc-btn plain" id="sc-ok2">Done</button></div>';
+      scCard.innerHTML='<h3>Try these — in order:</h3><ol class="sc-steps"><li>Turn the volume UP with the buttons on the tablet\u2019s edge.</li><li>Flip the silent/mute switch on the tablet\u2019s edge — if you see orange, it is muted.</li><li>Unplug any headphones.</li><li>Tap the speaker icon in the game\u2019s top corner. If its little sound waves are missing, tap it once to turn sound back on here.</li></ol><p class="sc-note">Tablet makers mute web pages when the silent switch is on — no kids\u2019 app can override that.</p><p class=\"sc-note\">Sound engine: '+(audio?audio.state:'not started')+' — if it stays silent, tell Gus this engine word and what you tried.</p><div class="sc-row"><button class="sc-btn" id="sc-again2">Play test again</button><button class="sc-btn plain" id="sc-ok2">Done</button></div>';
       document.getElementById('sc-again2').addEventListener('click',scTestSound);
       document.getElementById('sc-ok2').addEventListener('click',scBase);
     });
