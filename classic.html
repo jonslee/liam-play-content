@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <title>Liam's Play Curriculum</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fff8e8;
+      --ink: #183249;
+      --paper: #ffffff;
+      --muted: #6b7b87;
+      --line: rgba(24, 50, 73, .13);
+      --shadow: 0 12px 0 rgba(24, 50, 73, .12), 0 18px 30px rgba(24, 50, 73, .10);
+      --yellow: #ffd84d;
+      --orange: #ff8b45;
+      --red: #f45b63;
+      --blue: #48a8e8;
+      --navy: #24527a;
+      --green: #64c987;
+      --mint: #bdeccc;
+      --pink: #ff9dc7;
+      --purple: #9f85e8;
+      --water: #57bce8;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #11283a;
+        --ink: #f7f4e9;
+        --paper: #1b3a50;
+        --muted: #b5c8d4;
+        --line: rgba(255,255,255,.16);
+        --shadow: 0 10px 0 rgba(0,0,0,.24), 0 18px 32px rgba(0,0,0,.22);
+        --navy: #7fc4ef;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; overflow-x: hidden; }
+    body {
+      min-height: 100svh;
+      background:
+        radial-gradient(circle at 12% 9%, color-mix(in srgb, var(--yellow) 35%, transparent) 0 11%, transparent 11.5%),
+        radial-gradient(circle at 92% 86%, color-mix(in srgb, var(--blue) 25%, transparent) 0 14%, transparent 14.5%),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Nunito Sans", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+    }
+    button { font: inherit; color: inherit; }
+    button:focus-visible { outline: 5px solid var(--ink); outline-offset: 4px; }
+    .app { min-height: 100svh; position: relative; }
+    .screen { display: none; min-height: 100svh; padding: max(18px, env(safe-area-inset-top)) 18px max(24px, env(safe-area-inset-bottom)); }
+    .screen.active { display: flex; flex-direction: column; animation: popIn .24s ease-out both; }
+    @keyframes popIn { from { opacity: 0; transform: scale(.985); } to { opacity: 1; transform: scale(1); } }
+
+    /* Home — icons lead, labels whisper. */
+    #home { justify-content: center; }
+    .play-grid {
+      width: min(940px, 100%);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(14px, 2.2vw, 24px);
+    }
+    .play-card {
+      min-height: clamp(165px, 24vw, 250px);
+      border: 0;
+      border-radius: 34px 34px 26px 34px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-rows: 1fr auto;
+      place-items: center;
+      padding: 18px 14px 14px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition: transform .14s ease, box-shadow .14s ease;
+    }
+    .play-card::after {
+      content: ""; position: absolute; width: 74px; height: 74px; border-radius: 50%;
+      right: -18px; top: -20px; background: color-mix(in srgb, var(--card) 32%, transparent);
+    }
+    .play-card:active { transform: translateY(8px); box-shadow: 0 4px 0 rgba(24,50,73,.12); }
+    .play-card svg { width: min(128px, 70%); height: min(128px, 70%); overflow: visible; filter: drop-shadow(0 5px 0 rgba(24,50,73,.09)); }
+    .play-card span { font-family: "Fredoka", sans-serif; font-size: clamp(18px, 2.4vw, 25px); font-weight: 700; letter-spacing: .01em; }
+    .card-find { --card: var(--yellow); background: color-mix(in srgb, var(--yellow) 42%, var(--paper)); }
+    .card-clap { --card: var(--orange); background: color-mix(in srgb, var(--orange) 32%, var(--paper)); }
+    .card-pour { --card: var(--blue); background: color-mix(in srgb, var(--blue) 27%, var(--paper)); }
+    .card-tip { --card: var(--red); background: color-mix(in srgb, var(--red) 20%, var(--paper)); }
+    .card-make { --card: var(--green); background: color-mix(in srgb, var(--green) 24%, var(--paper)); }
+    .card-move { --card: var(--green); background: color-mix(in srgb, var(--green) 30%, var(--paper)); }
+    .card-sort { --card: var(--pink); background: color-mix(in srgb, var(--pink) 27%, var(--paper)); }
+    .card-song { --card: var(--purple); background: color-mix(in srgb, var(--purple) 25%, var(--paper)); }
+    .card-watch { --card: var(--red); background: color-mix(in srgb, var(--red) 23%, var(--paper)); }
+    .card-listen { --card: var(--orange); background: color-mix(in srgb, var(--orange) 23%, var(--paper)); }
+    .card-pop { --card: var(--blue); background: color-mix(in srgb, var(--blue) 23%, var(--paper)); }
+
+    .topbar { width: min(960px, 100%); margin: 0 auto 10px; min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .back, .sound-toggle, .big-action {
+      border: 0; cursor: pointer; display: grid; place-items: center; background: var(--paper); box-shadow: 0 5px 0 rgba(24,50,73,.14);
+    }
+    .back, .sound-toggle { width: 56px; height: 56px; border-radius: 50%; }
+    .back:active, .sound-toggle:active, .big-action:active { transform: translateY(4px); box-shadow: 0 1px 0 rgba(24,50,73,.14); }
+    .back svg, .sound-toggle svg { width: 28px; height: 28px; }
+    .scene-word { font-family: "Fredoka", sans-serif; font-size: clamp(24px, 4vw, 38px); font-weight: 700; }
+    .stage { width: min(960px, 100%); flex: 1; min-height: 0; margin: 0 auto; display: grid; place-items: center; position: relative; }
+
+    /* Find */
+    .treasure-mat {
+      width: min(820px, 100%); min-height: min(650px, 72svh); border-radius: 42px;
+      background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--yellow) 24%, var(--paper)) 0 24px, var(--paper) 24px 48px);
+      box-shadow: inset 0 0 0 4px var(--line), var(--shadow);
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: clamp(18px, 4vw, 48px);
+      place-items: center; position: relative;
+    }
+    /* Find mascot + story prompt (2026-10-13): Find had no mascot and no parent
+       prompt; the mascot now "tells" the tiny story the parent voices. */
+    .find-mascot{position:absolute;top:2%;right:3%;width:clamp(56px,10vw,88px);aspect-ratio:1;object-fit:contain;pointer-events:none;z-index:2;transform-origin:70% 70%;animation:mascotWave 1.7s ease-in-out infinite}
+    .object {
+      width: min(210px, 42vw); aspect-ratio: 1; border: 0; border-radius: 50%; background: transparent; cursor: pointer;
+      display: grid; place-items: center; position: relative;
+    }
+    .object svg { width: 78%; height: 78%; overflow: visible; transition: transform .18s ease; filter: drop-shadow(0 10px 0 rgba(24,50,73,.12)); }
+    .object:active svg, .object.playing svg { transform: scale(1.18) rotate(-5deg); }
+    .object-name {
+      position: absolute; inset: auto 50% 3px auto; transform: translateX(50%) translateY(8px) scale(.7);
+      opacity: 0; background: var(--paper); color: var(--ink); padding: 7px 16px; border-radius: 999px;
+      font-family: "Fredoka", sans-serif; font-size: clamp(20px, 4vw, 30px); box-shadow: 0 4px 0 rgba(24,50,73,.12);
+      transition: .18s ease;
+    }
+    .object.playing .object-name { opacity: 1; transform: translateX(50%) translateY(0) scale(1); }
+
+    /* Clap */
+    .clap-wrap { width: min(820px,100%); display: grid; gap: 26px; place-items: center; }
+    .clap-demo { display: flex; align-items: center; justify-content: center; gap: 14px; min-height: 76px; }
+    .beat-dot { width: 28px; height: 28px; border-radius: 50%; background: var(--line); transition: .12s; }
+    .beat-dot.on { background: var(--yellow); transform: scale(1.5); box-shadow: 0 0 0 10px color-mix(in srgb, var(--yellow) 25%, transparent); }
+    .hands {
+      border: 0; background: transparent; cursor: pointer; width: min(390px, 86vw); aspect-ratio: 1.25; position: relative;
+      filter: drop-shadow(0 12px 0 rgba(24,50,73,.12));
+    }
+    .hands svg { width: 100%; height: 100%; overflow: visible; }
+    .hands .left-hand { transform-origin: 45% 55%; transition: transform .09s; }
+    .hands .right-hand { transform-origin: 55% 55%; transition: transform .09s; }
+    .hands.hit .left-hand { transform: translateX(16px) rotate(7deg); }
+    .hands.hit .right-hand { transform: translateX(-16px) rotate(-7deg); }
+    .burst { opacity: 0; transform-origin: center; }
+    .hands.hit .burst { animation: burst .35s ease-out; }
+    @keyframes burst { 0% { opacity: 1; transform: scale(.3); } 100% { opacity: 0; transform: scale(1.3); } }
+    .big-action {
+      min-width: 112px; height: 64px; border-radius: 25px; background: var(--yellow); padding: 0 25px;
+      font-family: "Fredoka", sans-serif; font-size: 22px; font-weight: 700;
+    }
+
+    /* Pour — one clear action, with shape cues as well as color. */
+    .pour-wrap{width:min(850px,100%);display:grid;gap:14px;place-items:center}
+    .pour-stage{width:100%;min-height:min(600px,66svh);border-radius:44px;background:color-mix(in srgb,var(--blue) 13%,var(--paper));overflow:hidden;position:relative;box-shadow:inset 0 0 0 4px var(--line),var(--shadow)}
+    .pour-stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12%;background:color-mix(in srgb,var(--water) 18%,transparent);border-radius:50% 50% 0 0/30% 30% 0 0}
+    .pitcher{position:absolute;z-index:5;left:50%;top:4%;translate:-50% 0;width:clamp(170px,28vw,230px);aspect-ratio:1.18;border:0;background:transparent;cursor:pointer;filter:drop-shadow(0 10px 0 rgba(24,50,73,.12));transition:transform .2s ease}
+    .pitcher:active{transform:translateY(5px)}
+    .pitcher.pouring{transform:translateX(10px) rotate(12deg)}
+    .pitcher svg{width:100%;height:100%;overflow:visible}
+    .pour-stream{position:absolute;z-index:4;left:51%;top:31%;width:18px;height:0;border-radius:999px;background:var(--water);opacity:0;transform:rotate(-4deg);transform-origin:top;transition:height .18s ease,opacity .12s ease}
+    .pour-stream.show{height:clamp(118px,24vw,210px);opacity:.92;animation:waterWiggle .3s ease-in-out infinite alternate}
+    @keyframes waterWiggle{to{transform:translateX(4px) rotate(2deg)}}
+    .pour-cups{position:absolute;z-index:3;left:4%;right:4%;bottom:9%;height:38%;display:grid;grid-template-columns:repeat(3,1fr);gap:3%;align-items:end}
+    .pour-cup{position:relative;width:100%;max-width:220px;justify-self:center;aspect-ratio:.95}
+    .pour-cup svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 9px 0 rgba(24,50,73,.11))}
+    .pour-cup-symbol{position:absolute;z-index:2;left:50%;top:46%;translate:-50% -50%;width:34%;height:34%;display:grid;place-items:center;color:#183249;pointer-events:none}
+    .pour-cup-symbol svg{width:100%;height:100%;filter:none}
+    .middle-cup{transform:scale(1.08)}
+    .middle-liquid{transition:y .15s linear,height .15s linear}
+    .pour-again{position:absolute;z-index:8;right:18px;top:18px;min-width:124px;height:58px;border:0;border-radius:23px;background:var(--yellow);box-shadow:0 6px 0 rgba(24,50,73,.15);font-family:"Fredoka",sans-serif;font-size:20px;font-weight:700;cursor:pointer;padding:0 18px}
+    .pour-again:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(24,50,73,.15)}
+    .pour-mascot{position:absolute;z-index:7;left:3%;top:4%;width:clamp(92px,17vw,142px);aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 7px 0 rgba(24,50,73,.1));transform-origin:70% 70%;animation:mascotWave 1.7s ease-in-out infinite}
+    .pour-mascot.demo{animation:mascotDemo .65s ease-in-out infinite alternate}
+    @keyframes mascotWave{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(5deg)}}
+    @keyframes mascotDemo{to{transform:translateY(-8px) rotate(7deg) scale(1.04)}}
+    .spill-party{position:absolute;z-index:9;inset:0;pointer-events:none;opacity:0}
+    .spill-party::before{content:"";position:absolute;left:25%;right:18%;bottom:4%;height:18%;border-radius:50%;background:color-mix(in srgb,var(--water) 68%,transparent)}
+    .spill-party img{position:absolute;right:5%;bottom:3%;width:clamp(120px,24vw,190px);filter:drop-shadow(0 8px 0 rgba(24,50,73,.12))}
+    .spill-party span{position:absolute;right:21%;bottom:28%;background:var(--paper);padding:9px 15px;border-radius:22px;font-family:"Fredoka",sans-serif;font-size:clamp(20px,4vw,30px);font-weight:700;box-shadow:0 5px 0 rgba(24,50,73,.12)}
+    .spill-party.go{animation:spillParty 1.7s ease both}
+    @keyframes spillParty{0%{opacity:0;transform:scale(.8)}18%,76%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.08)}}
+    .parent-prompt{margin:0;max-width:720px;padding:9px 16px;border-radius:18px;background:var(--paper);box-shadow:0 4px 0 rgba(24,50,73,.1);font-size:clamp(15px,2.4vw,18px);font-weight:700;text-align:center;line-height:1.35}
+    .tip-stage{width:min(850px,100%);min-height:min(640px,70svh);border-radius:44px;background:color-mix(in srgb,var(--red) 10%,var(--paper));overflow:hidden;position:relative;box-shadow:inset 0 0 0 4px var(--line),var(--shadow)}
+    .tip-stage::after{content:"";position:absolute;left:0;right:0;bottom:0;height:19%;background:color-mix(in srgb,var(--water) 32%,transparent);border-radius:50% 50% 0 0/20% 20% 0 0}
+    .tip-cup{position:absolute;width:clamp(126px,24vw,210px);aspect-ratio:.9;border:0;background:transparent;cursor:pointer;z-index:2;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+    .tip-cup svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 10px 0 rgba(24,50,73,.12))}
+    .tip-a{left:11%;top:17%}.tip-b{right:11%;bottom:17%}.tip-a.tilt{transform:translate(55%,10%) rotate(43deg)}.tip-b.tilt{transform:translate(-55%,-10%) rotate(-43deg)}
+    .tip-fill{transition:y .6s ease,height .6s ease}.tip-stream{position:absolute;width:18px;height:0;border-radius:999px;background:var(--water);opacity:0;z-index:1;transform-origin:top}.tip-stream.a{left:48%;top:38%;transform:rotate(-24deg)}.tip-stream.b{right:48%;top:45%;transform:rotate(24deg)}.tip-stream.show{animation:tipStream .7s ease}
+    @keyframes tipStream{0%,100%{height:0;opacity:0}16%,75%{height:180px;opacity:.9}}
+    .tip-splash{position:absolute;width:28px;height:28px;border:7px solid var(--water);border-radius:50%;opacity:0;z-index:3;pointer-events:none}.tip-splash.go{animation:splash .55s ease-out}
+    @keyframes splash{from{opacity:.8;transform:scale(.3)}to{opacity:0;transform:scale(3)}}
+
+    /* Make — open-ended stamp toy (2026-10-13, Pok Pok/Toca research): no
+       words, no levels, no finished state. Tap = a big shape, drag = a dot
+       trail, four big stamp tools, Start over is the only ending. */
+    .make-wrap{width:min(860px,100%);display:grid;gap:12px;place-items:center}
+    .make-stage{width:100%;min-height:min(600px,64svh);border-radius:44px;background:color-mix(in srgb,var(--green) 11%,var(--paper));overflow:hidden;position:relative;box-shadow:inset 0 0 0 4px var(--line),var(--shadow);touch-action:none}
+    .make-canvas{position:absolute;inset:0;width:100%;height:100%}
+    .make-stamp{transform-box:fill-box;transform-origin:center;animation:makePop .28s ease-out}
+    @keyframes makePop{0%{transform:scale(.3) rotate(-10deg)}70%{transform:scale(1.18) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
+    .make-mascot{position:absolute;top:3%;left:3%;width:clamp(60px,10vw,92px);aspect-ratio:1;object-fit:contain;pointer-events:none;z-index:2;transform-origin:70% 70%;animation:mascotWave 1.7s ease-in-out infinite}
+    .make-clear{position:absolute;z-index:4;right:14px;top:14px;min-width:124px;height:58px;border:0;border-radius:23px;background:var(--yellow);box-shadow:0 6px 0 rgba(24,50,73,.15);font-family:"Fredoka",sans-serif;font-size:19px;font-weight:700;cursor:pointer;padding:0 16px}
+    .make-clear:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(24,50,73,.15)}
+    .make-tools{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .make-tool{width:84px;height:84px;border:0;border-radius:26px;cursor:pointer;background:var(--paper);box-shadow:0 6px 0 rgba(24,50,73,.13);display:grid;place-items:center;padding:12px}
+    .make-tool svg{width:100%;height:100%;overflow:visible}
+    .make-tool:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(24,50,73,.13)}
+    .make-tool.selected{box-shadow:0 0 0 6px var(--yellow),0 6px 0 rgba(24,50,73,.13)}
+
+    /* Move */
+    .animal-stage { width: min(900px,100%); display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(12px,2vw,22px); }
+    .animal {
+      border:0; border-radius:42px; min-height:clamp(260px,42vw,430px); padding:18px; cursor:pointer; overflow:hidden; position:relative;
+      box-shadow:var(--shadow); background:var(--paper);
+    }
+    .animal:nth-child(1){background:color-mix(in srgb,var(--green) 28%,var(--paper))}
+    .animal:nth-child(2){background:color-mix(in srgb,var(--yellow) 32%,var(--paper))}
+    .animal:nth-child(3){background:color-mix(in srgb,var(--blue) 24%,var(--paper))}
+    .animal svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 10px 0 rgba(24,50,73,.1));}
+    .animal.frog.go svg{animation:frogJump .85s ease}
+    .animal.duck.go svg{animation:duckWaddle .8s ease}
+    .animal.elephant.go svg{animation:eleStomp .8s ease}
+    @keyframes frogJump{0%,100%{transform:translateY(0) scale(1)}45%{transform:translateY(-80px) scale(1.05,.95)}}
+    @keyframes duckWaddle{0%,100%{transform:rotate(0)}20%{transform:translateX(-10px) rotate(-8deg)}45%{transform:translateX(10px) rotate(8deg)}70%{transform:translateX(-8px) rotate(-6deg)}}
+    @keyframes eleStomp{0%,100%{transform:translateY(0)}25%{transform:translateY(-18px)}42%{transform:translateY(8px)}57%{transform:translateY(-10px)}78%{transform:translateY(5px)}}
+
+    /* Sort */
+    .sort-stage { width:min(900px,100%); min-height:min(670px,72svh); border-radius:44px; position:relative; overflow:hidden; background:color-mix(in srgb,var(--pink) 13%,var(--paper)); box-shadow:inset 0 0 0 4px var(--line),var(--shadow); touch-action:none; }
+    .bins { position:absolute; left:5%; right:5%; bottom:5%; height:30%; display:grid; grid-template-columns:repeat(3,1fr); gap:4%; }
+    .bin { position:relative; border-radius:18px 18px 35px 35px; border:8px solid color-mix(in srgb,var(--ink) 18%,transparent); border-top-width:16px; padding:0; cursor:pointer; transition:transform .16s ease, box-shadow .16s ease; }
+    .bin[data-color="red"]{background:color-mix(in srgb,var(--red) 52%,var(--paper))}
+    .bin[data-color="blue"]{background:color-mix(in srgb,var(--blue) 52%,var(--paper))}
+    .bin[data-color="yellow"]{background:color-mix(in srgb,var(--yellow) 60%,var(--paper))}
+    .bin.ready{transform:translateY(-6px);box-shadow:0 0 0 8px color-mix(in srgb,var(--yellow) 56%,transparent)}
+    .bin.try-again{animation:gentleNo .34s ease}
+    .sort-symbol{position:absolute;left:50%;top:50%;translate:-50% -50%;display:grid;place-items:center;pointer-events:none;z-index:2}
+    .sort-symbol svg{width:100%;height:100%;display:block}
+    .bin .sort-symbol{width:clamp(44px,7vw,64px);height:clamp(44px,7vw,64px)}
+    .pom .sort-symbol{width:44%;height:44%}
+    .pom { position:absolute; width:clamp(62px,11vw,92px); aspect-ratio:1; border:0; border-radius:50%; cursor:grab; z-index:3; box-shadow:inset -10px -12px 0 rgba(24,50,73,.12),0 7px 0 rgba(24,50,73,.14); touch-action:none; transition:transform .14s ease, box-shadow .14s ease; }
+    .pom.selected{transform:scale(1.14);box-shadow:inset -10px -12px 0 rgba(24,50,73,.12),0 0 0 9px color-mix(in srgb,var(--yellow) 72%,transparent),0 9px 0 rgba(24,50,73,.14)}
+    .pom::before,.pom::after{content:"";position:absolute;background:inherit;border-radius:50%;inset:12% -7%;z-index:-1}.pom::after{inset:-7% 12%}
+    .pom[data-color="red"]{background:var(--red)}
+    .pom[data-color="blue"]{background:var(--blue)}
+    .pom[data-color="yellow"]{background:var(--yellow)}
+    .pom.dragging{cursor:grabbing;transform:scale(1.14);z-index:10;}
+    .pom.done{animation:pomDone .45s ease forwards;pointer-events:none}
+    @keyframes pomDone{40%{transform:scale(1.22)}100%{transform:scale(.2);opacity:0}}
+    .celebrate { position:absolute; inset:0; display:grid; place-items:center; pointer-events:none; opacity:0; z-index:12; }
+    .celebrate svg{width:min(420px,75%);height:auto;}
+    .celebrate.go{animation:celebrate 1.1s ease}
+    @keyframes celebrate{0%{opacity:0;transform:scale(.3) rotate(-8deg)}20%,70%{opacity:1;transform:scale(1.06) rotate(3deg)}100%{opacity:0;transform:scale(1.3) rotate(0)}}
+
+    /* Song */
+    .song-stage { width:min(860px,100%); min-height:min(650px,72svh); border-radius:48px; background:color-mix(in srgb,var(--purple) 18%,var(--paper)); box-shadow:inset 0 0 0 4px var(--line),var(--shadow); display:grid; place-items:center; position:relative; overflow:hidden; }
+    .name-orbit { width:min(520px,88%); aspect-ratio:1; position:relative; display:grid; place-items:center; }
+    .name-button { width:58%; aspect-ratio:1; border-radius:50%; border:0; background:var(--yellow); box-shadow:0 13px 0 rgba(24,50,73,.15),0 20px 35px rgba(24,50,73,.14); cursor:pointer; display:grid; place-items:center; font-family:"Fredoka",sans-serif; font-size:clamp(36px,10vw,72px); font-weight:700; letter-spacing:.02em; position:relative; z-index:3; }
+    .name-button:active{transform:translateY(8px);box-shadow:0 5px 0 rgba(24,50,73,.15)}
+    .note { position:absolute; width:22%; aspect-ratio:1; border-radius:50%; display:grid; place-items:center; }
+    .note svg{width:56%;height:56%}
+    .note:nth-child(1){left:0;top:8%;background:var(--pink)}
+    .note:nth-child(2){right:0;top:8%;background:var(--green)}
+    .note:nth-child(3){left:0;bottom:8%;background:var(--blue)}
+    .note:nth-child(4){right:0;bottom:8%;background:var(--orange)}
+    .song-stage.playing .note:nth-child(1){animation:noteBounce .55s ease 0s infinite alternate}
+    .song-stage.playing .note:nth-child(2){animation:noteBounce .55s ease .15s infinite alternate}
+    .song-stage.playing .note:nth-child(3){animation:noteBounce .55s ease .3s infinite alternate}
+    .song-stage.playing .note:nth-child(4){animation:noteBounce .55s ease .45s infinite alternate}
+    .song-stage.playing .name-button{animation:namePulse .55s ease infinite alternate}
+    @keyframes noteBounce{to{transform:translateY(-24px) rotate(10deg) scale(1.08)}}
+    @keyframes namePulse{to{transform:scale(1.06);background:var(--orange)}}
+    .song-rings{position:absolute;inset:0;pointer-events:none}
+    .song-ring{position:absolute;border:7px solid color-mix(in srgb,var(--purple) 55%,transparent);border-radius:50%;inset:50%;opacity:0}
+    .song-stage.playing .song-ring{animation:ring 1.1s ease-out infinite}
+    .song-stage.playing .song-ring:nth-child(2){animation-delay:.55s}
+    @keyframes ring{0%{inset:48%;opacity:.8}100%{inset:4%;opacity:0}}
+
+    /* Song tunes + grown-up sound check (2026-10-12). Tunes are REAL tablet
+       melody (honest label below); the sound check helps a parent fix the
+       most likely reason for silence — the tablet's own mute switch. */
+    .song-wrap{width:min(860px,100%);display:grid;place-items:center;gap:12px;padding:6px 0 14px}
+    .tune-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+    .tune-btn{min-width:176px;min-height:88px;border:0;border-radius:26px;cursor:pointer;font-family:"Fredoka",sans-serif;font-size:clamp(20px,3.4vw,27px);font-weight:700;color:#183249;box-shadow:0 8px 0 rgba(24,50,73,.14),0 14px 26px rgba(24,50,73,.12);display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 24px}
+    .tune-btn:active{transform:translateY(5px);box-shadow:0 3px 0 rgba(24,50,73,.14)}
+    .tune-btn.tune-twinkle{background:#ffd84d}
+    .tune-btn.tune-bounce{background:#57bce8}
+    .tune-btn svg{width:40px;height:40px;flex:none}
+    .honest-label{font-size:clamp(13px,2.2vw,15px);color:#5d7280;font-weight:600;text-align:center;max-width:640px;margin:0;padding:0 12px}
+    .sound-check{width:min(660px,96%);background:#fffdf4;border-radius:22px;box-shadow:0 5px 0 rgba(24,50,73,.1);padding:14px 18px;text-align:center}
+    .sound-check h3{margin:0 0 6px;font-size:clamp(15px,2.8vw,19px);font-weight:700;color:#183249}
+    .sound-check p{margin:0 0 10px;font-size:clamp(13px,2.4vw,15px);color:#183249;opacity:.85;line-height:1.45}
+    .sc-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .sc-btn{min-height:56px;padding:10px 20px;border-radius:18px;border:0;cursor:pointer;font-family:"Fredoka",sans-serif;font-weight:700;font-size:clamp(15px,2.6vw,18px);background:#64c987;color:#fff;box-shadow:0 4px 0 rgba(24,50,73,.14);display:inline-flex;align-items:center;gap:8px}
+    .sc-btn:active{transform:translateY(3px);box-shadow:none}
+    .sc-btn.plain{background:#fff;color:#183249;box-shadow:inset 0 0 0 3px rgba(24,50,73,.18),0 4px 0 rgba(24,50,73,.1)}
+    .sc-btn img.sc-mascot{width:40px;height:40px;object-fit:contain}
+    .sc-steps{margin:6px 0 4px;padding-left:22px;text-align:left;font-size:clamp(13px,2.4vw,15px);line-height:1.6;color:#183249}
+    .sc-steps li{margin:7px 0}
+    .sc-note{font-size:clamp(12px,2.2vw,13.5px);color:#5d7280}
+
+    /* Animal movies now arrive as earned celebration rewards. */
+    .reward-overlay{position:fixed;z-index:50;inset:0;background:rgba(10,30,43,.78);display:none;place-items:center;padding:18px}
+    .reward-overlay.show{display:grid;animation:popIn .22s ease-out both}
+    .reward-card{width:min(820px,100%);background:var(--paper);border-radius:36px;padding:14px;box-shadow:var(--shadow);display:grid;gap:10px}
+    .reward-card video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:25px;background:#172b3b}
+    .reward-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 5px}
+    .reward-head strong{font-family:"Fredoka",sans-serif;font-size:clamp(22px,4vw,32px)}
+    .reward-head small{display:block;color:var(--muted);font-size:14px}
+    .reward-close{width:58px;height:58px;flex:0 0 auto;border:0;border-radius:50%;background:var(--yellow);box-shadow:0 5px 0 rgba(24,50,73,.14);font-size:31px;line-height:1;cursor:pointer}
+    .reward-close:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(24,50,73,.14)}
+
+    /* Listen — a spoken find-the-animal prompt with responsive characters. */
+    .listen-stage{width:min(850px,100%);min-height:min(650px,72svh);border-radius:44px;background:color-mix(in srgb,var(--orange) 15%,var(--paper));box-shadow:inset 0 0 0 4px var(--line),var(--shadow);display:grid;grid-template-rows:auto 1fr auto;place-items:center;padding:clamp(18px,4vw,38px);overflow:hidden;position:relative}
+    .listen-progress{display:flex;gap:12px;min-height:26px;align-items:center;justify-content:center}
+    .listen-progress i{width:20px;height:20px;border-radius:50%;background:color-mix(in srgb,var(--ink) 14%,transparent);transition:transform .18s ease,background .18s ease}
+    .listen-progress i.now{background:var(--yellow);transform:scale(1.22)}
+    .listen-progress i.done{background:var(--green)}
+    .listener-animals{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2vw,18px);align-items:center}
+    .listener-animal{border:0;background:transparent;cursor:pointer;position:relative;aspect-ratio:1;display:grid;place-items:center}
+    .listener-animal svg{width:92%;height:92%;overflow:visible;filter:drop-shadow(0 8px 0 rgba(24,50,73,.1));transition:transform .18s ease,filter .18s ease}
+    .listener-animal.calling svg{animation:listenBounce .4s ease 2 alternate}
+    .listener-animal.correct svg{transform:scale(1.12);filter:drop-shadow(0 0 0 var(--green)) drop-shadow(0 10px 0 rgba(24,50,73,.1))}
+    .listener-animal.try-again svg{animation:gentleNo .34s ease}
+    @keyframes listenBounce{to{transform:translateY(-18px) scale(1.08) rotate(4deg)}}
+    @keyframes gentleNo{0%,100%{transform:translateX(0)}30%{transform:translateX(-7px)}70%{transform:translateX(7px)}}
+    .listen-controls{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+    .listen-play{width:94px;height:94px;border:0;border-radius:50%;background:var(--yellow);box-shadow:0 9px 0 rgba(24,50,73,.17);cursor:pointer;display:grid;place-items:center}
+    .listen-play:active{transform:translateY(7px);box-shadow:0 2px 0 rgba(24,50,73,.17)}
+    .listen-play svg{width:46px;height:46px;margin-left:6px}
+    .listen-stage.playing::before,.listen-stage.playing::after{content:"";position:absolute;width:70px;height:70px;border:8px solid color-mix(in srgb,var(--orange) 58%,transparent);border-radius:50%;left:50%;bottom:40px;translate:-50% 0;animation:soundRing 1.25s ease-out infinite;pointer-events:none}
+    .listen-stage.playing::after{animation-delay:.62s}
+    .listen-star{position:absolute;inset:50% auto auto 50%;translate:-50% -50%;width:min(250px,52%);opacity:0;pointer-events:none;z-index:5}
+    .listen-star.go{animation:popStar .85s ease}
+    /* Listen mascot + co-play prompt (2026-10-12): the mascot was missing from this scene; it now tilts its head like it is listening, and tilts faster while a sound plays. */
+    .listen-mascot{position:absolute;top:3%;right:3%;width:clamp(56px,10vw,88px);aspect-ratio:1;object-fit:contain;pointer-events:none;z-index:2;transform-origin:50% 85%;animation:listenTilt 2.4s ease-in-out infinite}
+    .listen-stage.playing .listen-mascot{animation-duration:.65s}
+    @keyframes listenTilt{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg) translateY(-4px)}}
+    @keyframes soundRing{from{opacity:.8;transform:scale(.5)}to{opacity:0;transform:scale(5)}}
+
+    /* Pop — a resettable visual-and-sound sensory game. */
+    .pop-stage{width:min(860px,100%);min-height:min(650px,72svh);border-radius:44px;background:linear-gradient(180deg,color-mix(in srgb,var(--blue) 26%,var(--paper)),color-mix(in srgb,var(--pink) 17%,var(--paper)));box-shadow:inset 0 0 0 4px var(--line),var(--shadow);position:relative;overflow:hidden;touch-action:none}
+    /* Pop drag-to-pop trail + burst (2026-10-12): press-and-drag across bubbles pops a trail; taps still work. Burst ring is the visual reward even when sound is off. */
+    .pop-burst{position:absolute;width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;border:12px solid rgba(255,255,255,.85);pointer-events:none;opacity:0;z-index:8}
+    .pop-burst.go{animation:popBurst .42s ease-out}
+    @keyframes popBurst{0%{opacity:.95;transform:scale(.35)}100%{opacity:0;transform:scale(1.6)}}
+    .pop-mascot{position:absolute;top:5%;right:4%;width:clamp(64px,11vw,96px);aspect-ratio:1;object-fit:contain;pointer-events:none;z-index:2;transform-origin:60% 60%;animation:mascotWave 1.7s ease-in-out infinite}
+    .bubble{position:absolute;width:clamp(72px,13vw,112px);aspect-ratio:1;border:5px solid rgba(255,255,255,.78);border-radius:50%;cursor:pointer;background:color-mix(in srgb,var(--bubble) 58%,transparent);box-shadow:inset 14px 16px 0 rgba(255,255,255,.32),0 9px 0 rgba(24,50,73,.10);transition:transform .15s ease,opacity .15s ease}
+    .bubble::after{content:"";position:absolute;width:18%;height:18%;border-radius:50%;background:rgba(255,255,255,.75);top:18%;left:22%}
+    .bubble.popped{transform:scale(1.5);opacity:0;pointer-events:none}
+    .bubble:nth-child(1){--bubble:var(--pink);left:8%;top:10%}.bubble:nth-child(2){--bubble:var(--yellow);left:38%;top:6%}.bubble:nth-child(3){--bubble:var(--green);right:8%;top:16%}.bubble:nth-child(4){--bubble:var(--blue);left:18%;top:44%}.bubble:nth-child(5){--bubble:var(--purple);right:24%;top:42%}.bubble:nth-child(6){--bubble:var(--orange);left:7%;bottom:6%}.bubble:nth-child(7){--bubble:var(--red);left:44%;bottom:8%}.bubble:nth-child(8){--bubble:var(--mint);right:7%;bottom:6%}
+    .pop-star{position:absolute;inset:50% auto auto 50%;translate:-50% -50%;width:min(260px,55%);opacity:0;pointer-events:none}
+    .pop-star.go{animation:popStar 1s ease}
+    @keyframes popStar{0%{opacity:0;transform:scale(.2) rotate(-12deg)}25%,70%{opacity:1;transform:scale(1.08) rotate(5deg)}100%{opacity:0;transform:scale(1.4) rotate(0)}}
+
+    @media (max-width: 650px) {
+      .screen{padding-left:12px;padding-right:12px}
+      .play-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      .play-card{min-height:clamp(145px,29svh,210px);border-radius:28px 28px 22px 28px;padding:12px 8px 10px}
+      .play-card svg{width:min(100px,70%);height:min(100px,70%)}
+      .play-card span{font-size:18px}
+      .animal-stage{grid-template-columns:1fr;gap:12px}
+      .animal{min-height:155px;border-radius:28px;padding:8px}
+      .animal svg{width:70%;margin:auto;display:block}
+      .treasure-mat{min-height:72svh;padding:10px;border-radius:30px}
+      .pour-stage,.make-stage,.sort-stage,.song-stage{min-height:72svh;border-radius:30px}
+      .pitcher{top:10%;width:160px}.pour-mascot{top:7%;left:1%;width:90px}.pour-again{top:12px;right:12px;min-width:106px;height:52px;font-size:17px;padding:0 12px}
+      .pour-cups{left:2%;right:2%;bottom:11%;height:34%;gap:1%}.pour-stream{top:34%}.spill-party span{right:35%;bottom:29%}
+      .tip-a{left:3%;top:17%}.tip-b{right:3%;bottom:19%}
+      .pom{width:64px}
+      .topbar{margin-bottom:6px}
+      .back,.sound-toggle{width:52px;height:52px}
+      .video-shell{border-radius:26px}
+      .video-play{width:76px;height:76px}
+      .listen-stage,.pop-stage{min-height:72svh;border-radius:30px}
+      .listen-stage{padding:14px}
+      .listener-animals{grid-template-columns:1fr 1fr 1fr}
+      .listen-play{width:82px;height:82px}
+    }
+    @media (max-height: 620px) and (orientation: landscape) {
+      .play-grid{grid-template-columns:repeat(3,1fr)}
+      .play-card{min-height:135px}
+      .screen{padding-top:8px;padding-bottom:8px}
+      .topbar{min-height:48px}
+      .back,.sound-toggle{width:46px;height:46px}
+      .stage{min-height:400px}
+      .animal{min-height:300px}
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+    }
+    .home-hero{display:flex;justify-content:center;padding:10px 0 2px}
+    .home-mascot{width:clamp(96px,18vw,140px);aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 6px 0 rgba(24,50,73,.18))}
+  </style>
+</head>
+<body>
+<div class="app">
+  <main id="home" class="screen active" aria-label="Choose a play activity">
+    <div class="home-hero"><img class="home-mascot" src="images/liam-mascot.webp" alt="Bear cub waving hello"/></div>
+    <div class="play-grid">
+      <button class="play-card card-find" data-open="find" aria-label="Find and name objects">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M31 43h78l-5 65H36z" fill="#ffb54f" stroke="#183249" stroke-width="6" stroke-linejoin="round"/><path d="M47 43c1-22 45-22 47 0" fill="none" stroke="#183249" stroke-width="6" stroke-linecap="round"/><circle cx="55" cy="76" r="14" fill="#f45b63"/><path d="M75 61l22 30H68z" fill="#48a8e8"/><path d="M45 103h49" stroke="#183249" stroke-width="6" stroke-linecap="round"/></svg>
+        <span>Find</span>
+      </button>
+      <button class="play-card card-clap" data-open="clap" aria-label="Copy a clapping rhythm">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M26 81c-9-7-5-18 4-19l21 13-5-38c-1-9 13-12 17-3l7 27 1-33c0-10 15-10 16 0l2 33 8-24c4-9 17-5 15 5l-8 37c-5 26-35 36-56 22z" fill="#ffb65d" stroke="#183249" stroke-width="6" stroke-linejoin="round"/><path d="M20 26l13 12M43 15l6 17M15 53l18 4" stroke="#f45b63" stroke-width="7" stroke-linecap="round"/></svg>
+        <span>Clap</span>
+      </button>
+      <button class="play-card card-make" data-open="make" aria-label="Make a picture with stamps">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M70 18l13 27 30 4-22 21 6 30-27-15-27 15 6-30L27 49l30-4z" fill="#ffd84d" stroke="#183249" stroke-width="6" stroke-linejoin="round"/><circle cx="34" cy="108" r="15" fill="#48a8e8" stroke="#183249" stroke-width="5"/><path d="M104 96c10 12 22 18 22 18s-3-14-12-20c-8-5-16-3-10 2z" fill="#f45b63" stroke="#183249" stroke-width="5" stroke-linejoin="round"/></svg>
+        <span>Make</span>
+      </button>
+      <button class="play-card card-move" data-open="move" aria-label="Move like an animal">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><ellipse cx="70" cy="80" rx="42" ry="32" fill="#64c987" stroke="#183249" stroke-width="6"/><circle cx="43" cy="47" r="17" fill="#64c987" stroke="#183249" stroke-width="6"/><circle cx="97" cy="47" r="17" fill="#64c987" stroke="#183249" stroke-width="6"/><circle cx="44" cy="47" r="5" fill="#183249"/><circle cx="96" cy="47" r="5" fill="#183249"/><path d="M52 78q18 18 36 0" fill="none" stroke="#183249" stroke-width="6" stroke-linecap="round"/></svg>
+        <span>Move</span>
+      </button>
+      <button class="play-card card-sort" data-open="sort" aria-label="Sort colorful pom-poms">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M18 60h104l-12 57H30z" fill="#ffcae1" stroke="#183249" stroke-width="6" stroke-linejoin="round"/><circle cx="44" cy="48" r="22" fill="#f45b63" stroke="#183249" stroke-width="5"/><circle cx="75" cy="36" r="22" fill="#48a8e8" stroke="#183249" stroke-width="5"/><circle cx="101" cy="52" r="22" fill="#ffd84d" stroke="#183249" stroke-width="5"/></svg>
+        <span>Sort</span>
+      </button>
+      <button class="play-card card-song" data-open="song" aria-label="Play Liam's song">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M60 31v58c-5-5-14-7-22-3-12 5-16 17-10 25s20 9 31 3c8-5 10-12 10-23V49l42-10v36c-6-5-14-6-22-3-12 5-16 17-10 25 6 9 20 9 31 3 8-5 10-13 10-24V20z" fill="#9f85e8" stroke="#183249" stroke-width="6" stroke-linejoin="round"/></svg>
+        <span>Song</span>
+      </button>
+      <button class="play-card card-tip" data-open="pour" aria-label="Pour into the middle cup">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M22 27h62l-7 65H31z" fill="#e7f8ff" stroke="#183249" stroke-width="6" stroke-linejoin="round"/><path d="M28 57h51l-4 34H32z" fill="#57bce8"/><path d="M85 38h10c23 0 23 34-5 39" fill="none" stroke="#183249" stroke-width="6" stroke-linecap="round"/><path d="M42 101h56l-5 25H47z" fill="#ff9dc7" stroke="#183249" stroke-width="5" stroke-linejoin="round"/><path d="M70 105l9 15H61z" fill="#183249"/></svg>
+        <span>Pour!</span>
+      </button>
+      <button class="play-card card-listen" data-open="listen" aria-label="Listen and find the animal">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><path d="M55 108c-20-5-31-23-31-43 0-30 21-49 48-49 26 0 45 18 45 43 0 18-9 29-25 38-10 6-12 13-12 20" fill="#ffb65d" stroke="#183249" stroke-width="7" stroke-linecap="round"/><path d="M54 66c0-12 8-22 21-22 13 0 22 8 22 20 0 9-5 14-13 19-7 4-10 9-10 17" fill="none" stroke="#fff8e8" stroke-width="9" stroke-linecap="round"/><circle cx="78" cy="119" r="7" fill="#183249"/></svg>
+        <span>Listen</span>
+      </button>
+      <button class="play-card card-pop" data-open="pop" aria-label="Pop colorful bubbles">
+        <svg viewBox="0 0 140 140" aria-hidden="true"><circle cx="57" cy="72" r="37" fill="#57bce8" fill-opacity=".75" stroke="#183249" stroke-width="6"/><circle cx="94" cy="42" r="22" fill="#ff9dc7" fill-opacity=".78" stroke="#183249" stroke-width="5"/><circle cx="103" cy="95" r="26" fill="#ffd84d" fill-opacity=".78" stroke="#183249" stroke-width="5"/><circle cx="45" cy="57" r="8" fill="#fff" fill-opacity=".8"/></svg>
+        <span>Pop</span>
+      </button>
+    </div>
+  </main>
+
+  <section id="find" class="screen" aria-label="Find and name">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Find</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="treasure-mat">
+      <img class="find-mascot" src="images/liam-mascot.webp" alt="Bear cub telling a tiny story"/>
+      <button class="object" data-tone="261.63" aria-label="Ball"><svg viewBox="0 0 160 160"><circle cx="80" cy="80" r="58" fill="#f45b63" stroke="#183249" stroke-width="7"/><path d="M28 61c31 9 60 32 79 64M55 27c9 28 34 58 73 72M30 105c35-20 62-46 83-77" fill="none" stroke="#ffd6b2" stroke-width="7" stroke-linecap="round"/></svg><span class="object-name">ball</span></button>
+      <button class="object" data-tone="329.63" aria-label="Cup"><svg viewBox="0 0 160 160"><path d="M39 31h74l-9 101H49z" fill="#57bce8" stroke="#183249" stroke-width="7" stroke-linejoin="round"/><path d="M113 48h12c25 0 25 44-8 47" fill="none" stroke="#183249" stroke-width="7" stroke-linecap="round"/><path d="M49 56h55" stroke="#e9f9ff" stroke-width="8" stroke-linecap="round"/></svg><span class="object-name">cup</span></button>
+      <button class="object" data-tone="392" aria-label="Spoon"><svg viewBox="0 0 160 160"><ellipse cx="98" cy="47" rx="31" ry="39" transform="rotate(31 98 47)" fill="#c9d7df" stroke="#183249" stroke-width="7"/><path d="M80 71L31 133" fill="none" stroke="#183249" stroke-width="15" stroke-linecap="round"/><path d="M80 71L31 133" fill="none" stroke="#c9d7df" stroke-width="7" stroke-linecap="round"/></svg><span class="object-name">spoon</span></button>
+      <button class="object" data-tone="523.25" aria-label="Teddy bear"><svg viewBox="0 0 160 160"><circle cx="45" cy="44" r="22" fill="#d99a59" stroke="#183249" stroke-width="7"/><circle cx="115" cy="44" r="22" fill="#d99a59" stroke="#183249" stroke-width="7"/><circle cx="80" cy="73" r="51" fill="#d99a59" stroke="#183249" stroke-width="7"/><ellipse cx="80" cy="91" rx="25" ry="20" fill="#ffd6a1"/><circle cx="63" cy="66" r="5" fill="#183249"/><circle cx="97" cy="66" r="5" fill="#183249"/><circle cx="80" cy="85" r="6" fill="#183249"/><path d="M69 99q11 10 22 0" fill="none" stroke="#183249" stroke-width="5" stroke-linecap="round"/></svg><span class="object-name">bear</span></button>
+    </div></div><p class="parent-prompt">Tell a tiny story in your own voice: “Bear is hungry. Bear finds a cup and a spoon — but where is his ball?” Pause before each thing and let Liam tap it when he hears it. Keep it to those 3 short sentences, repeat his favourite, and later act it out with a real cup, spoon and ball at snack time.</p>
+  </section>
+
+  <section id="clap" class="screen" aria-label="Clap a rhythm">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Clap</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="clap-wrap"><div class="clap-demo" aria-hidden="true"><i class="beat-dot"></i><i class="beat-dot"></i><i class="beat-dot"></i><i class="beat-dot"></i></div><button class="hands" aria-label="Clap hands"><svg viewBox="0 0 400 300"><g class="burst" fill="#ffd84d"><path d="M200 8l12 55h-24z"/><path d="M300 43l-28 49-18-18z"/><path d="M100 43l46 31-18 18z"/><path d="M350 130l-55 13-2-26z"/><path d="M50 130l57-13-2 26z"/></g><g class="left-hand"><path d="M181 225c-56 43-116 18-126-31-6-31 7-79 16-110 5-18 29-12 27 6l-5 43 7-72c2-20 30-19 30 1l-2 65 13-69c4-19 31-14 28 5l-9 70 17-53c6-18 31-8 25 10l-20 72c-7 28 13 38-1 63z" fill="#ffb65d" stroke="#183249" stroke-width="8" stroke-linejoin="round"/></g><g class="right-hand"><path d="M219 225c56 43 116 18 126-31 6-31-7-79-16-110-5-18-29-12-27 6l5 43-7-72c-2-20-30-19-30 1l2 65-13-69c-4-19-31-14-28 5l9 70-17-53c-6-18-31-8-25 10l20 72c7 28-13 38 1 63z" fill="#ffb65d" stroke="#183249" stroke-width="8" stroke-linejoin="round"/></g></svg></button><button class="big-action" id="play-pattern" aria-label="Hear a rhythm"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M10 6l18 11-18 11z" fill="#183249"/></svg></button></div></div>
+  </section>
+
+  <section id="pour" class="screen" aria-label="Pour into the middle cup">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Pour!</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="pour-wrap"><div class="pour-stage">
+      <img class="pour-mascot" src="images/liam-mascot.webp" alt="Friendly mascot waving beside the pitcher" />
+      <button class="pitcher" aria-label="Start pouring into the middle cup" aria-pressed="false"><svg viewBox="0 0 220 185" aria-hidden="true"><path d="M32 30h121l-13 129H47z" fill="#eaf9ff" stroke="#183249" stroke-width="8" stroke-linejoin="round"/><path d="M40 74h106l-8 83H49z" fill="#57bce8"/><path d="M154 51h20c49 0 48 73-10 77" fill="none" stroke="#183249" stroke-width="9" stroke-linecap="round"/><path d="M45 52h95" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity=".8"/></svg></button>
+      <button class="pour-again" aria-label="Empty the cups and pour again">Pour again</button>
+      <div class="pour-stream" aria-hidden="true"></div>
+      <div class="pour-cups" aria-label="Three cups: pink circle, blue triangle, and yellow square">
+        <div class="pour-cup"><svg viewBox="0 0 180 190" aria-hidden="true"><defs><clipPath id="pinkCup"><path d="M24 25h132l-15 145H39z"/></clipPath></defs><path d="M24 25h132l-15 145H39z" fill="#f7fbfd" stroke="#183249" stroke-width="8" stroke-linejoin="round"/><rect x="29" y="136" width="122" height="34" fill="#ff9dc7" clip-path="url(#pinkCup)"/></svg><span class="pour-cup-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="17" fill="#183249"/></svg></span></div>
+        <div class="pour-cup middle-cup"><svg viewBox="0 0 180 190" aria-hidden="true"><defs><clipPath id="blueCup"><path d="M24 25h132l-15 145H39z"/></clipPath></defs><path d="M24 25h132l-15 145H39z" fill="#f7fbfd" stroke="#183249" stroke-width="8" stroke-linejoin="round"/><rect class="middle-liquid" x="29" y="170" width="122" height="0" fill="#57bce8" clip-path="url(#blueCup)"/></svg><span class="pour-cup-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 10l19 37H11z" fill="#183249"/></svg></span></div>
+        <div class="pour-cup"><svg viewBox="0 0 180 190" aria-hidden="true"><defs><clipPath id="yellowCup"><path d="M24 25h132l-15 145H39z"/></clipPath></defs><path d="M24 25h132l-15 145H39z" fill="#f7fbfd" stroke="#183249" stroke-width="8" stroke-linejoin="round"/><rect x="29" y="136" width="122" height="34" fill="#ffd84d" clip-path="url(#yellowCup)"/></svg><span class="pour-cup-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><rect x="13" y="13" width="34" height="34" rx="3" fill="#183249"/></svg></span></div>
+      </div>
+      <div class="spill-party" aria-live="polite"><img src="images/liam-mascot.webp" alt="Mascot giggling at the playful spill" /><span>hee-hee!</span></div>
+    </div><p class="parent-prompt">Bath time: let Liam pour water between real cups — the same hands-on work.</p></div></div>
+  </section>
+
+  <section id="make" class="screen" aria-label="Make a picture with stamps">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Make</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="make-wrap"><div class="make-stage" id="make-stage">
+      <svg class="make-canvas" id="make-canvas" viewBox="0 0 800 600" preserveAspectRatio="none" aria-hidden="true"></svg>
+      <img class="make-mascot" src="images/liam-mascot.webp" alt="Bear cub making a picture"/>
+      <button class="make-clear" id="make-clear" aria-label="Start over with a blank page">Start over</button>
+    </div>
+    <div class="make-tools">
+      <button class="make-tool selected" data-shape="star" data-color="#ffd84d" data-freq="392" aria-label="Star stamp"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 4l8 17 19 3-14 13 4 19-17-10-17 10 4-19L3 24l19-3z" fill="#ffd84d" stroke="#183249" stroke-width="4" stroke-linejoin="round"/></svg></button>
+      <button class="make-tool" data-shape="heart" data-color="#f45b63" data-freq="330" aria-label="Heart stamp"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 52C8 36 4 22 12 13c6-7 15-5 18 2 3-7 12-9 18-2 8 9 4 23-18 39z" fill="#f45b63" stroke="#183249" stroke-width="4" stroke-linejoin="round"/></svg></button>
+      <button class="make-tool" data-shape="circle" data-color="#48a8e8" data-freq="262" aria-label="Circle stamp"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="24" fill="#48a8e8" stroke="#183249" stroke-width="4"/></svg></button>
+      <button class="make-tool" data-shape="tri" data-color="#64c987" data-freq="494" aria-label="Triangle stamp"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M30 6l26 46H4z" fill="#64c987" stroke="#183249" stroke-width="4" stroke-linejoin="round"/></svg></button>
+    </div>
+    <p class="parent-prompt">Make a picture together: pick a stamp, tap the paper, drag for dots. Later, hunt for stars, hearts, circles and triangles around the house.</p>
+    </div></div>
+  </section>
+
+  <section id="move" class="screen" aria-label="Move like an animal">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Move</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="animal-stage">
+      <button class="animal frog" aria-label="Jump like a frog"><svg viewBox="0 0 250 260"><ellipse cx="125" cy="155" rx="81" ry="63" fill="#64c987" stroke="#183249" stroke-width="9"/><circle cx="72" cy="88" r="35" fill="#64c987" stroke="#183249" stroke-width="9"/><circle cx="178" cy="88" r="35" fill="#64c987" stroke="#183249" stroke-width="9"/><circle cx="73" cy="88" r="10" fill="#183249"/><circle cx="177" cy="88" r="10" fill="#183249"/><path d="M89 155q36 34 72 0" fill="none" stroke="#183249" stroke-width="9" stroke-linecap="round"/><path d="M69 194L27 227M181 194l42 33" stroke="#183249" stroke-width="16" stroke-linecap="round"/></svg></button>
+      <button class="animal duck" aria-label="Waddle like a duck"><svg viewBox="0 0 250 260"><ellipse cx="121" cy="159" rx="76" ry="60" fill="#ffd84d" stroke="#183249" stroke-width="9"/><circle cx="162" cy="89" r="49" fill="#ffd84d" stroke="#183249" stroke-width="9"/><circle cx="177" cy="77" r="8" fill="#183249"/><path d="M203 96l35 18-35 18z" fill="#ff8b45" stroke="#183249" stroke-width="7" stroke-linejoin="round"/><path d="M89 209l-8 28M152 213l10 25" stroke="#183249" stroke-width="12" stroke-linecap="round"/><path d="M52 139q-29 8-27 39 33 4 49-18" fill="#ffd84d" stroke="#183249" stroke-width="9"/></svg></button>
+      <button class="animal elephant" aria-label="Stomp like an elephant"><svg viewBox="0 0 250 260"><ellipse cx="126" cy="145" rx="79" ry="69" fill="#85c9e8" stroke="#183249" stroke-width="9"/><circle cx="178" cy="107" r="53" fill="#85c9e8" stroke="#183249" stroke-width="9"/><ellipse cx="139" cy="108" rx="38" ry="46" fill="#6fb6d8" stroke="#183249" stroke-width="8"/><circle cx="188" cy="91" r="7" fill="#183249"/><path d="M213 121c8 34 2 62-22 77-12 7-19-9-7-17 14-10 15-30 10-51" fill="#85c9e8" stroke="#183249" stroke-width="9" stroke-linecap="round"/><path d="M79 193v44M135 202v35" stroke="#183249" stroke-width="17" stroke-linecap="round"/></svg></button>
+    </div></div>
+  </section>
+
+  <section id="sort" class="screen" aria-label="Sort the colors">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Sort</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="sort-stage"><div class="bins"><button class="bin" data-color="red" aria-label="Red basket with a circle"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="17" fill="#ffffff" stroke="#183249" stroke-width="5"/></svg></span></button><button class="bin" data-color="blue" aria-label="Blue basket with a triangle"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 11l20 37H10z" fill="#ffffff" stroke="#183249" stroke-width="5" stroke-linejoin="round"/></svg></span></button><button class="bin" data-color="yellow" aria-label="Yellow basket with a square"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><rect x="13" y="13" width="34" height="34" rx="4" fill="#ffffff" stroke="#183249" stroke-width="5"/></svg></span></button></div><button class="pom" data-color="red" aria-label="Red pom-pom with a circle"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="17" fill="#ffffff" stroke="#183249" stroke-width="5"/></svg></span></button><button class="pom" data-color="blue" aria-label="Blue pom-pom with a triangle"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 11l20 37H10z" fill="#ffffff" stroke="#183249" stroke-width="5" stroke-linejoin="round"/></svg></span></button><button class="pom" data-color="yellow" aria-label="Yellow pom-pom with a square"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><rect x="13" y="13" width="34" height="34" rx="4" fill="#ffffff" stroke="#183249" stroke-width="5"/></svg></span></button><button class="pom" data-color="red" aria-label="Red pom-pom with a circle"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="17" fill="#ffffff" stroke="#183249" stroke-width="5"/></svg></span></button><button class="pom" data-color="blue" aria-label="Blue pom-pom with a triangle"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><path d="M30 11l20 37H10z" fill="#ffffff" stroke="#183249" stroke-width="5" stroke-linejoin="round"/></svg></span></button><button class="pom" data-color="yellow" aria-label="Yellow pom-pom with a square"><span class="sort-symbol" aria-hidden="true"><svg viewBox="0 0 60 60"><rect x="13" y="13" width="34" height="34" rx="4" fill="#ffffff" stroke="#183249" stroke-width="5"/></svg></span></button><div class="celebrate" aria-hidden="true"><svg viewBox="0 0 360 300"><path d="M180 20l38 85 92 10-69 62 20 90-81-46-81 46 20-90-69-62 92-10z" fill="#ffd84d" stroke="#183249" stroke-width="10" stroke-linejoin="round"/><path d="M135 144l29 29 61-67" fill="none" stroke="#183249" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div><p class="parent-prompt">Match by shape too: say “the circle pom goes in the circle basket!” Later, sort real things together — round balls in one pile, square blocks in another.</p>
+  </section>
+
+  <section id="song" class="screen" aria-label="Liam's song">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Song</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="song-wrap"><div class="song-stage"><div class="song-rings"><i class="song-ring"></i><i class="song-ring"></i></div><div class="name-orbit"><div class="note"><svg viewBox="0 0 50 50"><path d="M20 8v27c-8-5-17 0-16 7 1 8 15 8 20 1 2-3 2-5 2-10V18l17-4v14c-7-4-15 0-14 7 1 7 14 7 18 1 2-3 2-6 2-10V6z" fill="#183249"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="10" fill="#183249"/><path d="M25 3v9M25 38v9M3 25h9M38 25h9" stroke="#183249" stroke-width="5" stroke-linecap="round"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><path d="M6 31c7-12 15-12 22 0s15 12 18 0" fill="none" stroke="#183249" stroke-width="7" stroke-linecap="round"/><circle cx="11" cy="17" r="6" fill="#183249"/><circle cx="39" cy="17" r="6" fill="#183249"/></svg></div><div class="note"><svg viewBox="0 0 50 50"><path d="M9 25h32M25 9v32" stroke="#183249" stroke-width="7" stroke-linecap="round"/></svg></div><button class="name-button" aria-label="Play Liam's beat">LIAM</button></div></div>
+      <div class="tune-row">
+        <button class="tune-btn tune-twinkle" id="tune-twinkle" aria-label="Play the twinkle tune"><svg viewBox="0 0 50 50" aria-hidden="true"><path d="M25 4l6.2 14.4 15.8 1.2-12 10.3 3.7 15.3L25 36.6l-13.7 8.6 3.7-15.3-12-10.3 15.8-1.2z" fill="#183249"/></svg><span>Twinkle</span></button>
+        <button class="tune-btn tune-bounce" id="tune-bounce" aria-label="Play the bounce tune"><svg viewBox="0 0 50 50" aria-hidden="true"><circle cx="25" cy="27" r="17" fill="#183249"/><path d="M12 8q13-8 26 0" fill="none" stroke="#183249" stroke-width="5" stroke-linecap="round"/><path d="M18 42q7 6 14 0" fill="none" stroke="#57bce8" stroke-width="4" stroke-linecap="round"/></svg><span>Bounce</span></button>
+      </div>
+      <p class="honest-label">Real tablet tones — not a sung song. Tap a button to play it again.</p>
+      <div class="sound-check" id="sound-check">
+        <h3>🔊 Grown-ups: no sound?</h3>
+        <p class="sc-intro">Tap the bear for a loud test sound. If you hear nothing, the tablet is probably muted — not the game.</p>
+        <div class="sc-row"><button class="sc-btn" id="sc-test"><img class="sc-mascot" src="images/liam-mascot.webp" alt=""/><span>Test sound</span></button></div>
+      </div>
+      <p class="parent-prompt">Clap to the beat with Liam — clap hands, stamp feet, bounce along.</p>
+    </div></div>
+  </section>
+
+  <section id="listen" class="screen" aria-label="Listen and find the animal">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Listen</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="listen-stage"><div class="listen-progress" aria-hidden="true"><i></i><i></i><i></i></div><div class="listener-animals"><button class="listener-animal" data-kind="duck" aria-label="Duck"><svg viewBox="0 0 200 200"><ellipse cx="91" cy="126" rx="61" ry="46" fill="#ffd84d" stroke="#183249" stroke-width="8"/><circle cx="131" cy="76" r="40" fill="#ffd84d" stroke="#183249" stroke-width="8"/><circle cx="142" cy="67" r="6" fill="#183249"/><path d="M165 81l29 14-29 15z" fill="#ff8b45" stroke="#183249" stroke-width="6"/><path d="M69 165l-5 25M113 166l7 24" stroke="#183249" stroke-width="11" stroke-linecap="round"/></svg></button><button class="listener-animal" data-kind="frog" aria-label="Frog"><svg viewBox="0 0 200 200"><ellipse cx="100" cy="124" rx="67" ry="52" fill="#64c987" stroke="#183249" stroke-width="8"/><circle cx="58" cy="70" r="28" fill="#64c987" stroke="#183249" stroke-width="8"/><circle cx="142" cy="70" r="28" fill="#64c987" stroke="#183249" stroke-width="8"/><circle cx="59" cy="70" r="7" fill="#183249"/><circle cx="141" cy="70" r="7" fill="#183249"/><path d="M71 126q29 27 58 0" fill="none" stroke="#183249" stroke-width="8" stroke-linecap="round"/></svg></button><button class="listener-animal" data-kind="elephant" aria-label="Elephant"><svg viewBox="0 0 200 200"><ellipse cx="92" cy="119" rx="61" ry="54" fill="#85c9e8" stroke="#183249" stroke-width="8"/><circle cx="133" cy="90" r="42" fill="#85c9e8" stroke="#183249" stroke-width="8"/><ellipse cx="102" cy="91" rx="30" ry="36" fill="#6fb6d8" stroke="#183249" stroke-width="7"/><circle cx="141" cy="78" r="6" fill="#183249"/><path d="M161 101c7 29 1 51-16 62-10 6-16-7-7-14 9-7 11-23 7-40" fill="#85c9e8" stroke="#183249" stroke-width="8" stroke-linecap="round"/></svg></button></div><div class="listen-controls"><button class="listen-play" aria-label="Play listening game"><svg viewBox="0 0 50 50"><path d="M12 7l31 18-31 18z" fill="#183249"/></svg></button></div><img class="listen-mascot" src="images/liam-mascot.webp" alt="Bear cub listening along"/><svg class="listen-star" viewBox="0 0 250 230" aria-hidden="true"><path d="M125 12l28 65 70 8-52 47 15 69-61-35-61 35 15-69-52-47 70-8z" fill="#ffd84d" stroke="#183249" stroke-width="9" stroke-linejoin="round"/><path d="M87 117l25 24 51-55" fill="none" stroke="#183249" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><p class="parent-prompt">Grown-ups: if the tablet is quiet, you be the sound — say "quack quack, find the duck!" yourself and cheer the animal's name when Liam taps it. Later, find that same animal together in a book or outside.</p>
+  </section>
+
+  <section id="pop" class="screen" aria-label="Pop colorful bubbles">
+    <div class="topbar"><button class="back" aria-label="Back to activities"><svg viewBox="0 0 32 32"><path d="M19 7l-9 9 9 9" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="scene-word" aria-hidden="true">Pop</div><button class="sound-toggle" aria-label="Toggle sound"><svg viewBox="0 0 32 32"><path d="M6 13h6l7-6v18l-7-6H6z" fill="currentColor"/><path class="sound-wave" d="M23 11q6 5 0 10" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></button></div>
+    <div class="stage"><div class="pop-stage"><button class="bubble" aria-label="Pink bubble"></button><button class="bubble" aria-label="Yellow bubble"></button><button class="bubble" aria-label="Green bubble"></button><button class="bubble" aria-label="Blue bubble"></button><button class="bubble" aria-label="Purple bubble"></button><button class="bubble" aria-label="Orange bubble"></button><button class="bubble" aria-label="Red bubble"></button><button class="bubble" aria-label="Mint bubble"></button><span class="pop-burst" aria-hidden="true"></span><img class="pop-mascot" src="images/liam-mascot.webp" alt="Bear cub cheering on the bubbles"/><svg class="pop-star" viewBox="0 0 250 230" aria-hidden="true"><path d="M125 12l28 65 70 8-52 47 15 69-61-35-61 35 15-69-52-47 70-8z" fill="#ffd84d" stroke="#183249" stroke-width="9" stroke-linejoin="round"/><path d="M87 117l25 24 51-55" fill="none" stroke="#183249" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><p class="parent-prompt">Say "pop!" with Liam as each bubble bursts — the "p" sound is great early speech practice. You can also drag a finger across for a popping trail. Later, blow real bubbles outside: he already knows the pop.</p>
+  </section>
+</div>
+<div class="reward-overlay" role="dialog" aria-modal="true" aria-label="Animal movie celebration" aria-hidden="true"><div class="reward-card"><div class="reward-head"><div><strong>Animal celebration!</strong><small>Watch is now a reward after Listen rounds and Pop milestones.</small></div><button class="reward-close" aria-label="Close animal movie">×</button></div><video id="reward-movie" playsinline controls preload="metadata" poster="images/frog-garden.jpg"></video></div></div>
+<script>
+(function(){
+  var current='home', muted=false, audio=null, audioReady=null, audioWarmed=false, pouring=false, pourLevel=0, pourTimer=null, glugTimer=null, pourVisited=false, rewardIndex=0;
+  function ensureAudio(){
+    if(muted) return Promise.resolve(null);
+    try{ if('audioSession' in navigator) navigator.audioSession.type='playback'; }catch(e){}
+    var AudioContextClass=window.AudioContext||window.webkitAudioContext;
+    if(!AudioContextClass) return Promise.resolve(null);
+    if(!audio) audio=new AudioContextClass();
+    if(audio.state==='running') return Promise.resolve(audio);
+    if(!audioReady){
+      audioReady=Promise.resolve(audio.resume()).then(function(){
+        if(!audioWarmed){
+          var warm=audio.createBuffer(1,1,audio.sampleRate), src=audio.createBufferSource();
+          src.buffer=warm; src.connect(audio.destination); src.start(0); audioWarmed=true;
+        }
+        return audio;
+      }).catch(function(){ return null; });
+      audioReady.then(function(){ audioReady=null; });
+    }
+    return audioReady;
+  }
+  function withAudio(play){
+    if(muted) return;
+    ensureAudio().then(function(a){ if(a&&a.state==='running'&&!muted) play(a); });
+  }
+  function tone(freq,dur,type,when,vol){
+    withAudio(function(a){
+      var start=a.currentTime+(when||0), o=a.createOscillator(), g=a.createGain();
+      o.type=type||'sine'; o.frequency.setValueAtTime(freq,start);
+      g.gain.setValueAtTime(0.0001,start);
+      g.gain.exponentialRampToValueAtTime(vol||.16,start+.012);
+      g.gain.exponentialRampToValueAtTime(.0001,start+dur);
+      o.connect(g).connect(a.destination); o.start(start); o.stop(start+dur+.03);
+    });
+  }
+  function clap(when){
+    withAudio(function(a){
+      var len=Math.floor(a.sampleRate*.08), buf=a.createBuffer(1,len,a.sampleRate), data=buf.getChannelData(0);
+      for(var i=0;i<len;i++) data[i]=(Math.random()*2-1)*Math.pow(1-i/len,2);
+      var src=a.createBufferSource(), filter=a.createBiquadFilter(), g=a.createGain();
+      src.buffer=buf; filter.type='bandpass'; filter.frequency.value=1300; filter.Q.value=.7; g.gain.value=.5;
+      src.connect(filter).connect(g).connect(a.destination); src.start(a.currentTime+(when||0));
+    });
+  }
+  function splashSound(){ if(muted)return; tone(180,.25,'sine',0,.08); tone(260,.18,'sine',.09,.06); }
+  function chime(){ tone(523,.22,'sine',0,.14);tone(659,.22,'sine',.13,.14);tone(784,.32,'sine',.27,.16); }
+  function show(id){ stopMedia(); document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')}); document.getElementById(id).classList.add('active'); current=id; if(id==='sort') resetSort(); if(id==='pour') enterPour(); if(id==='pop') resetPop(); if(id!=='song')stopSong(); }
+  document.addEventListener('pointerdown',function(){ ensureAudio(); },{capture:true,passive:true});
+  document.querySelectorAll('[data-open]').forEach(function(b){b.addEventListener('click',function(){ensureAudio();tone(440,.1,'sine',0,.08);show(b.dataset.open)})});
+  document.querySelectorAll('.back').forEach(function(b){b.addEventListener('click',function(){show('home')})});
+  document.querySelectorAll('.sound-toggle').forEach(function(b){b.addEventListener('click',function(){muted=!muted;document.querySelectorAll('.sound-wave').forEach(function(w){w.style.display=muted?'none':''});document.querySelectorAll('video,audio').forEach(function(m){m.muted=muted});if(!muted)tone(660,.12,'sine',0,.1)})});
+
+  document.querySelectorAll('.object').forEach(function(o){o.addEventListener('click',function(){o.classList.remove('playing');void o.offsetWidth;o.classList.add('playing');tone(Number(o.dataset.tone),.35,'sine',0,.14);setTimeout(function(){o.classList.remove('playing')},850)})});
+
+  var hands=document.querySelector('.hands'), dots=[].slice.call(document.querySelectorAll('.beat-dot'));
+  function hit(){hands.classList.remove('hit');void hands.offsetWidth;hands.classList.add('hit');clap(0);setTimeout(function(){hands.classList.remove('hit')},170)}
+  hands.addEventListener('click',hit);
+  document.getElementById('play-pattern').addEventListener('click',function(){var beats=[0,.48,.96,1.24];beats.forEach(function(t,i){setTimeout(function(){dots.forEach(function(d){d.classList.remove('on')});dots[i].classList.add('on');hit();setTimeout(function(){dots[i].classList.remove('on')},210)},t*1000)})});
+
+  var pitcher=document.querySelector('.pitcher'),middleLiquid=document.querySelector('.middle-liquid'),pourStream=document.querySelector('.pour-stream'),pourMascot=document.querySelector('.pour-mascot'),spillParty=document.querySelector('.spill-party'),pourAgain=document.querySelector('.pour-again'),demoTimer=null;
+  function updatePour(){var h=Math.min(145,pourLevel*1.45),y=170-h;middleLiquid.setAttribute('y',String(y));middleLiquid.setAttribute('height',String(h))}
+  function glug(){tone(135,.11,'sine',0,.045);tone(190,.08,'sine',.08,.03)}
+  function stopPour(){pouring=false;clearInterval(pourTimer);clearInterval(glugTimer);pourTimer=null;glugTimer=null;pitcher.classList.remove('pouring');pourStream.classList.remove('show');pitcher.setAttribute('aria-pressed','false');pitcher.setAttribute('aria-label','Start pouring into the middle cup')}
+  function giggle(){tone(560,.08,'sine',0,.08);tone(710,.08,'sine',.11,.07);tone(590,.1,'sine',.22,.08)}
+  function overflowPour(){stopPour();spillParty.classList.remove('go');void spillParty.offsetWidth;spillParty.classList.add('go');splashSound();giggle();setTimeout(function(){spillParty.classList.remove('go')},1750)}
+  function startPour(){if(pourLevel>=100){overflowPour();return}pouring=true;pitcher.classList.add('pouring');pourStream.classList.add('show');pitcher.setAttribute('aria-pressed','true');pitcher.setAttribute('aria-label','Stop pouring');glug();glugTimer=setInterval(glug,430);pourTimer=setInterval(function(){pourLevel=Math.min(103,pourLevel+2);updatePour();if(pourLevel>=100)overflowPour()},120)}
+  function togglePour(){clearTimeout(demoTimer);pourMascot.classList.remove('demo');if(pouring)stopPour();else startPour()}
+  function resetPour(){clearTimeout(demoTimer);stopPour();pourLevel=0;updatePour();spillParty.classList.remove('go');pourMascot.classList.remove('demo')}
+  function enterPour(){resetPour();if(!pourVisited){pourVisited=true;pourMascot.classList.add('demo');demoTimer=setTimeout(function(){startPour();demoTimer=setTimeout(function(){stopPour();pourMascot.classList.remove('demo')},1250)},420)}}
+  pitcher.addEventListener('click',togglePour);pourAgain.addEventListener('click',function(){resetPour();tone(440,.12,'sine',0,.07)});
+
+
+  document.querySelectorAll('.animal').forEach(function(a){a.addEventListener('click',function(){a.classList.remove('go');void a.offsetWidth;a.classList.add('go');if(a.classList.contains('frog')){tone(180,.16,'square',0,.09);tone(260,.18,'square',.18,.08)}else if(a.classList.contains('duck')){tone(530,.09,'sawtooth',0,.07);tone(410,.12,'sawtooth',.13,.07)}else{tone(92,.22,'sine',0,.18);tone(78,.2,'sine',.32,.17)}setTimeout(function(){a.classList.remove('go')},900)})});
+
+  var sortStage=document.querySelector('.sort-stage'),poms=[].slice.call(document.querySelectorAll('.pom')),bins=[].slice.call(document.querySelectorAll('.bin')),doneCount=0,selectedPom=null;
+  var starts=[[12,12],[43,8],[72,14],[24,31],[56,32],[78,36]];
+  function clearPomChoice(){selectedPom=null;poms.forEach(function(p){p.classList.remove('selected')});bins.forEach(function(b){b.classList.remove('ready')})}
+  function resetSort(){doneCount=0;clearPomChoice();poms.forEach(function(p,i){p.classList.remove('done','dragging');p.style.left=starts[i][0]+'%';p.style.top=starts[i][1]+'%';p.style.transform='';p.style.opacity='';p.style.pointerEvents=''});}
+  function finishPom(p){p.classList.remove('selected','dragging');p.classList.add('done');chime();doneCount++;clearPomChoice();if(doneCount===poms.length){setTimeout(function(){var c=document.querySelector('.celebrate');c.classList.add('go');chime();setTimeout(function(){c.classList.remove('go');resetSort()},1200)},400)}}
+  poms.forEach(function(p){var drag=false,moved=false,ox=0,oy=0,startX=0,startY=0;function down(e){ensureAudio();drag=true;moved=false;startX=e.clientX;startY=e.clientY;p.setPointerCapture(e.pointerId);var r=p.getBoundingClientRect();ox=e.clientX-r.left;oy=e.clientY-r.top;p.classList.add('dragging')}function move(e){if(!drag)return;if(Math.abs(e.clientX-startX)+Math.abs(e.clientY-startY)>10)moved=true;var sr=sortStage.getBoundingClientRect();var x=Math.max(0,Math.min(sr.width-p.offsetWidth,e.clientX-sr.left-ox));var y=Math.max(0,Math.min(sr.height-p.offsetHeight,e.clientY-sr.top-oy));p.style.left=x+'px';p.style.top=y+'px'}function up(){if(!drag)return;drag=false;p.classList.remove('dragging');var pr=p.getBoundingClientRect(),cx=pr.left+pr.width/2,cy=pr.top+pr.height/2,match=null;bins.forEach(function(bin){var r=bin.getBoundingClientRect();if(cx>r.left&&cx<r.right&&cy>r.top&&cy<r.bottom)match=bin});if(moved&&match&&match.dataset.color===p.dataset.color){finishPom(p)}else if(moved){var i=poms.indexOf(p);p.style.left=starts[i][0]+'%';p.style.top=starts[i][1]+'%';if(match){match.classList.remove('try-again');void match.offsetWidth;match.classList.add('try-again');setTimeout(function(){match.classList.remove('try-again')},400)}}}p.addEventListener('pointerdown',down);p.addEventListener('pointermove',move);p.addEventListener('pointerup',up);p.addEventListener('pointercancel',up);p.addEventListener('click',function(){if(moved||p.classList.contains('done'))return;var choosing=selectedPom!==p;clearPomChoice();if(choosing){selectedPom=p;p.classList.add('selected');bins.forEach(function(b){b.classList.add('ready')});tone(380,.12,'sine',0,.08)}})});
+  bins.forEach(function(bin){bin.addEventListener('click',function(){if(!selectedPom)return;if(bin.dataset.color===selectedPom.dataset.color){finishPom(selectedPom)}else{bin.classList.remove('try-again');void bin.offsetWidth;bin.classList.add('try-again');setTimeout(function(){bin.classList.remove('try-again')},400);tone(260,.1,'sine',0,.05)}})});
+
+  var songStage=document.querySelector('.song-stage'),songBtn=document.querySelector('.name-button'),songTimer=null;
+  function stopSong(){songStage.classList.remove('playing');if(songTimer){clearTimeout(songTimer);songTimer=null}}
+  songBtn.addEventListener('click',function(){ensureAudio();stopSong();songStage.classList.add('playing');var notes=[261.63,329.63,392,329.63,261.63,261.63,392,523.25];var times=[0,.38,.76,1.14,1.52,1.9,2.28,2.66];notes.forEach(function(n,i){tone(n,.27,i===6?'triangle':'sine',times[i],.13);if(i===4||i===5)clap(times[i])});songTimer=setTimeout(stopSong,3400)});
+
+  /* Song tunes + grown-up sound check (2026-10-12). Each tap restarts the
+     tune cleanly; the .playing visuals run even when audio is muted. */
+  function playTune(freqs,times,totalMs){
+    ensureAudio();stopSong();
+    songStage.classList.add('playing');
+    freqs.forEach(function(f,i){tone(f,.36,'triangle',times[i],.14)});
+    songTimer=setTimeout(stopSong,totalMs);
+  }
+  var TWINKLE=[[261.63,0],[261.63,.44],[392,.88],[392,1.32],[440,1.76],[440,2.2],[392,2.64],[349.23,3.52],[349.23,3.96],[329.63,4.4],[329.63,4.84],[293.66,5.28],[293.66,5.72],[261.63,6.16]];
+  var BOUNCE=[[261.63,0],[329.63,.34],[392,.68],[523.25,1.02],[493.88,1.36],[392,1.7],[329.63,2.04],[293.66,2.38]];
+  function tuneArgs(p){return [p.map(function(n){return n[0]}),p.map(function(n){return n[1]})];}
+  document.getElementById('tune-twinkle').addEventListener('click',function(){var a=tuneArgs(TWINKLE);playTune(a[0],a[1],7400)});
+  document.getElementById('tune-bounce').addEventListener('click',function(){var a=tuneArgs(BOUNCE);playTune(a[0],a[1],3700)});
+  var scCard=document.getElementById('sound-check');
+  function scBase(){
+    scCard.innerHTML='<h3>🔊 Grown-ups: no sound?</h3><p>Tap the bear for a loud test sound. If you hear nothing, the tablet is probably muted — not the game.</p><div class="sc-row"><button class="sc-btn" id="sc-test"><img class="sc-mascot" src="images/liam-mascot.webp" alt=""/><span>Test sound</span></button></div>';
+    document.getElementById('sc-test').addEventListener('click',scTestSound);
+  }
+  function scTestSound(){
+    ensureAudio();stopSong();songStage.classList.add('playing');
+    chime();tone(196,.4,'sine',.75,.2);tone(262,.4,'sine',1.25,.2);
+    songTimer=setTimeout(stopSong,2400);
+    scCard.innerHTML='<h3>Did you hear it?</h3><p>The bear danced and a chime played.</p><div class="sc-row"><button class="sc-btn" id="sc-yes">Yes, I heard it</button><button class="sc-btn plain" id="sc-no">No, still silent</button><button class="sc-btn plain" id="sc-again">Play test again</button></div>';
+    document.getElementById('sc-yes').addEventListener('click',function(){
+      scCard.innerHTML='<h3>🎉 All set!</h3><p>Song, Listen, and Pop should all play now.</p><div class="sc-row"><button class="sc-btn plain" id="sc-ok">OK</button></div>';
+      document.getElementById('sc-ok').addEventListener('click',scBase);
+    });
+    document.getElementById('sc-no').addEventListener('click',function(){
+      scCard.innerHTML='<h3>Try these — in order:</h3><ol class="sc-steps"><li>Turn the volume UP with the buttons on the tablet\u2019s edge.</li><li>Flip the silent/mute switch on the tablet\u2019s edge — if you see orange, it is muted.</li><li>Unplug any headphones.</li><li>Tap the speaker icon in the game\u2019s top corner. If its little sound waves are missing, tap it once to turn sound back on here.</li></ol><p class="sc-note">Tablet makers mute web pages when the silent switch is on — no kids\u2019 app can override that.</p><p class=\"sc-note\">Sound engine: '+(audio?audio.state:'not started')+' — if it stays silent, tell Gus this engine word and what you tried.</p><div class="sc-row"><button class="sc-btn" id="sc-again2">Play test again</button><button class="sc-btn plain" id="sc-ok2">Done</button></div>';
+      document.getElementById('sc-again2').addEventListener('click',scTestSound);
+      document.getElementById('sc-ok2').addEventListener('click',scBase);
+    });
+    document.getElementById('sc-again').addEventListener('click',scTestSound);
+  }
+  scBase();
+
+  var rewardOverlay=document.querySelector('.reward-overlay'),rewardMovie=document.getElementById('reward-movie'),rewardClose=document.querySelector('.reward-close');
+  function showReward(){var movies=[['video/frog-garden.mp4','images/frog-garden.jpg'],['video/frog-lilypad.mp4','images/frog-lilypad.jpg']],pick=movies[rewardIndex++%movies.length];rewardMovie.src=pick[0];rewardMovie.poster=pick[1];rewardMovie.muted=muted;rewardOverlay.classList.add('show');rewardOverlay.setAttribute('aria-hidden','false');rewardMovie.play().catch(function(){ /* controls remain available if autoplay is blocked */ });rewardClose.focus()}
+  function hideReward(){rewardMovie.pause();rewardMovie.currentTime=0;rewardOverlay.classList.remove('show');rewardOverlay.setAttribute('aria-hidden','true')}
+  rewardClose.addEventListener('click',hideReward);rewardMovie.addEventListener('ended',hideReward);rewardOverlay.addEventListener('click',function(e){if(e.target===rewardOverlay)hideReward()});
+
+  var listenStage=document.querySelector('.listen-stage'),listenPlay=document.querySelector('.listen-play'),listenerAnimals=[].slice.call(document.querySelectorAll('.listener-animal')),listenPips=[].slice.call(document.querySelectorAll('.listen-progress i')),listenStar=document.querySelector('.listen-star'),listenOrder=[],listenRound=0,listenTarget='',listenLocked=false,listenTimer=null;
+  function animalSound(kind){if(kind==='frog'){tone(180,.16,'square',0,.09);tone(260,.18,'square',.18,.08)}else if(kind==='duck'){tone(530,.09,'sawtooth',0,.07);tone(410,.12,'sawtooth',.13,.07)}else{tone(92,.22,'sine',0,.18);tone(78,.2,'sine',.32,.17)}}
+  function updateListenPips(){listenPips.forEach(function(p,i){p.classList.toggle('done',i<listenRound);p.classList.toggle('now',i===listenRound&&!!listenTarget)})}
+  function playListenPrompt(){if(!listenTarget)return;listenStage.classList.add('playing');animalSound(listenTarget);clearTimeout(listenTimer);listenTimer=setTimeout(function(){listenStage.classList.remove('playing')},850)}
+  function nextListenRound(){listenerAnimals.forEach(function(a){a.classList.remove('calling','correct','try-again')});listenTarget=listenOrder[listenRound];listenLocked=false;updateListenPips();playListenPrompt()}
+  function startListening(){listenOrder=['duck','frog','elephant'];for(var i=listenOrder.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),hold=listenOrder[i];listenOrder[i]=listenOrder[j];listenOrder[j]=hold}listenRound=0;listenTarget='';nextListenRound()}
+  function clearListening(){clearTimeout(listenTimer);listenStage.classList.remove('playing');listenTarget='';listenLocked=false;listenRound=0;listenerAnimals.forEach(function(a){a.classList.remove('calling','correct','try-again')});listenPips.forEach(function(p){p.classList.remove('done','now')});listenStar.classList.remove('go')}
+  listenPlay.addEventListener('click',function(){if(!listenTarget)startListening();else playListenPrompt()});
+  listenerAnimals.forEach(function(a){a.addEventListener('click',function(){if(!listenTarget){a.classList.remove('calling');void a.offsetWidth;a.classList.add('calling');animalSound(a.dataset.kind);setTimeout(function(){a.classList.remove('calling')},850);return}if(listenLocked)return;if(a.dataset.kind===listenTarget){listenLocked=true;a.classList.add('correct');listenPips[listenRound].classList.remove('now');listenPips[listenRound].classList.add('done');listenStar.classList.remove('go');void listenStar.offsetWidth;listenStar.classList.add('go');chime();listenRound++;if(listenRound<3){listenTimer=setTimeout(nextListenRound,900)}else{listenTarget='';showReward();listenTimer=setTimeout(function(){chime();clearListening()},1300)}}else{a.classList.remove('try-again');void a.offsetWidth;a.classList.add('try-again');listenTimer=setTimeout(function(){a.classList.remove('try-again');playListenPrompt()},430)}})});
+
+  /* Pop: tap OR press-and-drag to pop. Drag-through pops a trail (fine-motor
+     research 2026-10-12: 2-3yos drag unassisted); the burst ring is the visual
+     reward even when sound is off. */
+  var bubbles=[].slice.call(document.querySelectorAll('.bubble')),popCount=0,popTimer=null,popStar=document.querySelector('.pop-star'),popStage=document.querySelector('.pop-stage'),popBurst=document.querySelector('.pop-burst'),popDragId=null;
+  function resetPop(){popCount=0;if(popTimer){clearTimeout(popTimer);popTimer=null}popStar.classList.remove('go');bubbles.forEach(function(b){b.classList.remove('popped')})}
+  function popBubble(b,i){
+    if(b.classList.contains('popped'))return;
+    ensureAudio();
+    b.classList.add('popped');popCount++;
+    var pr=popStage.getBoundingClientRect(),br=b.getBoundingClientRect();
+    popBurst.style.left=(br.left-pr.left+br.width/2)+'px';
+    popBurst.style.top=(br.top-pr.top+br.height/2)+'px';
+    var bc=getComputedStyle(b).getPropertyValue('--bubble');
+    popBurst.style.borderColor=bc?bc.trim():'rgba(255,255,255,.85)';
+    popBurst.classList.remove('go');void popBurst.offsetWidth;popBurst.classList.add('go');
+    tone(310+i*38,.14,'sine',0,.12);tone(520+i*24,.1,'triangle',.05,.08);
+    if(popCount===bubbles.length){popStar.classList.remove('go');void popStar.offsetWidth;popStar.classList.add('go');chime();showReward();popTimer=setTimeout(resetPop,1200)}
+  }
+  bubbles.forEach(function(b,i){b.addEventListener('click',function(){popBubble(b,i)})});
+  popStage.addEventListener('pointerdown',function(e){popDragId=e.pointerId});
+  popStage.addEventListener('pointermove',function(e){
+    if(e.pointerId!==popDragId)return;
+    var el=document.elementFromPoint(e.clientX,e.clientY);
+    if(el&&el.classList&&el.classList.contains('bubble')){
+      var i=bubbles.indexOf(el);
+      if(i>=0)popBubble(el,i);
+    }
+  });
+  popStage.addEventListener('pointerup',function(){popDragId=null});
+  popStage.addEventListener('pointercancel',function(){popDragId=null});
+
+  /* Make: tap stamps a big shape, drag lays a dot trail in the stamp's
+     color. No score, no finished state; oldest marks fade out past 90 so
+     the page never slows down. Works fully by tap alone. */
+  var makeStage=document.getElementById('make-stage'),makeCanvas=document.getElementById('make-canvas'),makeTools=[].slice.call(document.querySelectorAll('.make-tool')),makeShape='star',makeColor='#ffd84d',makeFreq=392,makeDown=false,makeMoved=false,makeLast=null,makeSX=0,makeSY=0,SVGNS='http://www.w3.org/2000/svg';
+  function makePoint(e){var r=makeStage.getBoundingClientRect();return {x:(e.clientX-r.left)/r.width*800,y:(e.clientY-r.top)/r.height*600}}
+  function makeEl(tag,attrs){var el=document.createElementNS(SVGNS,tag);for(var k in attrs)el.setAttribute(k,attrs[k]);return el}
+  function makeTrim(){while(makeCanvas.childNodes.length>90)makeCanvas.removeChild(makeCanvas.firstChild)}
+  function placeStamp(x,y,big){
+    var g=makeEl('g',{transform:'translate('+x+' '+y+') rotate('+Math.round(Math.random()*24-12)+') scale('+(big?1:.62)+')','class':'make-stamp'});
+    if(makeShape==='star')g.appendChild(makeEl('path',{d:'M0 -30 L9 -10 L30 -7 L15 7 L19 29 L0 17 L-19 29 L-15 7 L-30 -7 L-9 -10 Z',fill:makeColor,stroke:'#183249','stroke-width':'5','stroke-linejoin':'round'}));
+    else if(makeShape==='heart')g.appendChild(makeEl('path',{d:'M0 26 C-24 9 -27 -8 -18 -18 C-11 -25 -2 -21 0 -12 C2 -21 11 -25 18 -18 C27 -8 24 9 0 26 Z',fill:makeColor,stroke:'#183249','stroke-width':'5','stroke-linejoin':'round'}));
+    else if(makeShape==='circle')g.appendChild(makeEl('circle',{cx:'0',cy:'0',r:'26',fill:makeColor,stroke:'#183249','stroke-width':'5'}));
+    else g.appendChild(makeEl('path',{d:'M0 -28 L27 22 L-27 22 Z',fill:makeColor,stroke:'#183249','stroke-width':'5','stroke-linejoin':'round'}));
+    makeCanvas.appendChild(g);makeTrim();
+  }
+  function placeDot(x,y){makeCanvas.appendChild(makeEl('circle',{cx:String(x),cy:String(y),r:'11',fill:makeColor,opacity:'.75'}));makeTrim()}
+  makeTools.forEach(function(t){t.addEventListener('click',function(){makeTools.forEach(function(o){o.classList.remove('selected')});t.classList.add('selected');makeShape=t.dataset.shape;makeColor=t.dataset.color;makeFreq=Number(t.dataset.freq);tone(makeFreq,.12,'sine',0,.08)})});
+  document.getElementById('make-clear').addEventListener('click',function(e){e.stopPropagation();while(makeCanvas.firstChild)makeCanvas.removeChild(makeCanvas.firstChild);tone(440,.12,'sine',0,.07)});
+  makeStage.addEventListener('pointerdown',function(e){if(e.target.closest('.make-clear'))return;ensureAudio();makeDown=true;makeMoved=false;makeSX=e.clientX;makeSY=e.clientY;var pt=makePoint(e);makeLast=pt;placeStamp(pt.x,pt.y,true);tone(makeFreq,.14,'triangle',0,.1);makeStage.setPointerCapture(e.pointerId)});
+  makeStage.addEventListener('pointermove',function(e){if(!makeDown)return;if(Math.abs(e.clientX-makeSX)+Math.abs(e.clientY-makeSY)>12)makeMoved=true;if(!makeMoved)return;var pt=makePoint(e);if(makeLast&&Math.hypot(pt.x-makeLast.x,pt.y-makeLast.y)>36){placeDot(pt.x,pt.y);makeLast=pt}});
+  function makeUp(){makeDown=false;makeLast=null}
+  makeStage.addEventListener('pointerup',makeUp);makeStage.addEventListener('pointercancel',makeUp);
+
+  function stopMedia(){stopPour();clearTimeout(demoTimer);hideReward();clearListening()}
+})();
+</script>
+</body>
+</html>
