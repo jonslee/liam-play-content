@@ -1,1 +1,32 @@
-{"activities": [{"id": "blockpop", "kind": "color-cluster-blaster", "title": "Block Pop"}], "entry": "index.html", "game": "Block Pop", "media": {"audio": ["audio/liam-name-chant.mp3", "audio/liam-animal-sounds.mp3", "audio/liam-counting-song.mp3", "audio/liam-cleanup-song.mp3"], "images": ["images/liam-mascot.webp", "images/frog-garden.jpg", "images/frog-lilypad.jpg"], "video": ["video/frog-garden.mp4", "video/frog-lilypad.mp4"]}, "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.1 (2026-10-14): added Castle tower (7 shapes total) and a co-view prompt on the every-3rd-tower frog movie. Content-only repo: no secrets, no personal data beyond the first name.", "previousGame": "classic.html", "updated": "2026-10-14", "version": 3}
+{
+  "activities": [
+    {
+      "id": "blockpop",
+      "kind": "color-cluster-blaster",
+      "title": "Block Pop"
+    }
+  ],
+  "entry": "index.html",
+  "game": "Block Pop",
+  "media": {
+    "audio": [
+      "audio/liam-name-chant.mp3",
+      "audio/liam-animal-sounds.mp3",
+      "audio/liam-counting-song.mp3",
+      "audio/liam-cleanup-song.mp3"
+    ],
+    "images": [
+      "images/liam-mascot.webp",
+      "images/frog-garden.jpg",
+      "images/frog-lilypad.jpg"
+    ],
+    "video": [
+      "video/frog-garden.mp4",
+      "video/frog-lilypad.mp4"
+    ]
+  },
+  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.2 (2026-10-14): added Steps tower (8 shapes total, small 2-3 block clusters) and a more/less co-play prompt bridging to sorting real blocks by color. Content-only repo: no secrets, no personal data beyond the first name.",
+  "previousGame": "classic.html",
+  "updated": "2026-10-14",
+  "version": 4
+}
