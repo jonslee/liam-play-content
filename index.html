@@ -116,6 +116,7 @@
       <div>
         <div class="big">🎉 Yay!</div>
         <video id="cel-video" playsinline preload="none" style="display:none"></video>
+        <div class="tap-hint" id="cel-coview" style="display:none">Watch together — what will the frog do?</div>
         <div class="tap-hint" id="cel-hint">New tower coming…</div>
       </div>
     </div>
@@ -132,7 +133,7 @@
     </div>
   </div>
 
-  <div class="foot">Block Pop v2.0 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
+  <div class="foot">Block Pop v2.1 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
 </div>
 
 <script>
@@ -225,7 +226,8 @@
     ["....G","...GG","..YGG",".YYBB","RRRBB"],
     ["R...R","RR.RR","YBBBY","YGGGY"],
     ["R.R.R","RRRRR",".YYY.","GYBYG","GBBBG"],
-    ["RR...","YRR..","YYBB.",".GBBG",".GGRR"]
+    ["RR...","YRR..","YYBB.",".GBBG",".GGRR"],
+    ["B...B","BBBBB",".YYY.",".YRY.","GG.GG"]
   ];
   var PERMS=[[0,1,2,3],[1,2,3,0],[2,3,0,1],[3,0,1,2],[1,3,0,2],[2,0,3,1]];
   var COPLAY=[
@@ -240,7 +242,7 @@
   var stage=document.getElementById('stage'), towerEl=document.getElementById('tower'),
       cannonsEl=document.getElementById('cannons'), ground=document.getElementById('ground'),
       celebrateEl=document.getElementById('celebrate'), celVideo=document.getElementById('cel-video'),
-      celHint=document.getElementById('cel-hint'), mascot=document.getElementById('mascot');
+      celHint=document.getElementById('cel-hint'), celCoview=document.getElementById('cel-coview'), mascot=document.getElementById('mascot');
 
   var grid=[], rows=0, cols=0, bs=64, nodes={}, nextId=1, busy=false;
   var level=0; try{ level=parseInt(localStorage.getItem('bp-level')||'0',10)||0; }catch(e){}
@@ -448,7 +450,7 @@
     level++; try{ localStorage.setItem('bp-level', String(level)); }catch(e){}
     if(towersCleared%3===0){
       celVideo.src=MOVIES[(towersCleared/3-1)%MOVIES.length];
-      celVideo.style.display='block'; celHint.textContent='Tap for a new tower';
+      celVideo.style.display='block'; celCoview.style.display='block'; celHint.textContent='Tap for a new tower';
       celebrateEl.classList.add('show'); celebrateEl.setAttribute('aria-hidden','false');
       celVideo.currentTime=0;
       var vp=celVideo.play(); if(vp&&vp.catch) vp.catch(function(){});
@@ -456,13 +458,13 @@
         celVideo.removeEventListener('ended', done);
         celebrateEl.removeEventListener('click', done);
         celebrateEl.classList.remove('show'); celebrateEl.setAttribute('aria-hidden','true');
-        celVideo.pause(); celVideo.style.display='none';
+        celVideo.pause(); celVideo.style.display='none'; celCoview.style.display='none';
         buildTower();
       };
       celVideo.addEventListener('ended', done);
       celebrateEl.addEventListener('click', done);
     } else {
-      celVideo.style.display='none'; celHint.textContent='New tower coming\u2026';
+      celVideo.style.display='none'; celCoview.style.display='none'; celHint.textContent='New tower coming\u2026';
       celebrateEl.classList.add('show'); celebrateEl.setAttribute('aria-hidden','false');
       setTimeout(function(){
         celebrateEl.classList.remove('show'); celebrateEl.setAttribute('aria-hidden','true');
