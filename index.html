@@ -137,7 +137,7 @@
     </div>
   </div>
 
-  <div class="foot">Block Pop v2.3 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
+  <div class="foot">Block Pop v2.4 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
 </div>
 
 <script>
@@ -400,8 +400,12 @@
     if(!cluster.length){ busy=false; return; }
     var baseIdx=cluster[0].cell.color;
     cluster.sort(function(a,b){ return (b.r-a.r)||(a.c-b.c); });
+    /* Consistent color = note: every pop of this color sounds its own
+       pentatonic note (COLORS[].note) as a soft root + octave chord, so the
+       sound predicts the color and never stacks into a louder cluster chord. */
+    tone(COLORS[baseIdx].note, 0, .32, .2, 'triangle');
+    tone(COLORS[baseIdx].note*2, .07, .26, .07, 'sine');
     cluster.forEach(function(item, i){
-      tone(SCALE[(baseIdx+i)%SCALE.length], i*.055, .3, .22, 'triangle');
       var el=nodes[item.cell.id];
       burst(item);
       if(el){ el.classList.add('pop'); el.style.transform=el.style.transform+' scale(.15)'; el.style.opacity='0'; }

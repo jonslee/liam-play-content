@@ -1,32 +1,32 @@
 {
-  "activities": [
-    {
-      "id": "blockpop",
-      "kind": "color-cluster-blaster",
-      "title": "Block Pop"
-    }
-  ],
-  "entry": "index.html",
-  "game": "Block Pop",
-  "media": {
-    "audio": [
-      "audio/liam-name-chant.mp3",
-      "audio/liam-animal-sounds.mp3",
-      "audio/liam-counting-song.mp3",
-      "audio/liam-cleanup-song.mp3"
+    "activities": [
+        {
+            "id": "blockpop",
+            "kind": "color-cluster-blaster",
+            "title": "Block Pop"
+        }
     ],
-    "images": [
-      "images/liam-mascot.webp",
-      "images/frog-garden.jpg",
-      "images/frog-lilypad.jpg"
-    ],
-    "video": [
-      "video/frog-garden.mp4",
-      "video/frog-lilypad.mp4"
-    ]
-  },
-  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.3 (2026-10-14): instruction-free first-play onboarding — on the very first tower only, one live cannon gently pulses and its matching blocks glow, showing the color match with no words; the hint stops permanently after the first tap (localStorage bp-played). Content-only repo: no secrets, no personal data beyond the first name.",
-  "previousGame": "classic.html",
-  "updated": "2026-10-14",
-  "version": 5
+    "entry": "index.html",
+    "game": "Block Pop",
+    "media": {
+        "audio": [
+            "audio/liam-name-chant.mp3",
+            "audio/liam-animal-sounds.mp3",
+            "audio/liam-counting-song.mp3",
+            "audio/liam-cleanup-song.mp3"
+        ],
+        "images": [
+            "images/liam-mascot.webp",
+            "images/frog-garden.jpg",
+            "images/frog-lilypad.jpg"
+        ],
+        "video": [
+            "video/frog-garden.mp4",
+            "video/frog-lilypad.mp4"
+        ]
+    },
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.4 (2026-10-15): consistent color-note pop sound \u2014 each color always sounds its own pentatonic note as a soft root + octave chord, instead of a scale walk that changed with cluster size; no stacked notes on big pops. Content-only repo: no secrets, no personal data beyond the first name.",
+    "previousGame": "classic.html",
+    "updated": "2026-10-15",
+    "version": 6
 }
