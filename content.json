@@ -25,8 +25,8 @@
       "video/frog-lilypad.mp4"
     ]
   },
-  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.2 (2026-10-14): added Steps tower (8 shapes total, small 2-3 block clusters) and a more/less co-play prompt bridging to sorting real blocks by color. Content-only repo: no secrets, no personal data beyond the first name.",
+  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.3 (2026-10-14): instruction-free first-play onboarding — on the very first tower only, one live cannon gently pulses and its matching blocks glow, showing the color match with no words; the hint stops permanently after the first tap (localStorage bp-played). Content-only repo: no secrets, no personal data beyond the first name.",
   "previousGame": "classic.html",
   "updated": "2026-10-14",
-  "version": 4
+  "version": 5
 }

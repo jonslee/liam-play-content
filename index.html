@@ -75,6 +75,10 @@
     }
     .cannon:active{transform:scale(.9)}
     .cannon:disabled{opacity:.25;filter:grayscale(.4);cursor:default}
+    .cannon.hint{animation:cannonHint 1.05s ease-in-out infinite}
+    @keyframes cannonHint{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+    .block.hint-glow{animation:blockHint 1.05s ease-in-out infinite}
+    @keyframes blockHint{0%,100%{filter:brightness(1)}50%{filter:brightness(1.28) saturate(1.25)}}
     #celebrate{
       position:absolute; inset:0; display:none; place-items:center; z-index:30;
       background:rgba(255,247,232,.55); text-align:center; padding:16px;
@@ -133,7 +137,7 @@
     </div>
   </div>
 
-  <div class="foot">Block Pop v2.2 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
+  <div class="foot">Block Pop v2.3 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
 </div>
 
 <script>
@@ -249,6 +253,21 @@
   var grid=[], rows=0, cols=0, bs=64, nodes={}, nextId=1, busy=false;
   var level=0; try{ level=parseInt(localStorage.getItem('bp-level')||'0',10)||0; }catch(e){}
   var towersCleared=0;
+  var hasPlayed=false; try{ hasPlayed=!!localStorage.getItem('bp-played'); }catch(e){}
+  var hintColor=-1;
+  function markPlayed(){
+    if(hasPlayed) return; hasPlayed=true;
+    try{ localStorage.setItem('bp-played','1'); }catch(e){}
+    document.querySelectorAll('.cannon.hint').forEach(function(el){ el.classList.remove('hint'); });
+    document.querySelectorAll('.block.hint-glow').forEach(function(el){ el.classList.remove('hint-glow'); });
+  }
+  function applyHint(){
+    if(hasPlayed||hintColor<0) return;
+    for(var r=0;r<rows;r++) for(var c=0;c<cols;c++){
+      var cell=grid[r][c];
+      if(cell&&cell.color===hintColor&&nodes[cell.id]) nodes[cell.id].classList.add('hint-glow');
+    }
+  }
 
   function buildTower(){
     var shape=SHAPES[level%SHAPES.length];
@@ -266,6 +285,7 @@
     }
     layout(true);
     renderCannons();
+    if(!hasPlayed){ setTimeout(applyHint, 560); }
     document.getElementById('tower-num').textContent=String(level+1);
     document.getElementById('coplay').textContent=COPLAY[level%COPLAY.length];
   }
@@ -308,11 +328,13 @@
     cannonsEl.innerHTML='';
     var present={};
     grid.forEach(function(row){ row.forEach(function(cell){ if(cell) present[cell.color]=true; }); });
+    hintColor=-1;
     COLORS.forEach(function(col, idx){
       var b=document.createElement('button');
       b.className='cannon '+col.cls; b.textContent=col.glyph;
       b.setAttribute('aria-label','Fire the '+col.key+' cannon');
       b.disabled=!present[idx];
+      if(!hasPlayed&&present[idx]&&hintColor<0){ hintColor=idx; b.classList.add('hint'); }
       b.addEventListener('click', function(){ fireCannon(idx, b); });
       cannonsEl.appendChild(b);
     });
@@ -343,6 +365,7 @@
   function fireCannon(colorIdx, btn){
     if(busy) return;
     var t=targetFor(colorIdx); if(!t) return;
+    markPlayed();
     busy=true; poof();
     var bRect=btn.getBoundingClientRect(),
         tEl=nodes[grid[t.r][t.c].id], tRect=tEl.getBoundingClientRect();
@@ -366,6 +389,7 @@
 
   function onBlockTap(e){
     if(busy) return;
+    markPlayed();
     var id=parseInt(e.currentTarget.dataset.id,10);
     for(var r=0;r<rows;r++) for(var c=0;c<cols;c++){
       if(grid[r][c]&&grid[r][c].id===id){ busy=true; popCluster(clusterOf(r,c)); return; }
