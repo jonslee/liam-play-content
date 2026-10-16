@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.7 (2026-10-16): an 11th tower shape, Train \u2014 a chimney and cab over a long body on two wheels, 20 blocks in 6 clusters (sizes 2, 4, 5, 5, 2, 2), all 4 colors present, no singletons \u2014 plus an 8th co-play prompt: push a toy train or car together, say go/stop, take turns fast and slow. Content-only repo: no secrets, no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.8 (2026-10-16): a 12th tower shape, Boat \u2014 two sails over a deck and a wide hull with a tapered bottom, 19 blocks in 5 clusters (sizes 3, 3, 5, 5, 3), all 4 colors present, no singletons \u2014 plus a 9th co-play prompt: float a toy boat (or a leaf) in the bath together, push it gently, say float/splash, and watch what floats and what sinks. Content-only repo: no secrets, no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-16",
-    "version": 9
+    "version": 10
 }
