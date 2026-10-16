@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.5 (2026-10-15): a 9th tower shape, Rainbow \u2014 three color bands on two legs over a ground row, 6 clusters of 3\u20135 blocks, all 4 colors present, no singletons. Content-only repo: no secrets, no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.6 (2026-10-15): a 10th tower shape, House \u2014 a triangle roof over a wide body with a door, 19 blocks in 5 clusters (sizes 4, 5, 4, 2, 4), all 4 colors present, no singletons \u2014 plus a 7th co-play prompt: build a real tower together, take turns stacking, then let Liam knock it down. Content-only repo: no secrets, no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-15",
-    "version": 7
+    "version": 8
 }
