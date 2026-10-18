@@ -25,8 +25,8 @@
       "video/frog-lilypad.mp4"
     ]
   },
-  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.13 (2026-10-18): a 17th tower shape, Flower \u2014 red petals over a yellow centre on a green stem over ground, 15 blocks in 5 clusters (sizes 3, 3, 4, 3, 2), all 4 colors present, no singletons \u2014 plus a 14th co-play prompt: find a real flower together, leave it growing, sniff it gently saying sniff sniff\u2026 ahh!, touch its soft petals, and name its colour together. Content-only repo: no secrets, no personal data beyond the first name.",
+  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.14 (2026-10-18): an 18th tower shape, Ball — a round striped ball with indented top and bottom, 21 blocks in 5 clusters (sizes 3, 5, 5, 5, 3), all 4 colors present, no singletons — plus a 15th co-play prompt: sit on the floor together and roll a big soft ball back and forth, saying roll… catch! and my turn, your turn. Content-only repo: no secrets, no personal data beyond the first name.",
   "previousGame": "classic.html",
   "updated": "2026-10-18",
-  "version": 15
+  "version": 16
 }
