@@ -25,8 +25,8 @@
       "video/frog-lilypad.mp4"
     ]
   },
-  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.14 (2026-10-18): an 18th tower shape, Ball — a round striped ball with indented top and bottom, 21 blocks in 5 clusters (sizes 3, 5, 5, 5, 3), all 4 colors present, no singletons — plus a 15th co-play prompt: sit on the floor together and roll a big soft ball back and forth, saying roll… catch! and my turn, your turn. Content-only repo: no secrets, no personal data beyond the first name.",
+  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.15 (2026-10-18): a 19th tower shape, Duck \u2014 a head over a wide body on two feet, 17 blocks in 5 clusters (sizes 5, 5, 3, 2, 2), all 4 colors present, no singletons \u2014 plus a 16th co-play prompt: find a rubber duck (or any soft duck) together, say quack, quack!, and take turns waddling like a duck \u2014 waddle\u2026 waddle\u2026 stop! Content-only repo: no secrets, no personal data beyond the first name.",
   "previousGame": "classic.html",
   "updated": "2026-10-18",
-  "version": 16
+  "version": 17
 }
