@@ -25,8 +25,8 @@
       "video/frog-lilypad.mp4"
     ]
   },
-  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.17 (2026-10-19): a 21st tower shape, Butterfly \u2014 two top wings over a central body and two bottom wings, 21 blocks in 5 clusters (sizes 4, 4, 5, 4, 4), all 4 colors present, no singletons \u2014 plus an 18th co-play prompt: flap arms gently together like a butterfly, say flutter, flutter, fly slow then fast, then land on a flower and rest, taking turns. Content-only repo: no personal data beyond the first name.",
+  "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.18 (2026-10-19): a 22nd tower shape, Fish \u2014 a forked tail beside a wide body, 20 blocks in 5 clusters (sizes 3, 5, 4, 3, 5), all 4 colors present, no singletons \u2014 plus a 19th co-play prompt: hands together, wiggle side to side like a fish, say swim, swim, swim slow then fast, then stop and rest, taking turns (pretend swim, no water needed). Content-only repo: no personal data beyond the first name.",
   "previousGame": "classic.html",
   "updated": "2026-10-19",
-  "version": 19
+  "version": 20
 }
