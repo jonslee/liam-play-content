@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.25 (2026-10-22): a 29th tower shape, Elephant \u2014 two ears over a wide head with a trunk down the centre and two feet, 20 blocks in 6 clusters (sizes 3, 6, 3, 4, 2, 2), all 4 colors present, no singletons \u2014 plus a 26th co-play prompt: put your arms together in front like a long trunk, swing it side to side saying toot/toot, take big slow stompy steps, then swing slower and slower and rest, taking turns. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.26 (2026-10-22): a 30th tower shape, Giraffe — a head at the top of a long neck over a wide body on two feet, 18 blocks in 6 clusters (sizes 2, 4, 4, 4, 2, 2), all 4 colors present, no singletons — plus a 27th co-play prompt: stretch arms way up high like a long neck saying stretch/tall, hold a grown-up's hand and rise up a little (feet flat is fine too), look this way and that way, take long slow steps, pretend to nibble leaves up high (pretend only, no real leaves in mouths), then come back down low and rest, taking turns. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-22",
-    "version": 27
+    "version": 28
 }
