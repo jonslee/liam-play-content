@@ -1,1 +1,32 @@
-{"activities": [{"id": "blockpop", "kind": "color-cluster-blaster", "title": "Block Pop"}], "entry": "index.html", "game": "Block Pop", "media": {"audio": ["audio/liam-name-chant.mp3", "audio/liam-animal-sounds.mp3", "audio/liam-counting-song.mp3", "audio/liam-cleanup-song.mp3"], "images": ["images/liam-mascot.webp", "images/frog-garden.jpg", "images/frog-lilypad.jpg"], "video": ["video/frog-garden.mp4", "video/frog-lilypad.mp4"]}, "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.23 (2026-10-21): a 27th tower shape, Bear \u2014 two ears over a wide face and body on two feet, 19 blocks in 7 clusters (sizes 2, 2, 3, 5, 3, 2, 2), all 4 colors present, no singletons \u2014 plus a 24th co-play prompt: crawl on hands and knees like a bear saying a soft grrr, take slow heavy steps, then give yourself a big bear hug, curl up small, and rest like a sleepy bear, taking turns. Content-only repo: no personal data beyond the first name.", "previousGame": "classic.html", "updated": "2026-10-21", "version": 25}
+{
+    "activities": [
+        {
+            "id": "blockpop",
+            "kind": "color-cluster-blaster",
+            "title": "Block Pop"
+        }
+    ],
+    "entry": "index.html",
+    "game": "Block Pop",
+    "media": {
+        "audio": [
+            "audio/liam-name-chant.mp3",
+            "audio/liam-animal-sounds.mp3",
+            "audio/liam-counting-song.mp3",
+            "audio/liam-cleanup-song.mp3"
+        ],
+        "images": [
+            "images/liam-mascot.webp",
+            "images/frog-garden.jpg",
+            "images/frog-lilypad.jpg"
+        ],
+        "video": [
+            "video/frog-garden.mp4",
+            "video/frog-lilypad.mp4"
+        ]
+    },
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.24 (2026-10-21): a 28th tower shape, Penguin \u2014 a round head over a wide belly with side flippers and two feet, 20 blocks in 6 clusters (sizes 5, 5, 3, 3, 2, 2), all 4 colors present, no singletons \u2014 plus a 25th co-play prompt: waddle with feet close and arms in tight like little flippers saying waddle/shuffle, take tiny steps side to side, slide once on your tummy across a soft blanket, then huddle close together to keep warm, taking turns. Content-only repo: no personal data beyond the first name.",
+    "previousGame": "classic.html",
+    "updated": "2026-10-21",
+    "version": 26
+}
