@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.27 (2026-10-22): a 31st tower shape, Turtle — a domed shell rim over a banded body with a head poking out on the right and two feet, 20 blocks in 7 clusters (sizes 6, 2, 2, 3, 3, 2, 2), all 4 colors present, no singletons — plus a 28th co-play prompt: get down on hands and knees, make your body small and tight, say slow/slow, crawl in super slow motion (one hand, then the other), then tuck small into your shell, peek out saying peek, and rest, taking turns. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.28 (2026-10-23): a 32nd tower shape, Crab \u2014 two claws over a wide body on splayed legs, 19 blocks in 5 clusters (sizes 4, 4, 5, 3, 3), all 4 colors present, no singletons \u2014 plus a 29th co-play prompt: stand up, hold hands up like little claws, open and shut them saying snap/snap, take little sideways steps one way then the other, then stop and rest claws in lap, taking turns. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-10-22",
-    "version": 29
+    "updated": "2026-10-23",
+    "version": 30
 }
