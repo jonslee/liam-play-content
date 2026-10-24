@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.30 (2026-10-23): a 34th tower shape, Mouse \u2014 two ears over a wide face on a body, 20 blocks in 5 clusters (sizes 4, 5, 3, 5, 3), all 4 colors present, no singletons \u2014 plus a 31st co-play prompt: tiptoe very quietly (flat feet fine), say a tiny squeak/squeak, take soft quiet steps a little way, then stop, listen, and curl up small in the mouse hole and rest, taking turns; pretend only, real mice are look-don't-touch. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.31 (2026-10-24): a 35th tower shape, Owl \u2014 two ear tufts over a wide face with green side wings and feet, 21 blocks in 6 clusters (sizes 2, 2, 6, 4, 4, 3), all 4 colors present, no singletons \u2014 plus a 32nd co-play prompt: open eyes big and wide, turn head a little way to one side and say a soft hoo/hoo, then a little way to the other side and hoo again, then shut eyes small and rest like a sleepy owl, taking turns; pretend only, real owls are look-don't-touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-10-23",
-    "version": 32
+    "updated": "2026-10-24",
+    "version": 33
 }
