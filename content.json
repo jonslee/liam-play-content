@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.29 (2026-10-23): a 33rd tower shape, Snake \u2014 a winding slither body with small head and tail ends, 18 blocks in 5 clusters (sizes 3, 4, 4, 4, 3), all 4 colors present, no singletons \u2014 plus a 30th co-play prompt: lie on tummies on a soft rug (or wiggle seated), wiggle and slither a little way saying ssss/ssss, then coil up small and rest, taking turns; pretend only, real snakes are look-don't-touch. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.30 (2026-10-23): a 34th tower shape, Mouse \u2014 two ears over a wide face on a body, 20 blocks in 5 clusters (sizes 4, 5, 3, 5, 3), all 4 colors present, no singletons \u2014 plus a 31st co-play prompt: tiptoe very quietly (flat feet fine), say a tiny squeak/squeak, take soft quiet steps a little way, then stop, listen, and curl up small in the mouse hole and rest, taking turns; pretend only, real mice are look-don't-touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-23",
-    "version": 31
+    "version": 32
 }
