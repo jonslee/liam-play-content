@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.37 (2026-10-26): a 41st tower shape, Dog — long floppy ears down both sides over a face and body on split feet, 17 blocks in 6 clusters (sizes 4, 4, 2, 3, 2, 2), all 4 colors present, no singletons — plus a 38th co-play prompt: bark woof, wag your tail (wiggle bottom side to side), pretend to dig with both hands, sniff-sniff, then curl up small and rest like a sleepy dog, taking turns; pretend only, be gentle with real dogs (soft hands, let them rest too). Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.38 (2026-10-26): a 42nd tower shape, Kangaroo — two tall ears over a head and body on a full-width base, 18 blocks in 6 clusters (sizes 3, 3, 4, 4, 2, 2), all 4 colors present, no singletons — plus a 39th co-play prompt: hold a soft toy in front like a joey in your pouch, hands up in front, little gentle bounces in place saying boing, then stop, cuddle your joey, and rest, taking turns; pretend only, real kangaroos are look, don't touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-26",
-    "version": 39
+    "version": 40
 }
