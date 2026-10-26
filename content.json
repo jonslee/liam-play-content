@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.35 (2026-10-25): a 39th tower shape, Chicken — comb/head over a wide body on two feet, 21 blocks in 6 clusters (sizes 5, 4, 3, 5, 2, 2), all 4 colors present, no singletons — plus a 36th co-play prompt: tuck hands by sides and flap little elbow wings saying cluck/cluck, make a beak with one hand and peck-peck gently on the other hand, scratch one foot then the other, then settle into the nest and rest, taking turns; pretend only, real chickens are look-don't-touch. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.36 (2026-10-25): a 40th tower shape, Monkey — two ears over a wide face and body with a tail tip along the ground, 20 blocks in 5 clusters (sizes 4, 5, 3, 6, 2), all 4 colors present, no singletons — plus a 37th co-play prompt: let arms hang loose and swing them side to side, sway saying oo-oo/ah-ah, give sides a little scratch, swing slow, then stop, sit, and rest like a sleepy monkey, taking turns; pretend only, no climbing or jumping on beds, real monkeys are look-don't-touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-25",
-    "version": 37
+    "version": 38
 }
