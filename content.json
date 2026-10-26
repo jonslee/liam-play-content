@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.36 (2026-10-25): a 40th tower shape, Monkey — two ears over a wide face and body with a tail tip along the ground, 20 blocks in 5 clusters (sizes 4, 5, 3, 6, 2), all 4 colors present, no singletons — plus a 37th co-play prompt: let arms hang loose and swing them side to side, sway saying oo-oo/ah-ah, give sides a little scratch, swing slow, then stop, sit, and rest like a sleepy monkey, taking turns; pretend only, no climbing or jumping on beds, real monkeys are look-don't-touch. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.37 (2026-10-26): a 41st tower shape, Dog — long floppy ears down both sides over a face and body on split feet, 17 blocks in 6 clusters (sizes 4, 4, 2, 3, 2, 2), all 4 colors present, no singletons — plus a 38th co-play prompt: bark woof, wag your tail (wiggle bottom side to side), pretend to dig with both hands, sniff-sniff, then curl up small and rest like a sleepy dog, taking turns; pretend only, be gentle with real dogs (soft hands, let them rest too). Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-10-25",
-    "version": 38
+    "updated": "2026-10-26",
+    "version": 39
 }
