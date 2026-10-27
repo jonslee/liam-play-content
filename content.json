@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.39 (2026-10-26): a 43rd tower shape, Horse \u2014 a head at the top left and a tail down the right edge over a wide body on two legs, 20 blocks in 6 clusters (sizes 3, 3, 5, 5, 2, 2), all 4 colors present, no singletons \u2014 plus a 40th co-play prompt: sit together and pat hands gently on thighs like galloping hooves saying clip-clop, gallop slow then a little faster, toss your head like a mane and say neigh, then say whoa, stop, and rest, taking turns; pretend only, real horses are look, don't touch. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.40 (2026-10-27): a 44th tower shape, Lion \u2014 a red mane ring around a yellow face with a blue mouth band on green feet, 20 blocks in 7 clusters (sizes 3, 2, 5, 2, 4, 2, 2), all 4 colors present, no singletons \u2014 plus a 41st co-play prompt: hold hands up like big paws, take big slow soft prowling steps saying a friendly roar, shake the mane gently, then curl up small and rest like a sleepy lion, taking turns; pretend only, real lions are look, don't touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-10-26",
-    "version": 41
+    "updated": "2026-10-27",
+    "version": 42
 }
