@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.40 (2026-10-27): a 44th tower shape, Lion \u2014 a red mane ring around a yellow face with a blue mouth band on green feet, 20 blocks in 7 clusters (sizes 3, 2, 5, 2, 4, 2, 2), all 4 colors present, no singletons \u2014 plus a 41st co-play prompt: hold hands up like big paws, take big slow soft prowling steps saying a friendly roar, shake the mane gently, then curl up small and rest like a sleepy lion, taking turns; pretend only, real lions are look, don't touch. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.41 (2026-10-27): a 45th tower shape, Pig — two ears over a wide face with a centred snout band on a ground row, 20 blocks in 5 clusters (sizes 6, 5, 4, 3, 2), all 4 colors present, no singletons — plus a 42nd co-play prompt: hold hands up like little ears, wiggle your nose like a snout saying oink, pretend to root in the air just above your lap, roll gently in pretend mud, then curl up and rest like a sleepy pig, taking turns; pretend only, no real mud, real pigs are look, don't touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-27",
-    "version": 42
+    "version": 43
 }
