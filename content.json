@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.43 (2026-10-28): a 47th tower shape, Sheep — a solid fluffy wool bar over a face band and wide body on split legs, 21 blocks in 5 clusters (sizes 4, 3, 6, 4, 4), all 4 colors present, no singletons — plus a 44th co-play prompt: pat arms softly like fluffy wool, say baa, hug yourself cozy like warm wool, take little soft steps in place, then put hands under cheek and rest fast asleep like a fluffy sheep, taking turns; real sheep are look, don't touch, with gentle hands. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.44 (2026-10-28): a 48th tower shape, Goat — two horns over a face band and wide body with a little beard tip at the base, 17 blocks in 5 clusters (sizes 3, 4, 3, 5, 2), all 4 colors present, no singletons — plus a 45th co-play prompt: hold two fingers up like little horns, put fingers under chin like a little beard, say maa, take little tippy trip-trap steps in place, pretend to nibble leaves up high (pretend only, no real leaves in mouths), tippy-step down low, then curl up and rest like a sleepy goat, taking turns; no climbing on furniture and no head-butting, real goats are look, don't touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-28",
-    "version": 45
+    "version": 46
 }
