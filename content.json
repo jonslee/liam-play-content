@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.45 (2026-10-28): a 49th tower shape, Donkey \u2014 two long ears over a face band and wide body on split feet, 21 blocks in 6 clusters (sizes 5, 4, 4, 4, 2, 2), all 4 colors present, no singletons \u2014 plus a 46th co-play prompt: hold hands up high like long floppy ears and wiggle them, say hee-haw, take slow plodding steps in place, then stop, ears down, and rest like a sleepy donkey, taking turns; real donkeys are look, don't touch. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.46 (2026-10-29): a 50th tower shape, Goose — a long neck on the left over a wide body on a two-tone base, 18 blocks in 4 clusters (sizes 6, 5, 5, 2), all 4 colors present, no singletons — plus a 47th co-play prompt: stretch your neck up tall, lift your beak to the sky and say honk, waddle side to side in place, then flop down low and rest like a sleepy goose, taking turns; real geese are look, don't touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-10-28",
-    "version": 47
+    "updated": "2026-10-29",
+    "version": 48
 }
