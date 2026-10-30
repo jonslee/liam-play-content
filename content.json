@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.47 (2026-10-29): a 51st tower shape, Hedgehog — prickly gapped top row over a face band and wide body on a single foot tip, 20 blocks in 5 clusters (sizes 3, 3, 3, 5, 6), all 4 colors present, no singletons — plus a 48th co-play prompt: hold fingers up like prickly quills and wiggle them, say a soft snuffle, scratch softly on the floor, curl up small into a prickly ball, then uncurl, stretch out, and rest like a sleepy hedgehog, taking turns; real hedgehogs are look, don't touch, with gentle hands. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.48 (2026-10-29): a 52nd tower shape, Squirrel \u2014 bushy tail and head over a wide body and split feet, 23 blocks in 6 clusters (sizes 4, 5, 5, 5, 2, 2), all 4 colors present, no singletons \u2014 plus a 49th co-play prompt: swish a bushy tail, wrinkle your nose, cup hands like holding a big soft nut, scamper up tall then down low, and hide the nut in a pretend tree hole, taking turns; pretend nuts are big soft pom-poms or balled socks only, never small nuts, and real squirrels are look, don't touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-29",
-    "version": 49
+    "version": 50
 }
