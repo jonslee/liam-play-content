@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.49 (2026-10-30): a 53rd tower shape, Pumpkin — a stem over a wide round body on a flat base, 20 blocks in 5 clusters (sizes 2, 5, 5, 5, 3), all 4 colors present, no singletons — plus a 50th co-play prompt: pat a real (or toy) pumpkin, knock knock, feel smooth or bumpy, pick a little one up, carry it to a basket, and set it down gently, taking turns; little pumpkins for little hands, grown-ups carry the big heavy ones. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.50 (2026-10-30): a 54th tower shape, Leaf \u2014 a pointed tip over a wide body on a thin stem, 15 blocks in 5 clusters (sizes 4, 5, 2, 2, 2), all 4 colors present, no singletons \u2014 plus a 51st co-play prompt: crunch fallen dry leaves together, feel smooth or bumpy, toss them up and watch them flutter down, then gather them into a little pile, taking turns; fallen leaves only, nothing in mouths. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-30",
-    "version": 51
+    "version": 52
 }
