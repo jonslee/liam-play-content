@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.52 (2026-10-31): a 56th tower shape, Ghost \u2014 a dome head with an eye band over a body on wavy feet, 21 blocks in 6 clusters (sizes 3, 4, 3, 4, 4, 3), all 4 colors present, no singletons \u2014 plus a 53rd co-play prompt: be a friendly ghost together, hide faces behind hands, peek out with a soft 'boo!' and a giggle, taking turns; friendly ghosts only, no jumping out, no loud boos, stop any time. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.53 (2026-10-31): a 57th tower shape, Bat \u2014 ears over spread wings and a wide body band on split feet, 19 blocks in 7 clusters (sizes 3, 2, 2, 5, 3, 2, 2), all 4 colors present, no singletons \u2014 plus a 54th co-play prompt: be a bat together, flap arms like wings, squeak, fly slow then fast, then fold wings in and sleep curled up in a pretend cave; pretend only, real bats are look, don't touch, stay right-side up, no hanging upside down. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-31",
-    "version": 54
+    "version": 55
 }
