@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.50 (2026-10-30): a 54th tower shape, Leaf \u2014 a pointed tip over a wide body on a thin stem, 15 blocks in 5 clusters (sizes 4, 5, 2, 2, 2), all 4 colors present, no singletons \u2014 plus a 51st co-play prompt: crunch fallen dry leaves together, feel smooth or bumpy, toss them up and watch them flutter down, then gather them into a little pile, taking turns; fallen leaves only, nothing in mouths. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.51 (2026-10-30): a 55th tower shape, Snail — two eye stalks over a shell and body on a foot row, 19 blocks in 4 clusters (sizes 6, 5, 4, 4), all 4 colors present, no singletons — plus a 52nd co-play prompt: crawl very slowly together saying 'slowly… slowly…', tuck in like hiding in a shell, then peek out saying 'peek-a-boo!', taking turns; slow only, no racing, real snails are look, don't touch. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-10-30",
-    "version": 52
+    "version": 53
 }
