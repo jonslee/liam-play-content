@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.51 (2026-10-30): a 55th tower shape, Snail — two eye stalks over a shell and body on a foot row, 19 blocks in 4 clusters (sizes 6, 5, 4, 4), all 4 colors present, no singletons — plus a 52nd co-play prompt: crawl very slowly together saying 'slowly… slowly…', tuck in like hiding in a shell, then peek out saying 'peek-a-boo!', taking turns; slow only, no racing, real snails are look, don't touch. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.52 (2026-10-31): a 56th tower shape, Ghost \u2014 a dome head with an eye band over a body on wavy feet, 21 blocks in 6 clusters (sizes 3, 4, 3, 4, 4, 3), all 4 colors present, no singletons \u2014 plus a 53rd co-play prompt: be a friendly ghost together, hide faces behind hands, peek out with a soft 'boo!' and a giggle, taking turns; friendly ghosts only, no jumping out, no loud boos, stop any time. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-10-30",
-    "version": 53
+    "updated": "2026-10-31",
+    "version": 54
 }
