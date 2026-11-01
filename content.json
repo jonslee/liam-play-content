@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.54 (2026-10-31): a 58th tower shape, Treat Bag — two handles over striped body bands, 21 blocks in 5 clusters (sizes 3, 3, 5, 5, 5), all 4 colors present, no singletons — plus a 55th co-play prompt: play trick-or-treat at your own front door, knock knock, wait, say 'trick or treat!' (or wave and hold out the bag), take a pretend treat, then wave 'thank you!', taking turns as the neighbour; pretend only, stay with a grown-up, stop any time. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.55 (2026-11-01): a 59th tower shape, Acorn — a stem over a cap band and wide body bands tapering to a bottom point, 16 blocks in 4 clusters (sizes 3, 2, 5, 6), all 4 colors present, no singletons — plus a 56th co-play prompt: look at real acorns outside together (look, don't pick up the little ones), then gather big soft pretend acorns (pom-poms or balled socks) into a basket, dropping each in with a 'plop!', sorting big/little piles and counting together; pretend acorns only for little hands. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-10-31",
-    "version": 56
+    "updated": "2026-11-01",
+    "version": 57
 }
