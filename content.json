@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.56 (2026-11-01): a 60th tower shape, Turkey — fanned tail bands over a round body on two feet, 20 blocks in 6 clusters (sizes 5, 5, 3, 3, 2, 2), all 4 colors present, no singletons — plus a 57th co-play prompt: be a turkey together, flapping elbows like wings, waddling, wobbling heads, saying 'gobble, gobble!' and 'thank you!' like Thanksgiving; pretend only, any gobble counts. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.57 (2026-11-01): a 61st tower shape, Scarecrow \u2014 hat over a face and a wide arms-out band on a body over a single pole, 15 blocks in 4 clusters (sizes 3, 3, 5, 4), all 4 colors present, no singletons \u2014 plus a 58th co-play prompt: be a scarecrow together, arms out wide, wobble gently, FREEZE on \"Crow!\", wave arms shouting \"Shoo, shoo!\", then stand still again; pretend only, any wobble or freeze counts. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-01",
-    "version": 58
+    "version": 59
 }
