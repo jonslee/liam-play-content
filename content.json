@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.57 (2026-11-01): a 61st tower shape, Scarecrow \u2014 hat over a face and a wide arms-out band on a body over a single pole, 15 blocks in 4 clusters (sizes 3, 3, 5, 4), all 4 colors present, no singletons \u2014 plus a 58th co-play prompt: be a scarecrow together, arms out wide, wobble gently, FREEZE on \"Crow!\", wave arms shouting \"Shoo, shoo!\", then stand still again; pretend only, any wobble or freeze counts. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.58 (2026-11-01): a 62nd tower shape, Corn \u2014 tassel over leaf bands and a stalk on a split base, 18 blocks in 5 clusters (sizes 2, 5, 5, 2, 4), all 4 colors present, no singletons \u2014 plus a 59th co-play prompt: be a cornstalk together, grow tall, shuck it down saying \"shuck\u2026 shuck!\", then pop up like a kernel saying \"pop!\"; pretend only, a grown-up holds any real ear of corn. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-01",
-    "version": 59
+    "version": 60
 }
