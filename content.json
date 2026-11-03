@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.59 (2026-11-02): a 63rd tower shape, Apple — a stem over a round body on a narrow base, 17 blocks in 5 clusters (sizes 3, 3, 3, 4, 4), all 4 colors present, no singletons — plus a 60th co-play prompt: pick pretend apples together, drop them in a basket saying \"plop!\", wash them saying \"wash, wash!\", then take a pretend crunch saying \"crunch!\"; pretend picking only, a grown-up washes and cuts any real apple. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.60 (2026-11-02): a 64th tower shape, Pie — a crust band over a wide filling body on a narrow dish base, 21 blocks in 4 clusters (sizes 3, 7, 8, 3), all 4 colors present, no singletons — plus a 61st co-play prompt: bake a pretend pie together, stir saying \"stir, stir!\", pat playdough flat saying \"pat, pat!\", press pretend apples on top, sniff saying \"mmm!\"; pretend baking only, a grown-up handles any real oven, playdough stays out of mouths. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-02",
-    "version": 61
+    "version": 62
 }
