@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.60 (2026-11-02): a 64th tower shape, Pie — a crust band over a wide filling body on a narrow dish base, 21 blocks in 4 clusters (sizes 3, 7, 8, 3), all 4 colors present, no singletons — plus a 61st co-play prompt: bake a pretend pie together, stir saying \"stir, stir!\", pat playdough flat saying \"pat, pat!\", press pretend apples on top, sniff saying \"mmm!\"; pretend baking only, a grown-up handles any real oven, playdough stays out of mouths. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.61 (2026-11-02): a 65th tower shape, Cocoa Mug — a rim band over a wide mug body with a handle down the right side on a narrow base, 21 blocks in 4 clusters (sizes 7, 3, 8, 3), all 4 colors present, no singletons — plus a 62nd co-play prompt: make pretend cocoa together, stir saying \"stir, stir!\", blow gently to cool it saying \"blow… cool!\", drop soft marshmallows (big soft pom-poms) in saying \"plop!\", then take a pretend sip saying \"mmm!\"; pretend only, a grown-up handles any real hot drink, nothing hot for little hands. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-02",
-    "version": 62
+    "version": 63
 }
