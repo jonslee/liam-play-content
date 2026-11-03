@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.61 (2026-11-02): a 65th tower shape, Cocoa Mug — a rim band over a wide mug body with a handle down the right side on a narrow base, 21 blocks in 4 clusters (sizes 7, 3, 8, 3), all 4 colors present, no singletons — plus a 62nd co-play prompt: make pretend cocoa together, stir saying \"stir, stir!\", blow gently to cool it saying \"blow… cool!\", drop soft marshmallows (big soft pom-poms) in saying \"plop!\", then take a pretend sip saying \"mmm!\"; pretend only, a grown-up handles any real hot drink, nothing hot for little hands. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.62 (2026-11-03): a 66th tower shape, Fort \u2014 two side towers over a wall band with a doorway gap on a ground row, 22 blocks in 4 clusters (sizes 6, 4, 7, 5), all 4 colors present, no singletons \u2014 plus a 63rd co-play prompt: build a blanket fort together with soft cushions and a blanket, crawl inside, peek out saying \"peek-a-boo!\", then snuggle in cozy and rest; soft props only, grown-up nearby, he can crawl out any time. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-11-02",
-    "version": 63
+    "updated": "2026-11-03",
+    "version": 64
 }
