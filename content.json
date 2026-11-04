@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.63 (2026-11-03): a 67th tower shape, Box — tall open walls over a striped base, 18 blocks in 4 clusters (sizes 12, 2, 2, 2), all 4 colors present, no singletons — plus a 64th co-play prompt: play with a big cardboard box together, climb in and out, peek out saying \"peek-a-boo!\", ask him what the box is and follow his idea (car, boat, or cozy house), then snuggle in and rest; big clean box with no staples or loose tape, grown-up nearby, he can climb out any time. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.64 (2026-11-03): a 68th tower shape, Basket \u2014 a handle over a wide basket body on a narrow base, 24 blocks in 4 clusters (sizes 8, 6, 6, 4), all 4 colors present, no singletons \u2014 plus a 65th co-play prompt: have a teddy bear picnic together, spread a blanket, pour pretend tea, offer each bear a pretend cookie, say \"thank you!\", take turns; pretend only with toy cups/food, a grown-up handles any real snack. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-03",
-    "version": 65
+    "version": 66
 }
