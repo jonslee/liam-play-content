@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.67 (2026-11-04): a 71st tower shape, Washing Machine — a top band over an inset blue window band and a bottom band on split feet, 20 blocks in 5 clusters (sizes 5, 6, 5, 2, 2), all 4 colors present, no singletons — plus a 68th co-play prompt: do laundry together, sort socks and shirts by color saying \"red... blue!\", wash doll clothes in a bowl of water saying \"wash, wash!\", squeeze, hang to dry, and fold together; pretend washing only, a grown-up handles the soap and any real machine. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.68 (2026-11-05): a 72nd tower shape, Watering Can — a spout-and-handle band over wide body bands on a narrow base, 24 blocks in 6 clusters (sizes 6, 6, 4, 4, 2, 2), all 4 colors present, no singletons — plus a 69th co-play prompt: water a plant together, touch the soil saying \"dry... or wet?\", pour a little water at the base saying \"drink... drink!\", then watch the soil turn dark and the leaves look fresh; one small can, only dry plants, a grown-up holds the can with him. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-11-04",
-    "version": 69
+    "updated": "2026-11-05",
+    "version": 70
 }
