@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.66 (2026-11-04): a 70th tower shape, Broom — a handle column over a brush-head band on two bristle bands, 22 blocks in 5 clusters (sizes 6, 6, 6, 2, 2), all 4 colors present, no singletons — plus a 67th co-play prompt: sweep together with a toy broom, push back and forth saying \"sweep... sweep!\", sweep pretend crumbs into a pile, scoop into a dustpan saying \"scoop!\", tip in the bin together, take turns; toy broom only, no cleaning sprays or powders, a grown-up handles the real dustpan and bin. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.67 (2026-11-04): a 71st tower shape, Washing Machine — a top band over an inset blue window band and a bottom band on split feet, 20 blocks in 5 clusters (sizes 5, 6, 5, 2, 2), all 4 colors present, no singletons — plus a 68th co-play prompt: do laundry together, sort socks and shirts by color saying \"red... blue!\", wash doll clothes in a bowl of water saying \"wash, wash!\", squeeze, hang to dry, and fold together; pretend washing only, a grown-up handles the soap and any real machine. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-04",
-    "version": 68
+    "version": 69
 }
