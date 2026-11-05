@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.65 (2026-11-04): a 69th tower shape, Pot — two handle nubs over a wide pot body on a narrow base, 24 blocks in 4 clusters (sizes 8, 6, 6, 4), all 4 colors present, no singletons — plus a 66th co-play prompt: cook pretend soup together, stir a toy pot, drop soft pretend veggies in saying \"plop!\", sniff saying \"mmm!\", serve teddies saying \"here you go!\", take turns; pretend only with toy pot/food, a grown-up handles any real cooking. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.66 (2026-11-04): a 70th tower shape, Broom — a handle column over a brush-head band on two bristle bands, 22 blocks in 5 clusters (sizes 6, 6, 6, 2, 2), all 4 colors present, no singletons — plus a 67th co-play prompt: sweep together with a toy broom, push back and forth saying \"sweep... sweep!\", sweep pretend crumbs into a pile, scoop into a dustpan saying \"scoop!\", tip in the bin together, take turns; toy broom only, no cleaning sprays or powders, a grown-up handles the real dustpan and bin. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-04",
-    "version": 67
+    "version": 68
 }
