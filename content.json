@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.70 (2026-11-05): a 74th tower shape, Carrot — leafy green top over red body bands on a split soil base, 24 blocks in 6 clusters (sizes 6, 6, 6, 2, 2, 2), all 4 colors present, no singletons — plus a 71st co-play prompt: pick a carrot together, hold the green top and pull gently saying \"pull... pop!\", brush off the dirt, wash it clean, then crunch it together; only pick what a grown-up says is ready, wash every veggie before tasting, grown-up handles any cutting. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.71 (2026-11-06): a 75th tower shape, Market Stall — awning peak over a striped awning band, counter and produce rows on two legs, 23 blocks in 6 clusters (sizes 6, 6, 4, 3, 2, 2), all 4 colors present, no singletons — plus a 72nd co-play prompt: play market together, take turns shopkeeper and shopper, ask \"what do you need?\", find it and drop it in the basket saying \"plop!\"; pretend shopping only, grown-up handles real money, wash real food before tasting. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
-    "updated": "2026-11-05",
-    "version": 72
+    "updated": "2026-11-06",
+    "version": 73
 }
