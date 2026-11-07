@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.71 (2026-11-06): a 75th tower shape, Market Stall — awning peak over a striped awning band, counter and produce rows on two legs, 23 blocks in 6 clusters (sizes 6, 6, 4, 3, 2, 2), all 4 colors present, no singletons — plus a 72nd co-play prompt: play market together, take turns shopkeeper and shopper, ask \"what do you need?\", find it and drop it in the basket saying \"plop!\"; pretend shopping only, grown-up handles real money, wash real food before tasting. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.72 (2026-11-06): a 76th tower shape, Snowman — hat over head over wide body and base, 24 blocks in 5 clusters (sizes 6, 6, 6, 4, 2), all 4 colors present, no singletons — plus a 73rd co-play prompt: build a pretend snowman together, roll and stack three soft white balls big, then little, then littlest, add a carrot nose and button eyes, say hello; pretend snow only, grown-up holds the real carrot. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-06",
-    "version": 73
+    "version": 74
 }
