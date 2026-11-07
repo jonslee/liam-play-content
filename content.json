@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.72 (2026-11-06): a 76th tower shape, Snowman — hat over head over wide body and base, 24 blocks in 5 clusters (sizes 6, 6, 6, 4, 2), all 4 colors present, no singletons — plus a 73rd co-play prompt: build a pretend snowman together, roll and stack three soft white balls big, then little, then littlest, add a carrot nose and button eyes, say hello; pretend snow only, grown-up holds the real carrot. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.73 (2026-11-06): a 77th tower shape, Sled — a curled front over a flat seat bed on two runners, 20 blocks in 5 clusters (sizes 6, 6, 4, 2, 2), all 4 colors present, no singletons — plus a 74th co-play prompt: play pretend sled together, pull a soft toy on a blanket saying 'pull… glide… stop!', take turns pulling, grown-up can pull him too; pretend sled only, blanket on a smooth floor indoors, no real snow or hills, grown-up always pulling. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-06",
-    "version": 74
+    "version": 75
 }
