@@ -139,7 +139,7 @@
     </div>
   </div>
 
-  <div class="foot">Block Pop v2.77 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
+  <div class="foot">Block Pop v2.78 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
 </div>
 
 <script>
@@ -384,19 +384,23 @@
     "Sled! After this tower, play sled together — put a soft toy on a blanket, hold the corners, and pull it along the floor saying “pull… glide… stop!” Take turns pulling, and a grown-up can pull you on the blanket too. Any pull counts! (Pretend sled only — a blanket or towel on a smooth floor indoors, no real snow, no hills, and a grown-up is always pulling.)",
     "Mitten! After this tower, play mittens together — put your mittens on saying “wiggle, wiggle!”, wave hello with your warm hands, then take them off and match the pair. Take turns — any wiggle counts! (Mittens go on last when dressing to go out — coat, boots, hat, then mittens — and a grown-up checks the fit.)"
   ];
-  var MOVIES=['video/frog-garden.mp4','video/frog-lilypad.mp4'];
-  /* One small social lesson per cutscene, shown under the video for the
-     grown-up to read aloud. Grounded in what the videos actually show
-     (frames checked 2026-11-07): both are the same story — Frog alone,
-     then Duck arrives, then Elephant arrives, and all three play
-     together at the end. No ball is shared and nobody waits on a lily
-     pad, so the lessons are about friends joining in, not those.
-     Kept to one short line so it fits on an iPhone: the lesson
-     REPLACES the generic co-view line while a movie plays, it does
-     not stack under it. */
+  /* Cutscene rotation, every 3rd tower, in order. frog-garden was
+     RETIRED 2026-11-07 (file stays in video/): frame-by-frame check
+     shows the frog hop twice across the garden and land with a splash
+     burst on dry grass/dirt — the pond is behind him, so the splash
+     lands on nothing. It cannot be patched in the baked video, so it
+     is out of the rotation. The three that remain, all frames checked:
+     frog-lilypad — Frog alone on a lily pad, Duck walks in, Elephant
+     walks in, all three together; liam-dancing-animals — Elephant,
+     Bunny and Penguin hold hands, dance, spin and hug in a meadow;
+     liam-counting-stars — one star, then two, then three stars dance
+     in the night sky. One short lesson line each, shown under the
+     video, replacing the generic co-view line so it fits on iPhone. */
+  var MOVIES=['video/frog-lilypad.mp4','video/liam-dancing-animals.mp4','video/liam-counting-stars.mp4'];
   var MOVIE_LESSONS=[
     "💚 Frog's friends come to play — wave hello!",
-    "💚 Everyone plays together — take turns dancing!"
+    "💚 Elephant, Bunny and Penguin dance — hold hands!",
+    "⭐ Count the stars with me — one, two, three!"
   ];
 
   var stage=document.getElementById('stage'), towerEl=document.getElementById('tower'),
