@@ -87,6 +87,7 @@
     #celebrate .big{font-size:clamp(30px,8vw,46px);font-weight:700}
     #celebrate video{width:min(480px,92%);border-radius:22px;box-shadow:var(--shadow);background:#172b3b}
     #celebrate .tap-hint{font-weight:700;opacity:.75;margin-top:8px;font-size:17px}
+    #celebrate .lesson{font-weight:800;margin-top:8px;font-size:18px;line-height:1.4;max-width:480px;margin-left:auto;margin-right:auto}
     .parent{
       margin-top:14px;background:var(--card);border-radius:20px;box-shadow:0 5px 0 rgba(24,50,73,.08);
       padding:12px 16px;font-family:"Nunito Sans",sans-serif;font-size:14.5px;line-height:1.5;
@@ -121,6 +122,7 @@
         <div class="big">🎉 Yay!</div>
         <video id="cel-video" playsinline preload="none" style="display:none"></video>
         <div class="tap-hint" id="cel-coview" style="display:none">Watch together — what will the frog do?</div>
+        <div class="lesson" id="cel-lesson" style="display:none"></div>
         <div class="tap-hint" id="cel-hint">New tower coming…</div>
       </div>
     </div>
@@ -137,7 +139,7 @@
     </div>
   </div>
 
-  <div class="foot">Block Pop v2.74 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
+  <div class="foot">Block Pop v2.75 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
 </div>
 
 <script>
@@ -383,11 +385,19 @@
     "Mitten! After this tower, play mittens together — put your mittens on saying “wiggle, wiggle!”, wave hello with your warm hands, then take them off and match the pair. Take turns — any wiggle counts! (Mittens go on last when dressing to go out — coat, boots, hat, then mittens — and a grown-up checks the fit.)"
   ];
   var MOVIES=['video/frog-garden.mp4','video/frog-lilypad.mp4'];
+  /* One small social lesson per cutscene, shown under the video for the
+     grown-up to read aloud and act out with Liam (2yo, one idea at a time).
+     Garden (ball + bucket in shot): sharing / turn-taking.
+     Lilypad (frog sitting still): waiting patiently, then saying hello. */
+  var MOVIE_LESSONS=[
+    "💚 Frog shares his ball — your turn, then my turn! Pass a soft ball back and forth.",
+    "💚 Frog waits patiently on his lily pad — waiting is hard! Then wave and say hello!"
+  ];
 
   var stage=document.getElementById('stage'), towerEl=document.getElementById('tower'),
       cannonsEl=document.getElementById('cannons'), ground=document.getElementById('ground'),
       celebrateEl=document.getElementById('celebrate'), celVideo=document.getElementById('cel-video'),
-      celHint=document.getElementById('cel-hint'), celCoview=document.getElementById('cel-coview'), mascot=document.getElementById('mascot');
+      celHint=document.getElementById('cel-hint'), celCoview=document.getElementById('cel-coview'), celLesson=document.getElementById('cel-lesson'), mascot=document.getElementById('mascot');
 
   var grid=[], rows=0, cols=0, bs=64, nodes={}, nextId=1, busy=false;
   var level=0; try{ level=parseInt(localStorage.getItem('bp-level')||'0',10)||0; }catch(e){}
@@ -618,7 +628,10 @@
     mascot.classList.remove('dance'); void mascot.offsetWidth; mascot.classList.add('dance');
     level++; try{ localStorage.setItem('bp-level', String(level)); }catch(e){}
     if(towersCleared%3===0){
-      celVideo.src=MOVIES[(towersCleared/3-1)%MOVIES.length];
+      var mi=(towersCleared/3-1)%MOVIES.length;
+      celVideo.src=MOVIES[mi];
+      celLesson.textContent=MOVIE_LESSONS[mi];
+      celLesson.style.display='block';
       celVideo.style.display='block'; celCoview.style.display='block'; celHint.textContent='Tap for a new tower';
       celebrateEl.classList.add('show'); celebrateEl.setAttribute('aria-hidden','false');
       celVideo.currentTime=0;
@@ -627,13 +640,13 @@
         celVideo.removeEventListener('ended', done);
         celebrateEl.removeEventListener('click', done);
         celebrateEl.classList.remove('show'); celebrateEl.setAttribute('aria-hidden','true');
-        celVideo.pause(); celVideo.style.display='none'; celCoview.style.display='none';
+        celVideo.pause(); celVideo.style.display='none'; celCoview.style.display='none'; celLesson.style.display='none';
         buildTower();
       };
       celVideo.addEventListener('ended', done);
       celebrateEl.addEventListener('click', done);
     } else {
-      celVideo.style.display='none'; celCoview.style.display='none'; celHint.textContent='New tower coming\u2026';
+      celVideo.style.display='none'; celCoview.style.display='none'; celLesson.style.display='none'; celHint.textContent='New tower coming\u2026';
       celebrateEl.classList.add('show'); celebrateEl.setAttribute('aria-hidden','false');
       setTimeout(function(){
         celebrateEl.classList.remove('show'); celebrateEl.setAttribute('aria-hidden','true');

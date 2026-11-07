@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.74 (2026-11-07): a 78th tower shape, Mitten — a rounded top with a thumb on the left over a wide cuff, 24 blocks in 5 clusters (sizes 6, 2, 4, 6, 6), all 4 colors present, no singletons — plus a 75th co-play prompt: play mittens together, put them on saying 'wiggle, wiggle!', wave hello, take them off and match the pair; mittens last when dressing to go out. Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.75 (2026-11-07, parent-directed): each frog cutscene now shows a small social lesson under the video — Frog Garden: sharing / turn-taking (pass a soft ball back and forth); Frog Lilypad: waiting patiently, then waving hello. Lessons are a caption for the grown-up to read aloud and act out; the videos themselves are unchanged. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-07",
-    "version": 76
+    "version": 77
 }
