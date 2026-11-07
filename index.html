@@ -139,7 +139,7 @@
     </div>
   </div>
 
-  <div class="foot">Block Pop v2.78 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
+  <div class="foot">Block Pop v2.79 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
 </div>
 
 <script>
@@ -595,8 +595,17 @@
       var a=p.animate([
         {transform:'translate(0,0)', opacity:1},
         {transform:'translate('+(Math.cos(ang)*dist)+'px,'+(Math.sin(ang)*dist+14)+'px)', opacity:0}
-      ], {duration:380+Math.random()*160, easing:'ease-out'});
-      a.onfinish=function(){ p.remove(); };
+      ], {duration:380+Math.random()*160, easing:'ease-out', fill:'forwards'});
+      /* Capture this particle per-iteration (the ball code below does the
+         same): `var p` is function-scoped, so a bare onfinish closure
+         would remove only the last particle of the six and leave the
+         other five stuck at full opacity in the middle of the popped
+         block — the leftover colored dot the parent reported 2026-11-07
+         (browser test: 4 dots, one per popped blue block, still there
+         at 6s). fill:'forwards' keeps a particle at opacity 0 even if
+         its finish handler ever misses, and the timeout is a final
+         sweep so no particle can outlive the pop. */
+      (function(pp){ a.onfinish=function(){ pp.remove(); }; setTimeout(function(){ pp.remove(); }, 900); })(p);
     }
   }
 
