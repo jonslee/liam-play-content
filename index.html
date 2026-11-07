@@ -87,7 +87,7 @@
     #celebrate .big{font-size:clamp(30px,8vw,46px);font-weight:700}
     #celebrate video{width:min(480px,92%);border-radius:22px;box-shadow:var(--shadow);background:#172b3b}
     #celebrate .tap-hint{font-weight:700;opacity:.75;margin-top:8px;font-size:17px}
-    #celebrate .lesson{font-weight:800;margin-top:8px;font-size:18px;line-height:1.4;max-width:480px;margin-left:auto;margin-right:auto}
+    #celebrate .lesson{font-weight:800;margin-top:6px;font-size:16px;line-height:1.35;max-width:480px;margin-left:auto;margin-right:auto}
     .parent{
       margin-top:14px;background:var(--card);border-radius:20px;box-shadow:0 5px 0 rgba(24,50,73,.08);
       padding:12px 16px;font-family:"Nunito Sans",sans-serif;font-size:14.5px;line-height:1.5;
@@ -139,7 +139,7 @@
     </div>
   </div>
 
-  <div class="foot">Block Pop v2.76 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
+  <div class="foot">Block Pop v2.77 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
 </div>
 
 <script>
@@ -386,12 +386,17 @@
   ];
   var MOVIES=['video/frog-garden.mp4','video/frog-lilypad.mp4'];
   /* One small social lesson per cutscene, shown under the video for the
-     grown-up to read aloud and act out with Liam (2yo, one idea at a time).
-     Garden (ball + bucket in shot): sharing / turn-taking.
-     Lilypad (frog sitting still): waiting patiently, then saying hello. */
+     grown-up to read aloud. Grounded in what the videos actually show
+     (frames checked 2026-11-07): both are the same story — Frog alone,
+     then Duck arrives, then Elephant arrives, and all three play
+     together at the end. No ball is shared and nobody waits on a lily
+     pad, so the lessons are about friends joining in, not those.
+     Kept to one short line so it fits on an iPhone: the lesson
+     REPLACES the generic co-view line while a movie plays, it does
+     not stack under it. */
   var MOVIE_LESSONS=[
-    "💚 Frog shares his ball — your turn, then my turn! Pass a soft ball back and forth.",
-    "💚 Frog waits patiently on his lily pad — waiting is hard! Then wave and say hello!"
+    "💚 Frog's friends come to play — wave hello!",
+    "💚 Everyone plays together — take turns dancing!"
   ];
 
   var stage=document.getElementById('stage'), towerEl=document.getElementById('tower'),
@@ -647,7 +652,7 @@
       celVideo.src=MOVIES[mi];
       celLesson.textContent=MOVIE_LESSONS[mi];
       celLesson.style.display='block';
-      celVideo.style.display='block'; celCoview.style.display='block'; celHint.textContent='Tap for a new tower';
+      celVideo.style.display='block'; celCoview.style.display='none'; celHint.textContent='Tap for a new tower';
       celebrateEl.classList.add('show'); celebrateEl.setAttribute('aria-hidden','false');
       celVideo.currentTime=0;
       var vp=celVideo.play(); if(vp&&vp.catch) vp.catch(function(){});

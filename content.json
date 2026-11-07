@@ -25,8 +25,8 @@
             "video/frog-lilypad.mp4"
         ]
     },
-    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.76 (2026-11-07, parent-directed): when a column is fully cleared, columns to its right slide left to close the gap; same-color blocks that end up touching after the slide are one cluster, so one tap pops both sides. Verified with a node test on the shipped applyGravity/clusterOf code (merge, non-merge, gravity+slide, unchanged, two empty columns all pass). v2.75 added a small social lesson under each frog cutscene (Garden: sharing/turn-taking; Lilypad: waiting, then waving hello). Content-only repo: no personal data beyond the first name.",
+    "notes": "Block Pop replaced the 9-activity menu game on 2026-10-13 (kept as classic.html). One deep mechanic: tap a color cannon, blast matching block clusters, clear the tower. v2.77 (2026-11-07, parent correction): frog lesson captions rewritten to match what the videos actually show — both movies are Frog alone, then Duck arrives, then Elephant arrives, all three playing together — so Garden is now 'Frog's friends come to play — wave hello!' and Lilypad is 'Everyone plays together — take turns dancing!' Shortened to one short line each and the generic co-view line is hidden while a movie plays, so the text fits on an iPhone instead of stacking and clipping. v2.76 added slide-left column closing. Content-only repo: no personal data beyond the first name.",
     "previousGame": "classic.html",
     "updated": "2026-11-07",
-    "version": 78
+    "version": 79
 }
