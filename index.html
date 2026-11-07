@@ -139,7 +139,7 @@
     </div>
   </div>
 
-  <div class="foot">Block Pop v2.75 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
+  <div class="foot">Block Pop v2.76 • Tower <span id="tower-num">1</span> • No ads, no tracking — just popping.</div>
 </div>
 
 <script>
@@ -596,6 +596,21 @@
       var stack=[];
       for(var r=rows-1;r>=0;r--) if(grid[r][c]) stack.push(grid[r][c]);
       for(var r2=rows-1;r2>=0;r2--) grid[r2][c]=stack[rows-1-r2]||null;
+    }
+    /* Slide left: a fully cleared column closes up — every column to its
+       right shifts one step left, so the two sides meet. Same-color blocks
+       that end up touching after the slide are one cluster (clusterOf
+       flood-fills 4-way neighbors), so one tap then pops both sides. */
+    var write=0;
+    for(var c2=0;c2<cols;c2++){
+      var empty=true;
+      for(var r3=0;r3<rows;r3++) if(grid[r3][c2]){ empty=false; break; }
+      if(!empty){
+        if(write!==c2){
+          for(var r4=0;r4<rows;r4++){ grid[r4][write]=grid[r4][c2]; grid[r4][c2]=null; }
+        }
+        write++;
+      }
     }
   }
 
